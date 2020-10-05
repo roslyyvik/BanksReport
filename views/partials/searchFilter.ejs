@@ -1,0 +1,32 @@
+<form action="/banks" method="GET"  class="sticky-top">
+  <fieldset>
+    <div class="input-group mb-2">
+    <input type="text" name="search" class="form-control text-light" style="background:#292640;" placeholder="" value="<%= query.search %>" id="search">
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-secondary"><i style="font-size:18px" class="fa">&#xf002;</i></button>
+      </div>
+    </div>
+    <div>
+  		<a href="/banks">Скинути запит</a>
+  	</div>
+  </fieldset><br>
+  <fieldset style="display:none">
+    <legend>Банківські групи</legend>
+    <div class="form-group">
+      <select class="form-control" name="group">
+        <option value="Всі банки">Всі банки</option>
+        <option value="Банки іноземних банківських груп">Банки іноземних банківських груп</option>
+        <option value="Банки з державною часткою">Банки з державною часткою</option>
+        <option value="Банки з приватним капіталом">Банки з приватним капіталом</option>
+      </select>
+    </div>
+  </fieldset>
+  </form><br>
+
+  <script type="text/javascript">
+    const clear = document.getElementById('clear-group');
+clear.addEventListener('click', (e) => {
+       e.preventDefault();
+       document.querySelector('input[type=radio]:checked').checked = false;
+});
+  </script>

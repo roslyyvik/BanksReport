@@ -1,0 +1,114 @@
+<% layout('layouts/boilerplate') -%>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            font-size: 17px;
+        }
+    </style>
+
+    <div class="container-fluid p-4 mt-4">
+      <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa">&#xf077;</i></button>
+        <div class="row">
+            <div class="col-md-3 mt-1">
+                <% include ./partials/searchFilter %>
+            </div>
+            <div class="col-md-9">
+                <h1>
+                    <%= title %>
+                </h1>
+                <% include ./partials/paginateBanks %>
+                <% banks.docs.forEach(function(bank) { %>
+                    <div>
+                        <h3>
+                            <%= bank.SHORTNAME %>
+                        </h3><br>
+                        <div>Група:
+                            <%= bank.group %>
+                        </div>
+                        <div>Код ЄДРПОУ:
+                            <%= bank.KOD_EDRPOU %>
+                        </div>
+                        <div>Банківський номер:
+                            <%= bank.NKB %>
+                        </div>
+                        <div>МФО:
+                            <%= bank.MFO %>
+                        </div>
+                        <div>Адреса:
+                            <%= bank.P_IND %>,
+                                <%= bank.NP %>,
+                                    <%= bank.ADRESS %>
+                        </div>
+                        <div>
+                            <%= bank.SVB %>
+                        </div>
+                        <div>
+                            <%= bank.SPEC_OSCHAD %>
+                        </div><br>
+                        <div class="">
+                            тис.грн
+                        </div>
+                        <div style="overflow-x:auto;">
+                            <table>
+                                <tr>
+                                    <th style="text-align: center;"><i style='font-size:20px;color:gold' class='fas'>&#xf6f2;</i></th>
+                                    <th>2020_01_01</th>
+                                    <th>2020_04_01</th>
+                                    <th>2020_07_01</th>
+                                    <th>Зміни,%</th>
+                                </tr>
+                                <tr>
+                                    <th>Чисті активи</th>
+                                    <td>
+                                        <%= bank.assetstotal[0] %>
+                                    </td>
+                                    <td>
+                                        <%= bank.assetstotal[1] %>
+                                    </td>
+                                    <td>
+                                        <%= bank.assetstotal[2] %>
+                                    </td>
+                                    <td colspan="">
+                                        <%= ((bank.assetstotal[2] - bank.assetstotal[1])/bank.assetstotal[1]*100).toFixed(2) %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Прибуток/(збиток) до оподаткування</th>
+                                    <td>
+                                        <%= bank.profittotal[0] %>
+                                    </td>
+                                    <td>
+                                        <%= bank.profittotal[1] %>
+                                    </td>
+                                    <td>
+                                        <%= bank.profittotal[2] %>
+                                    </td>
+                                    <td colspan="">
+                                        <%= ((bank.profittotal[2] - bank.profittotal[1])/bank.profittotal[1]*100).toFixed(2) %>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div><br>
+                        <div><a href="/banks/<%= bank.id %>">Детальніше <i class='fas fa-arrow-right'></i></a>
+                            <hr>
+                        </div>
+                    </div>
+                    <% }); %>
+                        <div style="text-align:left">
+                            <% include ./partials/paginateBanks %>
+                        </div>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+    <script src="javascripts/table.js" charset="utf-8"></script>

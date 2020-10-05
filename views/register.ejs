@@ -1,0 +1,26 @@
+<% layout('layouts/boilerplate') -%>
+<div class="container bg-light col-sm-6 py-5 my-5">
+        <div class="col-10 container">
+    <form action="/register" method="POST" enctype="multipart/form-data">
+      <div class="form-group text-primary" style="text-align:center">
+        <h4>РЕЄСТРАЦІЯ</h4>
+      </div>
+        <div class="form-group">
+            <label for="username"></label>
+            <input type="text" id="username" class="form-control py-4" name="username" placeholder="Ім'я" value="<%= username %>" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="password"></label>
+            <input type="password" id="password" class="form-control py-4" name="password" placeholder="Пароль" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="email"></label>
+            <input type="email" id="email" name="email" class="form-control py-4" placeholder="Електронна пошта" value="<%= email %>" required>
+        </div>
+        <input type="submit" class="form-control btn btn-primary shadow-sm mt-3 pm-4">
+    </form>
+    </div>
+    <div class="container col-9 mt-4" style="text-align:center">
+        <a href="/login">Ви вже з нами?</a>
+    </div>
+  </div>

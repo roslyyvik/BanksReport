@@ -1,0 +1,45 @@
+<% layout('layouts/boilerplate') -%>
+
+    <!-- <h4>
+      <img src="<%= currentUser.image.url %>" alt="<%= currentUser.username %>'s profile image" class="profile-image">
+    </h4> -->
+
+    <div class="container bg-light col-sm-6 py-5 my-5">
+      <div class="col-10 container">
+        <form action="/profile?_method=PUT" method="POST" enctype="multipart/form-data">
+          <div class="form-group text-center text-primary" style="">
+            <h3><%= currentUser.username %></h3>
+            <h4><%= currentUser.email %></h4>
+          </div>
+            <div class="form-group">
+                <label for="username"></label>
+                <input type="text" class="form-control py-4" name="username" id="username" value="<%= currentUser.username %>" placeholder="username" autofocus required>
+            </div>
+            <div class="form-group mt-3">
+                <label for="current-password"></label>
+                <input type="password" class="form-control py-4" name="currentPassword" id="current-password" placeholder="поточний пароль" required>
+            </div>
+            <div class="form-group mt-3">
+                <label for="new-password"></label>
+                <input type="password" class="form-control py-4" name="newPassword" id="new-password" placeholder="новий пароль">
+            </div>
+            <div class="form-group mt-3">
+                <label for="password-confirmation"></label>
+                <input type="password" class="form-control py-4" name="passwordConfirmation" id="password-confirmation" placeholder="підтвердити пароль">
+            </div>
+            <div class="form-group mt-3" id="validation-message">
+
+            </div>
+            <div class="form-group mt-3">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control py-4" name="email" id="email" value="<%= currentUser.email %>" placeholder="email">
+            </div>
+            <div class="form-group mt-3 text-dark">
+              <input type="file" name="image" >
+            </div>
+            <input type="submit" class="form-control btn btn-primary shadow-sm mt-3 pm-4" id="update-profile">
+        </form>
+      </div>
+    </div>
+
+    <script src="/javascripts/profile.js" charset="utf-8"></script>

@@ -1,0 +1,13 @@
+<% if(success && success.length) { %>
+<div class="alert alert-success alert-dismissible fade show">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <h5><i class="fa fa-thumbs-up mr-2" style="font-size:24px;color:green"></i> <%= success %></h5>
+</div>
+<% } %>
+
+<% if(error && error.length) { %>
+  <div class="alert alert-warning alert-dismissible fade show">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <h5><i class="fa fa-thumbs-down mr-2" style="font-size:24px;color:red"></i> <%= error %></h5>
+  </div>
+<% } %>

@@ -1,0 +1,1097 @@
+<% layout('layouts/boilerplate') -%>
+
+    <h1>
+        Фінансові показники банків України
+    </h1>
+    <p>Вітаю на сторінці
+        <%= banks.SHORTNAME %>
+    </p>
+    <div>
+        <div>МФО :
+            <%=  banks.MFO %>
+        </div>
+        <div>НБК :
+            <%=  banks.NKB %>
+        </div>
+        <div>ГРУПА :
+            <%=  banks.group %>
+        </div>
+        <div>НОРМАТИВ :
+
+        </div>
+        <div><br></div>
+    </div>
+
+    <div style="overflow-x:auto;">
+        <table class="table table-striped table-primary">
+            <thead>
+                <tr>
+                    <th>Норматив</th>
+                    <th>2019_04_01</th>
+                    <th>2019_07_01</th>
+                    <th>2019_10_01</th>
+                    <th>2020_01_01</th>
+                    <th>2020_04_01</th>
+                    <th>2020_07_01</th>
+                </tr>
+            </thead>
+            <% ratios.normatives.forEach(function(normative) { %>
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= normative.normative %>
+                        </td>
+                        <td>
+                            <%= normative.D2019_04_01 %>
+                        </td>
+                        <td>
+                            <%= normative.D2019_07_01 %>
+                        </td>
+                        <td>
+                            <%= normative.D2019_10_01 %>
+                        </td>
+                        <td>
+                            <%= normative.D2020_01_01 %>
+                        </td>
+                        <td>
+                            <%= normative.D2020_04_01 %>
+                        </td>
+                        <td>
+                            <%= normative.D2020_07_01 %>
+                        </td>
+                    </tr>
+                </tbody>
+                <% }); %>
+        </table><br><br></div>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openIndicator(event, 'netAssets')" id="defaultOpen">ЧИСТІ АКТИВИ</button>
+        <button class="tablinks" onclick="openIndicator(event, 'structureAssets')">СТРУКТУРА АКТИВІВ</button>
+        <button class="tablinks" onclick="openIndicator(event, 'liquidAssets')">ЛІКВІДНІ АКТИВИ</button>
+        <button class="tablinks" onclick="openIndicator(event, 'loansAssets')">КРЕДИТИ КЛІЄНТІВ</button>
+        <button class="tablinks" onclick="openIndicator(event, 'securitiesAssets')">ЦІННІ ПАПЕРИ ТА ІНВЕСТИЦІЇ</button>
+        <button class="tablinks" onclick="openIndicator(event, 'otherAssets')">ІНШІ АКТИВИ</button>
+        <button class="tablinks" onclick="openIndicator(event, 'reservesAssets')">РЕЗЕРВИ</button>
+    </div>
+
+    <div class="tabcontent" id="netAssets">
+        <h4>CHART ASSETS 0_0</h4>
+        <canvas id="assets0_0"></canvas>
+        <br><br>
+        <script>
+            var ctx = document.getElementById("assets0_0").getContext('2d');
+            Chart.defaults.global.animation.duration = 1000
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["2018_01_01", "2018_04_01", "2018_07_01", "2018_10_01", "2019_01_01", "2019_04_01", "2019_07_01", "2019_10_01", "2020_01_01", "2020_04_01", "2020_07_01"],
+                    datasets: [{
+                        label: '<%= assets0_0.assets[3].items %>',
+                        backgroundColor: '#ffa31a',
+                        data: ['<%= assets0_0.assets[3].D2018_01_01.toFixed() %>', '<%= assets0_0.assets[3].D2018_04_01.toFixed() %>', '<%= assets0_0.assets[3].D2018_07_01.toFixed() %>', '<%= assets0_0.assets[3].D2018_10_01.toFixed() %>', ' <%= assets0_0.assets[3].D2019_01_01.toFixed() %>', '<%= assets0_0.assets[3].D2019_04_01.toFixed() %>', '<%= assets0_0.assets[3].D2019_07_01.toFixed() %>', '<%= assets0_0.assets[3].D2019_10_01.toFixed() %>', '<%= assets0_0.assets[3].D2020_01_01.toFixed() %>', '<%= assets0_0.assets[3].D2020_04_01.toFixed() %>', '<%= assets0_0.assets[3].D2020_07_01.toFixed() %>'],
+                    }, {
+                        label: '<%= assets0_0.assets[0].items %>',
+                        backgroundColor: "#47d147",
+                        data: ['<%= assets0_0.assets[0].D2018_01_01.toFixed() % >', '<%= assets0_0.assets[0].D2018_04_01.toFixed() %>', '<%= assets0_0.assets[0].D2018_07_01.toFixed() %>', '<%= assets0_0.assets[0].D2018_10_01.toFixed() %>', '<%= assets0_0.assets[0].D2019_01_01.toFixed() %>', '<%= assets0_0.assets[0].D2019_04_01.toFixed() %>', ' <%= assets0_0.assets[0].D2019_07_01.toFixed() %>', '<%= assets0_0.assets[0].D2019_10_01.toFixed() %>', '<%= assets0_0.assets[0].D2020_01_01.toFixed() %>', '<%= assets0_0.assets[0].D2020_04_01.toFixed() %>', '<%= assets0_0.assets[0].D2020_07_01.toFixed() %>'],
+                    }, {
+                        label: '<%= assets0_0.assets[1].items %>',
+                        backgroundColor: "#ff4d4d",
+                        data: ['<%= assets0_0.assets[1].D2018_01_01.toFixed() %>', '<%= assets0_0.assets[1].D2018_04_01.toFixed() %>', '<%= assets0_0.assets[1].D2018_07_01.toFixed() %>', '<%= assets0_0.assets[1].D2018_10_01.toFixed() %>', '<%= assets0_0.assets[1].D2019_01_01.toFixed() %>', '<%= assets0_0.assets[1].D2019_04_01.toFixed() %>', '<%= assets0_0.assets[1].D2019_07_01.toFixed() %>', '<%= assets0_0.assets[1].D2019_10_01.toFixed() %>', '<%= assets0_0.assets[1].D2020_01_01.toFixed() %>', '<%= assets0_0.assets[1].D2020_04_01.toFixed() %>', '<%= assets0_0.assets[1].D2020_07_01.toFixed() %>'],
+                    }, {
+                        label: '<%= assets0_0.assets[2].items %>',
+                        backgroundColor: "#4d4dff",
+                        data: ['<%= assets0_0.assets[2].D2018_01_01.toFixed() %>', '<%= assets0_0.assets[2].D2018_04_01.toFixed() %>', '<%= assets0_0.assets[2].D2018_07_01.toFixed() %>', '<%= assets0_0.assets[2].D2018_10_01.toFixed() %>', '<%= assets0_0.assets[2].D2019_01_01.toFixed() %>', '<%= assets0_0.assets[2].D2019_04_01.toFixed() %>', '<%= assets0_0.assets[2].D2019_07_01.toFixed() %>', '<%= assets0_0.assets[2].D2019_10_01.toFixed() %>', '<%= assets0_0.assets[2].D2020_01_01.toFixed() %>', '<%= assets0_0.assets[2].D2020_04_01.toFixed() %>', '<%= assets0_0.assets[2].D2020_07_01.toFixed() %>'],
+                    }, ],
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            stacked: false,
+                            gridLines: {
+                                display: true,
+                            }
+                        }],
+                        yAxes: [{
+                            stacked: false,
+                            ticks: {
+                                beginAtZero: true,
+                            },
+                            type: 'linear',
+                        }]
+                    },
+                    title: {
+                        display: true,
+                        text: 'Чисті активи <%= banks.brand %>',
+                        fontSize: 18
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true
+                }
+            });
+        </script>
+        <button class="accordion">Таблиця</button>
+        <div class="panel">
+            <div style="overflow-x:auto;">
+                <table class="table table-striped table-primary">
+                    <thead>
+                        <tr>
+                            <th>Items</th>
+                            <th>2018_01_01</th>
+                            <th>2018_04_01</th>
+                            <th>2018_07_01</th>
+                            <th>2018_10_01</th>
+                            <th>2019_01_01</th>
+                            <th>2019_04_01</th>
+                            <th>2019_07_01</th>
+                            <th>2019_10_01</th>
+                            <th>2020_01_01</th>
+                            <th>2020_04_01</th>
+                            <th>2020_07_01</th>
+                        </tr>
+                    </thead>
+                    <% assets0_0.assets.forEach(function(asset) { %>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <%= asset.items %>
+                                </td> :
+                                <td>
+                                    <%= asset.D2018_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_07_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_10_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_07_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_10_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_07_01.toFixed() %>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <% }); %>
+                </table><br><br></div>
+        </div>
+    </div>
+    <div class="tabcontent" id="structureAssets">
+        <!--СТРУКТУРА АКТИВІВ  -->
+        <h4>CHART ASSETS 1_0</h4>
+        <canvas id="assets1_0"></canvas>
+        <br><br>
+        <script>
+            var ctx1_0 = document.getElementById("assets1_0").getContext('2d');
+            Chart.defaults.global.animation.duration = 1000
+            var chart1_0 = new Chart(ctx1_0, {
+                type: 'line',
+                data: {
+                    labels: ["2018_01_01", "2018_04_01", "2018_07_01", "2018_10_01", "2019_01_01", "2019_04_01", "2019_07_01", "2019_10_01", "2020_01_01", "2020_04_01", "2020_07_01"],
+                    datasets: [{
+                        label: '<%= assets1_0.assets[3].items %>',
+                        backgroundColor: '#ffa31a',
+                        data: [<%= assets1_0.assets[3].D2018_01_01.toFixed() %>, <%= assets1_0.assets[3].D2018_04_01.toFixed() %>, <%= assets1_0.assets[3].D2018_07_01.toFixed() %>, <%= assets1_0.assets[3].D2018_10_01.toFixed() %>, <%= assets1_0.assets[3].D2019_01_01.toFixed() %>, <%= assets1_0.assets[3].D2019_04_01.toFixed() %>, <%= assets1_0.assets[3].D2019_07_01.toFixed() %>, <%= assets1_0.assets[3].D2019_10_01.toFixed() %>, <%= assets1_0.assets[3].D2020_01_01.toFixed() %>, <%= assets1_0.assets[3].D2020_04_01.toFixed() %>, <%= assets1_0.assets[3].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets1_0.assets[0].items %>',
+                        backgroundColor: "#47d147",
+                        data: [<%= assets1_0.assets[0].D2018_01_01.toFixed() %>, <%= assets1_0.assets[0].D2018_04_01.toFixed() %>, <%= assets1_0.assets[0].D2018_07_01.toFixed() %>, <%= assets1_0.assets[0].D2018_10_01.toFixed() %>, <%= assets1_0.assets[0].D2019_01_01.toFixed() %>, <%= assets1_0.assets[0].D2019_04_01.toFixed() %>, <%= assets1_0.assets[0].D2019_07_01.toFixed() %>, <%= assets1_0.assets[0].D2019_10_01.toFixed() %>, <%= assets1_0.assets[0].D2020_01_01.toFixed() %>, <%= assets1_0.assets[0].D2020_04_01.toFixed() %>, <%= assets1_0.assets[0].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets1_0.assets[1].items %>',
+                        backgroundColor: "#ff4d4d",
+                        data: [<%= assets1_0.assets[1].D2018_01_01.toFixed() %>, <%= assets1_0.assets[1].D2018_04_01.toFixed() %>, <%= assets1_0.assets[1].D2018_07_01.toFixed() %>, <%= assets1_0.assets[1].D2018_10_01.toFixed() %>, <%= assets1_0.assets[1].D2019_01_01.toFixed() %>, <%= assets1_0.assets[1].D2019_04_01.toFixed() %>, <%= assets1_0.assets[1].D2019_07_01.toFixed() %>, <%= assets1_0.assets[1].D2019_10_01.toFixed() %>, <%= assets1_0.assets[1].D2020_01_01.toFixed() %>, <%= assets1_0.assets[1].D2020_04_01.toFixed() %>, <%= assets1_0.assets[1].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets1_0.assets[2].items %>',
+                        backgroundColor: "#4d4dff",
+                        data: [<%= assets1_0.assets[2].D2018_01_01.toFixed() %>, <%= assets1_0.assets[2].D2018_04_01.toFixed() %>, <%= assets1_0.assets[2].D2018_07_01.toFixed() %>, <%= assets1_0.assets[2].D2018_10_01.toFixed() %>, <%= assets1_0.assets[2].D2019_01_01.toFixed() %>, <%= assets1_0.assets[2].D2019_04_01.toFixed() %>, <%= assets1_0.assets[2].D2019_07_01.toFixed() %>, <%= assets1_0.assets[2].D2019_10_01.toFixed() %>, <%= assets1_0.assets[2].D2020_01_01.toFixed() %>, <%= assets1_0.assets[2].D2020_04_01.toFixed() %>, <%= assets1_0.assets[2].D2020_07_01.toFixed() %>],
+                    }, ],
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            stacked: false,
+                            gridLines: {
+                                display: true,
+                            }
+                        }],
+                        yAxes: [{
+                            stacked: false,
+                            ticks: {
+                                beginAtZero: true,
+                            },
+                            type: 'linear',
+                        }]
+                    },
+                    title: {
+                        display: true,
+                        text: 'СТРУКТУРА АКТИВІВ <%= banks.brand %>',
+                        fontSize: 18
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true
+                }
+            });
+        </script>
+
+        <button class="accordion">Таблиця</button>
+        <div class="panel">
+            <div style="overflow-x:auto;">
+                <table class="table table-striped table-primary">
+                    <thead>
+                        <tr>
+                            <th>Items</th>
+                            <th>2018_01_01</th>
+                            <th>2018_04_01</th>
+                            <th>2018_07_01</th>
+                            <th>2018_10_01</th>
+                            <th>2019_01_01</th>
+                            <th>2019_04_01</th>
+                            <th>2019_07_01</th>
+                            <th>2019_10_01</th>
+                            <th>2020_01_01</th>
+                            <th>2020_04_01</th>
+                            <th>2020_07_01</th>
+                        </tr>
+                    </thead>
+                    <% assets1_0.assets.forEach(function(asset) { %>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <%= asset.items %>
+                                </td> :
+                                <td>
+                                    <%= asset.D2018_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_07_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_10_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_07_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_10_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_07_01.toFixed() %>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <% }); %>
+                </table><br><br></div>
+        </div>
+    </div>
+
+    <div class="tabcontent" id="liquidAssets">
+        <!--ЛІКВІДНІ АКТИВИ  -->
+        <h4>CHART ASSETS 1_1</h4>
+        <canvas id="assets1_1"></canvas>
+        <br><br>
+        <script>
+            var ctx1_1 = document.getElementById("assets1_1").getContext('2d');
+            Chart.defaults.global.animation.duration = 1000
+            var chart1_1 = new Chart(ctx1_1, {
+                type: 'line',
+                data: {
+                    labels: ["2018_01_01", "2018_04_01", "2018_07_01", "2018_10_01", "2019_01_01", "2019_04_01", "2019_07_01", "2019_10_01", "2020_01_01", "2020_04_01", "2020_07_01"],
+                    datasets: [{
+                        label: '<%= assets1_1.assets[3].items %>',
+                        backgroundColor: '#ffa31a',
+                        data: [<%= assets1_1.assets[3].D2018_01_01.toFixed() %>, <%= assets1_1.assets[3].D2018_04_01.toFixed() %>, <%= assets1_1.assets[3].D2018_07_01.toFixed() %>, <%= assets1_1.assets[3].D2018_10_01.toFixed() %>, <%= assets1_1.assets[3].D2019_01_01.toFixed() %>, <%= assets1_1.assets[3].D2019_04_01.toFixed() %>, <%= assets1_1.assets[3].D2019_07_01.toFixed() %>, <%= assets1_1.assets[3].D2019_10_01.toFixed() %>, <%= assets1_1.assets[3].D2020_01_01.toFixed() %>, <%= assets1_1.assets[3].D2020_04_01.toFixed() %>, <%= assets1_1.assets[3].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets1_1.assets[0].items %>',
+                        backgroundColor: "#47d147",
+                        data: [<%= assets1_1.assets[0].D2018_01_01.toFixed() %>, <%= assets1_1.assets[0].D2018_04_01.toFixed() %>, <%= assets1_1.assets[0].D2018_07_01.toFixed() %>, <%= assets1_1.assets[0].D2018_10_01.toFixed() %>, <%= assets1_1.assets[0].D2019_01_01.toFixed() %>, <%= assets1_1.assets[0].D2019_04_01.toFixed() %>, <%= assets1_1.assets[0].D2019_07_01.toFixed() %>, <%= assets1_1.assets[0].D2019_10_01.toFixed() %>, <%= assets1_1.assets[0].D2020_01_01.toFixed() %>, <%= assets1_1.assets[0].D2020_04_01.toFixed() %>, <%= assets1_1.assets[0].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets1_1.assets[1].items %>',
+                        backgroundColor: "#ff4d4d",
+                        data: [<%= assets1_1.assets[1].D2018_01_01.toFixed() %>, <%= assets1_1.assets[1].D2018_04_01.toFixed() %>, <%= assets1_1.assets[1].D2018_07_01.toFixed() %>, <%= assets1_1.assets[1].D2018_10_01.toFixed() %>, <%= assets1_1.assets[1].D2019_01_01.toFixed() %>, <%= assets1_1.assets[1].D2019_04_01.toFixed() %>, <%= assets1_1.assets[1].D2019_07_01.toFixed() %>, <%= assets1_1.assets[1].D2019_10_01.toFixed() %>, <%= assets1_1.assets[1].D2020_01_01.toFixed() %>, <%= assets1_1.assets[1].D2020_04_01.toFixed() %>, <%= assets1_1.assets[1].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets1_1.assets[2].items %>',
+                        backgroundColor: "#4d4dff",
+                        data: [<%= assets1_1.assets[2].D2018_01_01.toFixed() %>, <%= assets1_1.assets[2].D2018_04_01.toFixed() %>, <%= assets1_1.assets[2].D2018_07_01.toFixed() %>, <%= assets1_1.assets[2].D2018_10_01.toFixed() %>, <%= assets1_1.assets[2].D2019_01_01.toFixed() %>, <%= assets1_1.assets[2].D2019_04_01.toFixed() %>, <%= assets1_1.assets[2].D2019_07_01.toFixed() %>, <%= assets1_1.assets[2].D2019_10_01.toFixed() %>, <%= assets1_1.assets[2].D2020_01_01.toFixed() %>, <%= assets1_1.assets[2].D2020_04_01.toFixed() %>, <%= assets1_1.assets[2].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets1_1.assets[4].items %>',
+                        backgroundColor: '#e63900',
+                        data: [<%= assets1_1.assets[4].D2018_01_01.toFixed() %>, <%= assets1_1.assets[4].D2018_04_01.toFixed() %>, <%= assets1_1.assets[4].D2018_07_01.toFixed() %>, <%= assets1_1.assets[4].D2018_10_01.toFixed() %>, <%= assets1_1.assets[4].D2019_01_01.toFixed() %>, <%= assets1_1.assets[4].D2019_04_01.toFixed() %>, <%= assets1_1.assets[4].D2019_07_01.toFixed() %>, <%= assets1_1.assets[4].D2019_10_01.toFixed() %>, <%= assets1_1.assets[4].D2020_01_01.toFixed() %>, <%= assets1_1.assets[4].D2020_04_01.toFixed() %>, <%= assets1_1.assets[4].D2020_07_01.toFixed() %>],
+                    }],
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            stacked: false,
+                            gridLines: {
+                                display: true,
+                            }
+                        }],
+                        yAxes: [{
+                            stacked: false,
+                            ticks: {
+                                beginAtZero: true,
+                            },
+                            type: 'linear',
+                        }]
+                    },
+                    title: {
+                        display: true,
+                        text: 'ЛІКВІДНІ АКТИВИ <%= banks.brand %>',
+                        fontSize: 18
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true
+                }
+            });
+        </script>
+        <button class="accordion">Таблиця</button>
+        <div class="panel">
+            <div style="overflow-x:auto;">
+                <table class="table table-striped table-primary">
+                    <thead>
+                        <tr>
+                            <th>Items</th>
+                            <th>2018_01_01</th>
+                            <th>2018_04_01</th>
+                            <th>2018_07_01</th>
+                            <th>2018_10_01</th>
+                            <th>2019_01_01</th>
+                            <th>2019_04_01</th>
+                            <th>2019_07_01</th>
+                            <th>2019_10_01</th>
+                            <th>2020_01_01</th>
+                            <th>2020_04_01</th>
+                            <th>2020_07_01</th>
+                        </tr>
+                    </thead>
+                    <% assets1_1.assets.forEach(function(asset) { %>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <%= asset.items %>
+                                </td> :
+                                <td>
+                                    <%= asset.D2018_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_07_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_10_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_07_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_10_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_07_01.toFixed() %>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <% }); %>
+                </table><br><br></div>
+        </div>
+    </div>
+
+    <div class="tabcontent" id="loansAssets">
+        <!--Кредити та заборгованість клієнтів -->
+        <h4>CHART ASSETS 3_3</h4>
+        <canvas id="assets3_3"></canvas>
+        <br><br>
+        <script>
+            var ctx3_3 = document.getElementById("assets3_3").getContext('2d');
+            Chart.defaults.global.animation.duration = 1000
+            var chart3_3 = new Chart(ctx3_3, {
+                type: 'line',
+                data: {
+                    labels: ["2018_01_01", "2018_04_01", "2018_07_01", "2018_10_01", "2019_01_01", "2019_04_01", "2019_07_01", "2019_10_01", "2020_01_01", "2020_04_01", "2020_07_01"],
+                    datasets: [{
+                        label: '<%= assets3_3.assets[3].items %>',
+                        backgroundColor: '#ffa31a',
+                        data: [<%= assets3_3.assets[3].D2018_01_01.toFixed() %>, <%= assets3_3.assets[3].D2018_04_01.toFixed() %>, <%= assets3_3.assets[3].D2018_07_01.toFixed() %>, <%= assets3_3.assets[3].D2018_10_01.toFixed() %>, <%= assets3_3.assets[3].D2019_01_01.toFixed() %>, <%= assets3_3.assets[3].D2019_04_01.toFixed() %>, <%= assets3_3.assets[3].D2019_07_01.toFixed() %>, <%= assets3_3.assets[3].D2019_10_01.toFixed() %>, <%= assets3_3.assets[3].D2020_01_01.toFixed() %>, <%= assets3_3.assets[3].D2020_04_01.toFixed() %>, <%= assets3_3.assets[3].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets3_3.assets[0].items %>',
+                        backgroundColor: "#47d147",
+                        data: [<%= assets3_3.assets[0].D2018_01_01.toFixed() %>, <%= assets3_3.assets[0].D2018_04_01.toFixed() %>, <%= assets3_3.assets[0].D2018_07_01.toFixed() %>, <%= assets3_3.assets[0].D2018_10_01.toFixed() %>, <%= assets3_3.assets[0].D2019_01_01.toFixed() %>, <%= assets3_3.assets[0].D2019_04_01.toFixed() %>, <%= assets3_3.assets[0].D2019_07_01.toFixed() %>, <%= assets3_3.assets[0].D2019_10_01.toFixed() %>, <%= assets3_3.assets[0].D2020_01_01.toFixed() %>, <%= assets3_3.assets[0].D2020_04_01.toFixed() %>, <%= assets3_3.assets[0].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets3_3.assets[1].items %>',
+                        backgroundColor: "#ff4d4d",
+                        data: [<%= assets3_3.assets[1].D2018_01_01.toFixed() %>, <%= assets3_3.assets[1].D2018_04_01.toFixed() %>, <%= assets3_3.assets[1].D2018_07_01.toFixed() %>, <%= assets3_3.assets[1].D2018_10_01.toFixed() %>, <%= assets3_3.assets[1].D2019_01_01.toFixed() %>, <%= assets3_3.assets[1].D2019_04_01.toFixed() %>, <%= assets3_3.assets[1].D2019_07_01.toFixed() %>, <%= assets3_3.assets[1].D2019_10_01.toFixed() %>, <%= assets3_3.assets[1].D2020_01_01.toFixed() %>, <%= assets3_3.assets[1].D2020_04_01.toFixed() %>, <%= assets3_3.assets[1].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets3_3.assets[2].items %>',
+                        backgroundColor: "#4d4dff",
+                        data: [<%= assets3_3.assets[2].D2018_01_01.toFixed() %>, <%= assets3_3.assets[2].D2018_04_01.toFixed() %>, <%= assets3_3.assets[2].D2018_07_01.toFixed() %>, <%= assets3_3.assets[2].D2018_10_01.toFixed() %>, <%= assets3_3.assets[2].D2019_01_01.toFixed() %>, <%= assets3_3.assets[2].D2019_04_01.toFixed() %>, <%= assets3_3.assets[2].D2019_07_01.toFixed() %>, <%= assets3_3.assets[2].D2019_10_01.toFixed() %>, <%= assets3_3.assets[2].D2020_01_01.toFixed() %>, <%= assets3_3.assets[2].D2020_04_01.toFixed() %>, <%= assets3_3.assets[2].D2020_07_01.toFixed() %>],
+                    }],
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            stacked: false,
+                            gridLines: {
+                                display: true,
+                            }
+                        }],
+                        yAxes: [{
+                            stacked: false,
+                            ticks: {
+                                beginAtZero: true,
+                            },
+                            type: 'linear',
+                        }]
+                    },
+                    title: {
+                        display: true,
+                        text: 'КРЕДИТИ ТА ЗАБОРГОВАНІСТЬ КЛІЄНТІВ <%= banks.brand %>',
+                        fontSize: 18
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true
+                }
+            });
+        </script>
+        <button class="accordion">Таблиця</button>
+        <div class="panel">
+            <div style="overflow-x:auto;">
+                <table class="table table-striped table-primary">
+                    <thead>
+                        <tr>
+                            <th>Items</th>
+                            <th>2018_01_01</th>
+                            <th>2018_04_01</th>
+                            <th>2018_07_01</th>
+                            <th>2018_10_01</th>
+                            <th>2019_01_01</th>
+                            <th>2019_04_01</th>
+                            <th>2019_07_01</th>
+                            <th>2019_10_01</th>
+                            <th>2020_01_01</th>
+                            <th>2020_04_01</th>
+                            <th>2020_07_01</th>
+                        </tr>
+                    </thead>
+                    <% assets3_3.assets.forEach(function(asset) { %>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <%= asset.items %>
+                                </td> :
+                                <td>
+                                    <%= asset.D2018_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_07_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_10_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_07_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_10_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_07_01.toFixed() %>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <% }); %>
+                </table><br><br></div>
+        </div>
+    </div>
+
+    <!--ЦІННІ ПАПЕРИ ТА ІНВЕСТИЦІЇ -->
+    <div class="tabcontent" id="securitiesAssets">
+        <h4>CHART ASSETS 4_4</h4>
+        <canvas id="assets4_4"></canvas>
+        <br><br>
+        <script>
+            var ctx4_4 = document.getElementById("assets4_4").getContext('2d');
+            Chart.defaults.global.animation.duration = 1000
+            var chart4_4 = new Chart(ctx4_4, {
+                type: 'line',
+                data: {
+                    labels: ["2018_01_01", "2018_04_01", "2018_07_01", "2018_10_01", "2019_01_01", "2019_04_01", "2019_07_01", "2019_10_01", "2020_01_01", "2020_04_01", "2020_07_01"],
+                    datasets: [{
+                        label: '<%= assets4_4.assets[3].items %>',
+                        backgroundColor: '#ffa31a',
+                        data: [<%= assets4_4.assets[3].D2018_01_01.toFixed() %>, <%= assets4_4.assets[3].D2018_04_01.toFixed() %>, <%= assets4_4.assets[3].D2018_07_01.toFixed() %>, <%= assets4_4.assets[3].D2018_10_01.toFixed() %>, <%= assets4_4.assets[3].D2019_01_01.toFixed() %>, <%= assets4_4.assets[3].D2019_04_01.toFixed() %>, <%= assets4_4.assets[3].D2019_07_01.toFixed() %>, <%= assets4_4.assets[3].D2019_10_01.toFixed() %>, <%= assets4_4.assets[3].D2020_01_01.toFixed() %>, <%= assets4_4.assets[3].D2020_04_01.toFixed() %>, <%= assets4_4.assets[3].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets4_4.assets[0].items %>',
+                        backgroundColor: "#47d147",
+                        data: [<%= assets4_4.assets[0].D2018_01_01.toFixed() %>, <%= assets4_4.assets[0].D2018_04_01.toFixed() %>, <%= assets4_4.assets[0].D2018_07_01.toFixed() %>, <%= assets4_4.assets[0].D2018_10_01.toFixed() %>, <%= assets4_4.assets[0].D2019_01_01.toFixed() %>, <%= assets4_4.assets[0].D2019_04_01.toFixed() %>, <%= assets4_4.assets[0].D2019_07_01.toFixed() %>, <%= assets4_4.assets[0].D2019_10_01.toFixed() %>, <%= assets4_4.assets[0].D2020_01_01.toFixed() %>, <%= assets4_4.assets[0].D2020_04_01.toFixed() %>, <%= assets4_4.assets[0].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets4_4.assets[1].items %>',
+                        backgroundColor: "#ff4d4d",
+                        data: [<%= assets4_4.assets[1].D2018_01_01.toFixed() %>, <%= assets4_4.assets[1].D2018_04_01.toFixed() %>, <%= assets4_4.assets[1].D2018_07_01.toFixed() %>, <%= assets4_4.assets[1].D2018_10_01.toFixed() %>, <%= assets4_4.assets[1].D2019_01_01.toFixed() %>, <%= assets4_4.assets[1].D2019_04_01.toFixed() %>, <%= assets4_4.assets[1].D2019_07_01.toFixed() %>, <%= assets4_4.assets[1].D2019_10_01.toFixed() %>, <%= assets4_4.assets[1].D2020_01_01.toFixed() %>, <%= assets4_4.assets[1].D2020_04_01.toFixed() %>, <%= assets4_4.assets[1].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets4_4.assets[2].items %>',
+                        backgroundColor: "#4d4dff",
+                        data: [<%= assets4_4.assets[2].D2018_01_01.toFixed() %>, <%= assets4_4.assets[2].D2018_04_01.toFixed() %>, <%= assets4_4.assets[2].D2018_07_01.toFixed() %>, <%= assets4_4.assets[2].D2018_10_01.toFixed() %>, <%= assets4_4.assets[2].D2019_01_01.toFixed() %>, <%= assets4_4.assets[2].D2019_04_01.toFixed() %>, <%= assets4_4.assets[2].D2019_07_01.toFixed() %>, <%= assets4_4.assets[2].D2019_10_01.toFixed() %>, <%= assets4_4.assets[2].D2020_01_01.toFixed() %>, <%= assets4_4.assets[2].D2020_04_01.toFixed() %>, <%= assets4_4.assets[2].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets4_4.assets[4].items %>',
+                        backgroundColor: "#4d4dff",
+                        data: [<%= assets4_4.assets[2].D2018_01_01.toFixed() %>, <%= assets4_4.assets[2].D2018_04_01.toFixed() %>, <%= assets4_4.assets[2].D2018_07_01.toFixed() %>, <%= assets4_4.assets[2].D2018_10_01.toFixed() %>, <%= assets4_4.assets[2].D2019_01_01.toFixed() %>, <%= assets4_4.assets[2].D2019_04_01.toFixed() %>, <%= assets4_4.assets[2].D2019_07_01.toFixed() %>, <%= assets4_4.assets[2].D2019_10_01.toFixed() %>, <%= assets4_4.assets[2].D2020_01_01.toFixed() %>, <%= assets4_4.assets[2].D2020_04_01.toFixed() %>, <%= assets4_4.assets[2].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets4_4.assets[5].items %>',
+                        backgroundColor: "#4d4dff",
+                        data: [<%= assets4_4.assets[2].D2018_01_01.toFixed() %>, <%= assets4_4.assets[2].D2018_04_01.toFixed() %>, <%= assets4_4.assets[2].D2018_07_01.toFixed() %>, <%= assets4_4.assets[2].D2018_10_01.toFixed() %>, <%= assets4_4.assets[2].D2019_01_01.toFixed() %>, <%= assets4_4.assets[2].D2019_04_01.toFixed() %>, <%= assets4_4.assets[2].D2019_07_01.toFixed() %>, <%= assets4_4.assets[2].D2019_10_01.toFixed() %>, <%= assets4_4.assets[2].D2020_01_01.toFixed() %>, <%= assets4_4.assets[2].D2020_04_01.toFixed() %>, <%= assets4_4.assets[2].D2020_07_01.toFixed() %>],
+                    }],
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            stacked: false,
+                            gridLines: {
+                                display: true,
+                            }
+                        }],
+                        yAxes: [{
+                            stacked: false,
+                            ticks: {
+                                beginAtZero: true,
+                            },
+                            type: 'linear',
+                        }]
+                    },
+                    title: {
+                        display: true,
+                        text: 'ЦІННІ ПАПЕРИ ТА ІНВЕСТИЦІЇ <%= banks.brand %>',
+                        fontSize: 18
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true
+                }
+            });
+        </script>
+        <button class="accordion">Таблиця</button>
+        <div class="panel">
+            <div style="overflow-x:auto;">
+                <table class="table table-striped table-primary">
+                    <thead>
+                        <tr>
+                            <th>Items</th>
+                            <th>2018_01_01</th>
+                            <th>2018_04_01</th>
+                            <th>2018_07_01</th>
+                            <th>2018_10_01</th>
+                            <th>2019_01_01</th>
+                            <th>2019_04_01</th>
+                            <th>2019_07_01</th>
+                            <th>2019_10_01</th>
+                            <th>2020_01_01</th>
+                            <th>2020_04_01</th>
+                            <th>2020_07_01</th>
+                        </tr>
+                    </thead>
+                    <% assets4_4.assets.forEach(function(asset) { %>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <%= asset.items %>
+                                </td> :
+                                <td>
+                                    <%= asset.D2018_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_07_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_10_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_07_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_10_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_07_01.toFixed() %>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <% }); %>
+                </table><br><br></div>
+        </div>
+    </div>
+
+    <!--ІНШІ АКТИВИ -->
+    <div class="tabcontent" id="otherAssets">
+        <h4>CHART ASSETS 5_5</h4>
+        <canvas id="assets5_5"></canvas>
+        <br><br>
+        <script>
+            var ctx5_5 = document.getElementById("assets5_5").getContext('2d');
+            Chart.defaults.global.animation.duration = 1000
+            var chart5_5 = new Chart(ctx5_5, {
+                type: 'line',
+                data: {
+                    labels: ["2018_01_01", "2018_04_01", "2018_07_01", "2018_10_01", "2019_01_01", "2019_04_01", "2019_07_01", "2019_10_01", "2020_01_01", "2020_04_01", "2020_07_01"],
+                    datasets: [{
+                        label: '<%= assets5_5.assets[3].items %>',
+                        backgroundColor: '#ffa31a',
+                        data: [<%= assets5_5.assets[3].D2018_01_01.toFixed() %>, <%= assets5_5.assets[3].D2018_04_01.toFixed() %>, <%= assets5_5.assets[3].D2018_07_01.toFixed() %>, <%= assets5_5.assets[3].D2018_10_01.toFixed() %>, <%= assets5_5.assets[3].D2019_01_01.toFixed() %>, <%= assets5_5.assets[3].D2019_04_01.toFixed() %>, <%= assets5_5.assets[3].D2019_07_01.toFixed() %>, <%= assets5_5.assets[3].D2019_10_01.toFixed() %>, <%= assets5_5.assets[3].D2020_01_01.toFixed() %>, <%= assets5_5.assets[3].D2020_04_01.toFixed() %>, <%= assets5_5.assets[3].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets5_5.assets[0].items %>',
+                        backgroundColor: "#47d147",
+                        data: [<%= assets5_5.assets[0].D2018_01_01.toFixed() %>, <%= assets5_5.assets[0].D2018_04_01.toFixed() %>, <%= assets5_5.assets[0].D2018_07_01.toFixed() %>, <%= assets5_5.assets[0].D2018_10_01.toFixed() %>, <%= assets5_5.assets[0].D2019_01_01.toFixed() %>, <%= assets5_5.assets[0].D2019_04_01.toFixed() %>, <%= assets5_5.assets[0].D2019_07_01.toFixed() %>, <%= assets5_5.assets[0].D2019_10_01.toFixed() %>, <%= assets5_5.assets[0].D2020_01_01.toFixed() %>, <%= assets5_5.assets[0].D2020_04_01.toFixed() %>, <%= assets5_5.assets[0].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets5_5.assets[1].items %>',
+                        backgroundColor: "#ff4d4d",
+                        data: [<%= assets5_5.assets[1].D2018_01_01.toFixed() %>, <%= assets5_5.assets[1].D2018_04_01.toFixed() %>, <%= assets5_5.assets[1].D2018_07_01.toFixed() %>, <%= assets5_5.assets[1].D2018_10_01.toFixed() %>, <%= assets5_5.assets[1].D2019_01_01.toFixed() %>, <%= assets5_5.assets[1].D2019_04_01.toFixed() %>, <%= assets5_5.assets[1].D2019_07_01.toFixed() %>, <%= assets5_5.assets[1].D2019_10_01.toFixed() %>, <%= assets5_5.assets[1].D2020_01_01.toFixed() %>, <%= assets5_5.assets[1].D2020_04_01.toFixed() %>, <%= assets5_5.assets[1].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets5_5.assets[2].items %>',
+                        backgroundColor: "#4d4dff",
+                        data: [<%= assets5_5.assets[2].D2018_01_01.toFixed() %>, <%= assets5_5.assets[2].D2018_04_01.toFixed() %>, <%= assets5_5.assets[2].D2018_07_01.toFixed() %>, <%= assets5_5.assets[2].D2018_10_01.toFixed() %>, <%= assets5_5.assets[2].D2019_01_01.toFixed() %>, <%= assets5_5.assets[2].D2019_04_01.toFixed() %>, <%= assets5_5.assets[2].D2019_07_01.toFixed() %>, <%= assets5_5.assets[2].D2019_10_01.toFixed() %>, <%= assets5_5.assets[2].D2020_01_01.toFixed() %>, <%= assets5_5.assets[2].D2020_04_01.toFixed() %>, <%= assets5_5.assets[2].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets5_5.assets[4].items %>',
+                        backgroundColor: "#4d4dff",
+                        data: [<%= assets5_5.assets[2].D2018_01_01.toFixed() %>, <%= assets5_5.assets[2].D2018_04_01.toFixed() %>, <%= assets5_5.assets[2].D2018_07_01.toFixed() %>, <%= assets5_5.assets[2].D2018_10_01.toFixed() %>, <%= assets5_5.assets[2].D2019_01_01.toFixed() %>, <%= assets5_5.assets[2].D2019_04_01.toFixed() %>, <%= assets5_5.assets[2].D2019_07_01.toFixed() %>, <%= assets5_5.assets[2].D2019_10_01.toFixed() %>, <%= assets5_5.assets[2].D2020_01_01.toFixed() %>, <%= assets5_5.assets[2].D2020_04_01.toFixed() %>, <%= assets5_5.assets[2].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets5_5.assets[5].items %>',
+                        backgroundColor: "#4d4dff",
+                        data: [<%= assets5_5.assets[2].D2018_01_01.toFixed() %>, <%= assets5_5.assets[2].D2018_04_01.toFixed() %>, <%= assets5_5.assets[2].D2018_07_01.toFixed() %>, <%= assets5_5.assets[2].D2018_10_01.toFixed() %>, <%= assets5_5.assets[2].D2019_01_01.toFixed() %>, <%= assets5_5.assets[2].D2019_04_01.toFixed() %>, <%= assets5_5.assets[2].D2019_07_01.toFixed() %>, <%= assets5_5.assets[2].D2019_10_01.toFixed() %>, <%= assets5_5.assets[2].D2020_01_01.toFixed() %>, <%= assets5_5.assets[2].D2020_04_01.toFixed() %>, <%= assets5_5.assets[2].D2020_07_01.toFixed() %>],
+                    }],
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            stacked: false,
+                            gridLines: {
+                                display: true,
+                            }
+                        }],
+                        yAxes: [{
+                            stacked: false,
+                            ticks: {
+                                beginAtZero: true,
+                            },
+                            type: 'linear',
+                        }]
+                    },
+                    title: {
+                        display: true,
+                        text: 'ІНШІ АКТИВИ <%= banks.brand %>',
+                        fontSize: 18
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true
+                }
+            });
+        </script>
+        <button class="accordion">Таблиця</button>
+        <div class="panel">
+            <div style="overflow-x:auto;">
+                <table class="table table-striped table-primary">
+                    <thead>
+                        <tr>
+                            <th>Items</th>
+                            <th>2018_01_01</th>
+                            <th>2018_04_01</th>
+                            <th>2018_07_01</th>
+                            <th>2018_10_01</th>
+                            <th>2019_01_01</th>
+                            <th>2019_04_01</th>
+                            <th>2019_07_01</th>
+                            <th>2019_10_01</th>
+                            <th>2020_01_01</th>
+                            <th>2020_04_01</th>
+                            <th>2020_07_01</th>
+                        </tr>
+                    </thead>
+                    <% assets5_5.assets.forEach(function(asset) { %>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <%= asset.items %>
+                                </td> :
+                                <td>
+                                    <%= asset.D2018_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_07_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_10_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_07_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_10_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_07_01.toFixed() %>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <% }); %>
+                </table><br><br></div>
+        </div>
+    </div>
+
+    <!--РЕЗЕРВИ -->
+    <div class="tabcontent" id="reservesAssets">
+        <h4>CHART ASSETS 6_6</h4>
+        <canvas id="assets6_6"></canvas>
+        <br><br>
+
+        <button id="updateBar">Bar Chart</button>
+        <button id="updateLine">Line Chart</button>
+
+        <script>
+            var ctx6_6 = document.getElementById("assets6_6").getContext('2d');
+            Chart.defaults.global.animation.duration = 1500
+            var chart6_6 = new Chart(ctx6_6, {
+                type: 'line',
+                data: {
+                    labels: ["2018_01_01", "2018_04_01", "2018_07_01", "2018_10_01", "2019_01_01", "2019_04_01", "2019_07_01", "2019_10_01", "2020_01_01", "2020_04_01", "2020_07_01"],
+                    datasets: [{
+                        label: '<%= assets6_6.assets[0].items %>',
+                        backgroundColor: "#47d147",
+                        borderColor: '#47d147',
+                        data: [<%= assets6_6.assets[0].D2018_01_01.toFixed() %>, <%= assets6_6.assets[0].D2018_04_01.toFixed() %>, <%= assets6_6.assets[0].D2018_07_01.toFixed() %>, <%= assets6_6.assets[0].D2018_10_01.toFixed() %>, <%= assets6_6.assets[0].D2019_01_01.toFixed() %>, <%= assets6_6.assets[0].D2019_04_01.toFixed() %>, <%= assets6_6.assets[0].D2019_07_01.toFixed() %>, <%= assets6_6.assets[0].D2019_10_01.toFixed() %>, <%= assets6_6.assets[0].D2020_01_01.toFixed() %>, <%= assets6_6.assets[0].D2020_04_01.toFixed() %>, <%= assets6_6.assets[0].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets6_6.assets[1].items %>',
+                        fill: false,
+                        backgroundColor: "#ff4d4d",
+                        borderColor: '#ff4d4d',
+                        data: [<%= assets6_6.assets[1].D2018_01_01.toFixed() %>, <%= assets6_6.assets[1].D2018_04_01.toFixed() %>, <%= assets6_6.assets[1].D2018_07_01.toFixed() %>, <%= assets6_6.assets[1].D2018_10_01.toFixed() %>, <%= assets6_6.assets[1].D2019_01_01.toFixed() %>, <%= assets6_6.assets[1].D2019_04_01.toFixed() %>, <%= assets6_6.assets[1].D2019_07_01.toFixed() %>, <%= assets6_6.assets[1].D2019_10_01.toFixed() %>, <%= assets6_6.assets[1].D2020_01_01.toFixed() %>, <%= assets6_6.assets[1].D2020_04_01.toFixed() %>, <%= assets6_6.assets[1].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets6_6.assets[2].items %>',
+                        fill: false,
+                        backgroundColor: "#4d4dff",
+                        borderColor: "#4d4dff",
+                        data: [<%= assets6_6.assets[2].D2018_01_01.toFixed() %>, <%= assets6_6.assets[2].D2018_04_01.toFixed() %>, <%= assets6_6.assets[2].D2018_07_01.toFixed() %>, <%= assets6_6.assets[2].D2018_10_01.toFixed() %>, <%= assets6_6.assets[2].D2019_01_01.toFixed() %>, <%= assets6_6.assets[2].D2019_04_01.toFixed() %>, <%= assets6_6.assets[2].D2019_07_01.toFixed() %>, <%= assets6_6.assets[2].D2019_10_01.toFixed() %>, <%= assets6_6.assets[2].D2020_01_01.toFixed() %>, <%= assets6_6.assets[2].D2020_04_01.toFixed() %>, <%= assets6_6.assets[2].D2020_07_01.toFixed() %>],
+                    }, {
+                        label: '<%= assets6_6.assets[3].items %>',
+                        fill: false,
+                        backgroundColor: '#ffa31a',
+                        borderColor: '#ffa31a',
+                        data: [<%= assets6_6.assets[3].D2018_01_01.toFixed() %>, <%= assets6_6.assets[3].D2018_04_01.toFixed() %>, <%= assets6_6.assets[3].D2018_07_01.toFixed() %>, <%= assets6_6.assets[3].D2018_10_01.toFixed() %>, <%= assets6_6.assets[3].D2019_01_01.toFixed() %>, <%= assets6_6.assets[3].D2019_04_01.toFixed() %>, <%= assets6_6.assets[3].D2019_07_01.toFixed() %>, <%= assets6_6.assets[3].D2019_10_01.toFixed() %>, <%= assets6_6.assets[3].D2020_01_01.toFixed() %>, <%= assets6_6.assets[3].D2020_04_01.toFixed() %>, <%= assets6_6.assets[3].D2020_07_01.toFixed() %>],
+                    }, ],
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            stacked: false,
+                            ticks: {
+                                beginAtZero: false,
+                            },
+                            gridLines: {
+                                offset: false,
+                                offsetGridLines: true
+                            }
+                        }],
+                        yAxes: [{
+                            stacked: false,
+                            ticks: {
+                                beginAtZero: false
+                            },
+                            gridLines: {
+                                display: true,
+                            },
+                            type: 'linear',
+                        }]
+                    },
+                    title: {
+                        display: true,
+                        text: 'РЕЗЕРВИ <%= banks.brand %>',
+                        fontSize: 18
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true
+                }
+            });
+            // console.log(chart6_6.config.data.labels)
+        </script>
+        <button class="accordion">Таблиця</button>
+        <div class="panel">
+            <div style="overflow-x:auto;">
+                <table class="table table-striped table-primary">
+                    <thead>
+                        <tr>
+                            <th>Items</th>
+                            <th>2018_01_01</th>
+                            <th>2018_04_01</th>
+                            <th>2018_07_01</th>
+                            <th>2018_10_01</th>
+                            <th>2019_01_01</th>
+                            <th>2019_04_01</th>
+                            <th>2019_07_01</th>
+                            <th>2019_10_01</th>
+                            <th>2020_01_01</th>
+                            <th>2020_04_01</th>
+                            <th>2020_07_01</th>
+                        </tr>
+                    </thead>
+                    <% assets6_6.assets.forEach(function(asset) { %>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <%= asset.items %>
+                                </td> :
+                                <td>
+                                    <%= asset.D2018_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_07_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2018_10_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_07_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2019_10_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_01_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_04_01.toFixed() %>
+                                </td>
+                                <td>
+                                    <%= asset.D2020_07_01.toFixed() %>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <% }); %>
+                </table><br><br></div>
+        </div>
+    </div>
+
+    <h4>Зобов'язання</h4>
+
+    <div style="overflow-x:auto;">
+        <table class="table table-striped table-primary">
+            <thead>
+                <tr>
+                    <th>Items</th>
+                    <th>2018_01_01</th>
+                    <th>2018_04_01</th>
+                    <th>2018_07_01</th>
+                    <th>2018_10_01</th>
+                    <th>2019_01_01</th>
+                    <th>2019_04_01</th>
+                    <th>2019_07_01</th>
+                    <th>2019_10_01</th>
+                    <th>2020_01_01</th>
+                    <th>2020_04_01</th>
+                    <th>2020_07_01</th>
+                </tr>
+            </thead>
+            <% liabilities0_0.liabilities.forEach(function(liabilitie) { %>
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= liabilitie.items %>
+                        </td> :
+                        <td>
+                            <%= liabilitie.D2018_01_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= liabilitie.D2018_04_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= liabilitie.D2018_07_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= liabilitie.D2018_10_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= liabilitie.D2019_01_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= liabilitie.D2019_04_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= liabilitie.D2019_07_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= liabilitie.D2019_10_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= liabilitie.D2020_01_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= liabilitie.D2020_04_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= liabilitie.D2020_07_01.toFixed() %>
+                        </td>
+                    </tr>
+                </tbody>
+                <% }); %>
+        </table><br><br></div>
+
+    <h4>КАПІТАЛ</h4>
+    <div style="overflow-x:auto;">
+        <table class="table table-striped table-primary">
+            <thead>
+                <tr>
+                    <th>Items</th>
+                    <th>2018_01_01</th>
+                    <th>2018_04_01</th>
+                    <th>2018_07_01</th>
+                    <th>2018_10_01</th>
+                    <th>2019_01_01</th>
+                    <th>2019_04_01</th>
+                    <th>2019_07_01</th>
+                    <th>2019_10_01</th>
+                    <th>2020_01_01</th>
+                    <th>2020_04_01</th>
+                    <th>2020_07_01</th>
+                </tr>
+            </thead>
+            <% capital0_0 .capital.forEach(function(cap) { %>
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= cap.items %>
+                        </td> :
+                        <td>
+                            <%= cap.D2018_01_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= cap.D2018_04_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= cap.D2018_07_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= cap.D2018_10_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= cap.D2019_01_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= cap.D2019_04_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= cap.D2019_07_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= cap.D2019_10_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= cap.D2020_01_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= cap.D2020_04_01.toFixed() %>
+                        </td>
+                        <td>
+                            <%= liabilitie.D2020_07_01.toFixed() %>
+                        </td>
+                    </tr>
+                </tbody>
+                <% }); %>
+        </table><br><br></div>
+
+    <script src="/javascripts/tabcontent.js" charset="utf-8"></script>
+    <script src="/javascripts/chartCreate.js" charset="utf-8"></script>
