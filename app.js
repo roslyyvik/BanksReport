@@ -16,7 +16,7 @@ const methodOverride = require('method-override');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const banksRouter = require('./routes/banks');
-// const aboutRouter = require('./routes/about');
+const aboutRouter = require('./routes/about');
 
 const app = express();
 
