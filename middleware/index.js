@@ -1,5 +1,6 @@
 const User = require('../models/user')
 const Bank = require('../models/bank')
+const { cloudinary } = require('../cloudinary');
 
 function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
@@ -72,8 +73,8 @@ const middleware = {
                         { group: search }
                         // { SVB: search }
                     ]
-                  })
-              }
+                })
+            }
 
             res.locals.dbQuery = dbQueries.length ? { $and: dbQueries } : {};
         }
@@ -84,6 +85,9 @@ const middleware = {
         res.locals.paginateUrl = req.originalUrl.replace(/(\?|\&)page=\d+/g, '') + `${delimiter}page=`;
 
         next();
+    },
+    deleteProfileImage: async req => {
+        if (req.file) await cloudinary.v2.uploader.destroy(req.file.public_id);
     }
 }
 

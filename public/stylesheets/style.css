@@ -142,7 +142,7 @@ z-index: 99;
 font-size: 15px;
 border: solid 1px whitesmoke;
 outline: none;
-background-color: #292640;
+background-color: rgb(25, 23, 39, 0.3);
 color: white;
 cursor: pointer;
 padding: 10px;

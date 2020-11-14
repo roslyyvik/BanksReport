@@ -5,99 +5,96 @@ const Indicators = require('../models/indicators')
 const User = require('../models/user');
 const passport = require('passport');
 const util = require('util');
+const { cloudinary } = require('../cloudinary');
+const { deleteProfileImage } = require('../middleware');
 const async = require('async');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
-const cloudinary = require('cloudinary');
-cloudinary.config({
-    cloud_name: 'ddag9ljos',
-    api_key: '774292129216214',
-    api_secret: process.env.CLOUDINARY_SECRET
-});
+
 
 module.exports = {
-  // GET Home
-  async landingPage(req, res, next) {
-    let banks = await Bank.findOne({NKB:"191"})
-    // console.log(banks)
-    let ratios = await Bank.findOne({NKB:"191"}).populate({
-      path:'normatives'
-    })
-// console.log(ratios)
-  let assets0_0= await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'assets', level:"0_0" },
-  })
-  let assets1_0= await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'assets', level:"1_0" },
-  })
-  let assets1_1= await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'assets', level:"1_1" },
-  })
-  let assets3_3= await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'assets', level:"3_3" },
-  })
-  let assets4_4= await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'assets', level:"4_4" },
-  })
-  let assets5_5= await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'assets', level:"5_5" },
-  })
-  let assets6_6= await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'assets', level:"6_6" },
-  })
-  let liabilities1_1 = await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'liabilities', level:"1_1" },
-  })
-  let liabilities0_0 = await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'liabilities', level:"0_0" },
-  })
-  let liabilities2_2 = await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'liabilities', level:"2_2" },
-  })
-  let capital0_0 = await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'capital', level:"0_0" },
-  })
-  let capital1_1 = await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'capital', level:"1_1" },
-  })
-  let profits0_0 = await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'profit', level:"0_0" },
-  })
-  let profits1_1 = await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'profit', level:"1_1" },
-  })
-  let profits2_2 = await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'profit', level:"2_2" },
-  })
-  let profits3_3 = await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'profit', level:"3_3" },
-  })
-  let profits4_4 = await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'profit', level:"4_4" },
-  })
-  let profits5_5 = await Bank.findOne({NKB:"191"}).populate({
-    path:'indicators',
-    match: { indicator:'profit', level:"5_5" },
-  })
-      res.render('index', { title: "Приклад", banks, ratios, assets0_0, assets1_0, assets1_1, assets3_3, assets4_4, assets5_5, assets6_6, liabilities1_1, liabilities0_0, liabilities2_2, capital0_0, capital1_1, profits0_0, profits1_1, profits2_2, profits3_3, profits4_4, profits5_5 });
-  },
+    // GET Home
+    async landingPage(req, res, next) {
+        let banks = await Bank.findOne({ NKB: "191" })
+            // console.log(banks)
+        let ratios = await Bank.findOne({ NKB: "191" }).populate({
+                path: 'normatives'
+            })
+            // console.log(ratios)
+        let assets0_0 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'assets', level: "0_0" },
+        })
+        let assets1_0 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'assets', level: "1_0" },
+        })
+        let assets1_1 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'assets', level: "1_1" },
+        })
+        let assets3_3 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'assets', level: "3_3" },
+        })
+        let assets4_4 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'assets', level: "4_4" },
+        })
+        let assets5_5 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'assets', level: "5_5" },
+        })
+        let assets6_6 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'assets', level: "6_6" },
+        })
+        let liabilities1_1 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'liabilities', level: "1_1" },
+        })
+        let liabilities0_0 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'liabilities', level: "0_0" },
+        })
+        let liabilities2_2 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'liabilities', level: "2_2" },
+        })
+        let capital0_0 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'capital', level: "0_0" },
+        })
+        let capital1_1 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'capital', level: "1_1" },
+        })
+        let profits0_0 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'profit', level: "0_0" },
+        })
+        let profits1_1 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'profit', level: "1_1" },
+        })
+        let profits2_2 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'profit', level: "2_2" },
+        })
+        let profits3_3 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'profit', level: "3_3" },
+        })
+        let profits4_4 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'profit', level: "4_4" },
+        })
+        let profits5_5 = await Bank.findOne({ NKB: "191" }).populate({
+            path: 'indicators',
+            match: { indicator: 'profit', level: "5_5" },
+        })
+        res.render('index', { title: "Приклад", banks, ratios, assets0_0, assets1_0, assets1_1, assets3_3, assets4_4, assets5_5, assets6_6, liabilities1_1, liabilities0_0, liabilities2_2, capital0_0, capital1_1, profits0_0, profits1_1, profits2_2, profits3_3, profits4_4, profits5_5 });
+    },
 
     // GET register
     getRegister(req, res, next) {
@@ -105,26 +102,26 @@ module.exports = {
     },
     //  POST Register
     async postRegister(req, res, next) {
-      try {
+        try {
             if (req.file) {
-              const { secure_url, public_id } = req.file;
-              req.body.image = { secure_url, public_id };
+                const { secure_url, public_id } = req.file;
+                req.body.image = { secure_url, public_id };
             }
             const user = await User.register(new User(req.body), req.body.password);
             req.login(user, function(err) {
-              if (err) return next(err);
-              req.session.success = `Ласкаво просимо, ${user.username}!`;
-              res.redirect('/');
+                if (err) return next(err);
+                req.session.success = `Ласкаво просимо, ${user.username}!`;
+                res.redirect('/');
             });
-          } catch(err) {
-            // deleteProfileImage(req);
+        } catch (err) {
+            deleteProfileImage(req);
             const { username, email } = req.body;
             let error = err.message;
             if (error.includes('duplicate') && error.includes('index: email_1 dup key')) {
-              error = 'Користувач із вказаною електронною адресою вже зареєстрований';
+                error = 'Користувач із вказаною електронною адресою вже зареєстрований';
             }
             res.render('register', { title: 'Register', username, email, error });
-          }
+        }
     },
     // GET login
     getLogin(req, res, next) {
@@ -143,7 +140,7 @@ module.exports = {
         }
         req.login(user, function(err) {
             if (err)
-            return next(err);
+                return next(err);
             req.session.success = `З поверненням ${username}!`
             const redirectUrl = req.session.redirectTo || '/';
             delete req.session.redirectTo;
@@ -161,24 +158,48 @@ module.exports = {
         res.render('profile')
     },
     async updateProfile(req, res, next) {
-        const {
-            username,
-            email
-        } = req.body
-        const { user } = res.locals
-        if (username) user.username = username
-        if (email) user.email = email
-        if (req.file) {
-            if (user.image.public_id)
-                await cloudinary.v2.uploader.destroy(user.image.public_id)
-            const { secure_url, public_id } = req.file;
-            user.image = { secure_url, public_id }
+        try {
+            let user = await User.findById(req.params.id)
+                // Delete image from cloudinary
+            await cloudinary.uploader.destroy(user.cloudinary_id)
+                // Upload image to cloudinary
+            const result = await cloudinary.uploader.upload(req.file.path)
+            const data = {
+                name: req.body.name || user.name,
+                email: req.body.email || user.email,
+                avatar: result.secure_url || user.avatar,
+                cloudinary_id: result.public_id || user.cloudinary_id
+            }
+            user = await User.findByIdAndUpdate(req.params.id, data, { new: true })
+                // res.json(result)
+            await user.save()
+            const login = util.promisify(req.login.bind(req))
+            await login(user)
+            req.session.success = "Профіль успішно оновлено!"
+            res.redirect('/profile')
+            console.log(result);
+        } catch (err) {
+            console.log(err);
         }
-        await user.save()
-        const login = util.promisify(req.login.bind(req))
-        await login(user)
-        req.session.success = "Профіль успішно оновлено!"
-        res.redirect('/profile')
+        // const {
+        //     username,
+        //     email
+        // } = req.body
+        // const { user } = res.locals
+        // if (username) user.username = username
+        // if (email) user.email = email
+        // if (req.file) {
+        //     if (user.image.public_id)
+        //         await cloudinary.uploader.destroy(user.image.public_id)
+        //     const { secure_url, public_id } = req.file;
+        //     user.image = { secure_url, public_id }
+        // }
+        // console.log(user.image)
+        // await user.save()
+        // const login = util.promisify(req.login.bind(req))
+        // await login(user)
+        // req.session.success = "Профіль успішно оновлено!"
+        // res.redirect('/profile')
     },
 
     getForgotPw(req, res, next) {
@@ -208,13 +229,23 @@ module.exports = {
                 });
             },
             function(token, user, done) {
-                var smtpTransport = nodemailer.createTransport({
-                    service: 'Gmail',
+                let smtpTransport = nodemailer.createTransport({
+                    service: 'gmail',
                     auth: {
-                        user: 'Власні фінанси',
-                        pass: process.env.GMAILPW
+                        user: process.env.EMAIL || 'vlasnifinansy@gmail.com', // TODO: your gmail account
+                        pass: process.env.PASSWORD || '66117754' // TODO: your gmail password
                     }
                 });
+                //                 var email_smtp = nodemailer.createTransport({
+                //   host: "smtp.gmail.com",
+                //   auth: {
+                //     type: "OAuth2",
+                //     user: "youremail@gmail.com",
+                //     clientId: "CLIENT_ID_HERE",
+                //     clientSecret: "CLIENT_SECRET_HERE",
+                //     refreshToken: "REFRESH_TOKEN_HERE"
+                //   }
+                // });
                 var mailOptions = {
                     to: user.email,
                     from: 'vlasnifinansy@gmail.com',
@@ -270,11 +301,11 @@ module.exports = {
                 });
             },
             function(user, done) {
-                var smtpTransport = nodemailer.createTransport({
-                    service: 'Gmail',
+                let smtpTransport = nodemailer.createTransport({
+                    service: 'gmail',
                     auth: {
-                        user: 'Власні фінанси',
-                        pass: process.env.GMAILPW
+                        user: process.env.EMAIL || 'vlasnifinansy@gmail.com', // TODO: your gmail account
+                        pass: process.env.PASSWORD || '66117754' // TODO: your gmail password
                     }
                 });
                 var mailOptions = {

@@ -9,7 +9,8 @@ var NormativeSchema = new Schema({
     D2019_10_01: Number,
     D2020_01_01: Number,
     D2020_04_01: Number,
-    D2020_07_01: Number
+    D2020_07_01: Number,
+    D2020_09_01: Number
 })
 const Normative = mongoose.model('normatives', NormativeSchema)
 

@@ -1,4 +1,4 @@
-// require('dotenv').config()
+require('dotenv').config()
 
 const createError = require('http-errors');
 const express = require('express');
@@ -14,9 +14,9 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+// const usersRouter = require('./routes/users');
 const banksRouter = require('./routes/banks');
-// const aboutRouter = require('./routes/about');
+const donateRouter = require('./routes/donate');
 
 const app = express();
 
@@ -34,7 +34,7 @@ db.once('open', () => {
     console.log('we\'re connected!')
 });
 
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+app.use(favicon(path.join(__dirname, 'public', 'favicon2.ico')))
 
 // use ejs-locals for all ejs tamplates
 app.engine('ejs', engine)
@@ -70,21 +70,21 @@ passport.deserializeUser(User.deserializeUser());
 
 // Set locals variables middleware
 app.use(function(req, res, next) {
-  res.locals.currentUser = req.user
-  res.locals.title = "Banks Reports"
-  // set success flash message
-  res.locals.success = req.session.success || '';
-  delete req.session.success
-  // set error flash message
-  res.locals.error = req.session.error || '';
-  delete req.session.error
-  next()
+    res.locals.currentUser = req.user
+    res.locals.title = "Banks Reports"
+        // set success flash message
+    res.locals.success = req.session.success || '';
+    delete req.session.success
+        // set error flash message
+    res.locals.error = req.session.error || '';
+    delete req.session.error
+    next()
 })
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use('/users', usersRouter);
 app.use('/banks', banksRouter);
-// app.use('/about', aboutRouter);
+app.use('/donate', donateRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
