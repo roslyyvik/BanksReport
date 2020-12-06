@@ -158,29 +158,6 @@ module.exports = {
         res.render('profile')
     },
     async updateProfile(req, res, next) {
-        // try {
-        //     let user = await User.findById(req.params.id)
-        //         // Delete image from cloudinary
-        //     await cloudinary.uploader.destroy(user.cloudinary_id)
-        //         // Upload image to cloudinary
-        //     const result = await cloudinary.uploader.upload(req.file.path)
-        //     const data = {
-        //         name: req.body.name || user.name,
-        //         email: req.body.email || user.email,
-        //         avatar: result.secure_url || user.avatar,
-        //         cloudinary_id: result.public_id || user.cloudinary_id
-        //     }
-        //     user = await User.findByIdAndUpdate(req.params.id, data, { new: true })
-        //         // res.json(result)
-        //     await user.save()
-        //     const login = util.promisify(req.login.bind(req))
-        //     await login(user)
-        //     req.session.success = "Профіль успішно оновлено!"
-        //     res.redirect('/profile')
-        //     console.log(result);
-        // } catch (err) {
-        //     console.log(err);
-        // }
         const {
             username,
             email
@@ -232,28 +209,19 @@ module.exports = {
                 let smtpTransport = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
-                        user: process.env.EMAIL || 'vlasnifinansy@gmail.com', // TODO: your gmail account
-                        pass: process.env.PASSWORD || 'vn66117754vs' // TODO: your gmail password
+                        user: process.env.EMAIL || '', 
+                        pass: process.env.PASSWORD || '' 
                     }
                 });
-                //                 var email_smtp = nodemailer.createTransport({
-                //   host: "smtp.gmail.com",
-                //   auth: {
-                //     type: "OAuth2",
-                //     user: "youremail@gmail.com",
-                //     clientId: "CLIENT_ID_HERE",
-                //     clientSecret: "CLIENT_SECRET_HERE",
-                //     refreshToken: "REFRESH_TOKEN_HERE"
-                //   }
-                // });
+
                 var mailOptions = {
                     to: user.email,
-                    from: 'vlasnifinansy@gmail.com',
-                    subject: 'Node.js Password Reset',
-                    text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-                        'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+                    from: '@gmail.com',
+                    subject: 'Зміна паролю',
+                    text: 'Ви отримали це повідомлення, тому що ви (або хтось інший) здійснив запит на заміну паролю для свого облікового запису..\n\n' +
+                        'Натисніть на наступне посилання або вставте це у свій браузер, щоб завершити процес:\n\n' +
                         'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-                        'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+                        'Якщо ви цього не вимагали, проігноруйте цей електронний лист, і ваш пароль залишиться незмінним.\n'
                 };
                 smtpTransport.sendMail(mailOptions, function(err) {
                     console.log('mail sent');
@@ -269,7 +237,7 @@ module.exports = {
     getResetPw(req, res, next) {
         User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
             if (!user) {
-                req.session.error = 'Password reset token is invalid or has expired.';
+                req.session.error = 'Токен зміни паролю недійсний або термін його дії минув.';
                 return res.redirect('/forgot-password');
             }
             res.render('users/reset', { token: req.params.token });
@@ -304,19 +272,19 @@ module.exports = {
                 let smtpTransport = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
-                        user: process.env.EMAIL || 'vlasnifinansy@gmail.com', // TODO: your gmail account
-                        pass: process.env.PASSWORD || 'vn66117754vs' // TODO: your gmail password
+                        user: process.env.EMAIL || '@gmail.com', // TODO: your gmail account
+                        pass: process.env.PASSWORD || '' // TODO: your gmail password
                     }
                 });
                 var mailOptions = {
                     to: user.email,
-                    from: 'vlasnifinansy@mail.com',
-                    subject: 'Your password has been changed',
+                    from: '@mail.com',
+                    subject: 'Ваш пароль входу було змінено.',
                     text: 'Hello,\n\n' +
-                        'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+                        'Це підтвердження того, що пароль для вашого облікового запису ' + user.email + ' щойно було змінено.\n'
                 };
                 smtpTransport.sendMail(mailOptions, function(err) {
-                    req.session.success = 'Success! Your password has been changed.';
+                    req.session.success = 'Вітаю! Ваш пароль входу було змінено.';
                     done(err);
                 });
             }
