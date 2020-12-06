@@ -21,9 +21,7 @@ const sitemapRouter = require('./routes/sitemap')
 
 const app = express();
 
-// mongodb://ulnoxiqbclzntauq4vej:XeYfW8fCY7uQ7dT8m3Qi@b9bj0vydfoetek8-mongodb.services.clever-cloud.com:27017/b9bj0vydfoetek8
-// mongoose.connect('mongoimport --host academind-shard-0/academind-shard-00-00-ec3oo.mongodb.net:27017,academind-shard-00-01-ec3oo.mongodb.net:27017,academind-shard-00-02-ec3oo.mongodb.net:27017 --ssl --username dbRosvik --password 66117754 --authenticationDatabase admin --db bank-reports --collection bank --type json --file test.json', {
-mongoose.connect('mongodb+srv://dbRosvik:66117754@academind-ec3oo.mongodb.net/subdocuments', {
+mongoose.connect('mongodb+srv://db.mongodb.net/documents', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
@@ -35,7 +33,7 @@ db.once('open', () => {
     console.log('we\'re connected!')
 });
 
-app.use(favicon(path.join(__dirname, 'public', 'favicon2.ico')))
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 // use ejs-locals for all ejs tamplates
 app.engine('ejs', engine)
