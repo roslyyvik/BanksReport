@@ -1,0 +1,61 @@
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    li {
+        display: inline;
+        padding: 5px;
+    }
+    
+    .donate {
+        display: none;
+    }
+    
+    @media only screen and (max-width: 768px) {
+        /* For mobile phones: */
+        .donate {
+            display: block;
+        }
+        .donat {
+            display: none;
+        }
+    }
+    
+    .navbar-brand:hover {
+        opacity: 0.7
+    }
+</style>
+
+<nav class="navbar navbar-expand-md border-0" style="background:#292640;">
+    <a class="d-flex navbar-brand ml-3 mt-1" href="/">
+        <!-- <img src="/images/logo2.png" alt="Logo" style="width:60px;"> -->
+        <!-- <i class="material-icons text-red rounded-circle bg-warning mt-1" style="font-size:55px;">&#xe6df;</i> -->
+        <img src="/images/8.png" alt="Logo" style="width:35px;height:35px;">
+        <h3 class="pl-2 mt-1" style="font-family:Lucida Sans Unicode;opacity:0.9"><strong>banks<span style="color:#dd2aa2">tour</span></strong></h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+              <i style="font-size:20px; color:#00B7FF" class="fa">&#xf0c9;</i>
+      </button>
+    <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+        <ul class="navbar-nav justify-content-center">
+            <li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="/banks"><i class="fas">&#xf66f;</i> Банки</a></li>
+            <% if(!currentUser){ %>
+                <li class="nav-item"><a class="nav-link" href="/register"> Реєстрація</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login"><i class="fas">&#xf2f6;</i> Вхід</a></li>
+                <% } else { %>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Вихід <i class="fas">&#xf2f5;</i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/profile"><i class="fa fa-user-circle-o"></i> Вітаю, <%= currentUser.username %>!</a></li>
+                    <% } %>
+                        <li class="nav-item donate">
+                            <a class="nav-link text-warning" href="/donate">Донати</a>
+                        </li>
+        </ul>
+    </div>
+    <li class="nav-item donat justify-content-center">
+        <a class="nav-link btn btn-outline-warning" href="/donate">Донати</a>
+    </li>
+</nav>

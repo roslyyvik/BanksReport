@@ -1,0 +1,24 @@
+<% layout('layouts/boilerplate') -%>
+
+<div class="" style="min-height:100%">
+<div class="container bg-light col-sm-6 py-5 my-5">
+  <div class="col-10 container">
+    <form action="/reset/<%= token %>?_method=PUT" method="POST">
+      <div class="form-group text-primary" style="text-align:center">
+        <h2>Змінити Пароль</h2>
+      </div>
+      <div class="form-group">
+        <label for="password"></label>
+        <input type="password" name="password" class="form-control py-4" id="password" placeholder="Новий пароль" autofocus>
+      </div>
+      <div class="form-group">
+        <label for="confirm"></label>
+        <input type="password" name="confirm" class="form-control py-4" id="confirm" placeholder="Підтвердити пароль">
+      </div>
+      <div>
+        <input type="submit" class="form-control btn btn-primary mt-3 py-4" value="Оновити Пароль">
+      </div>
+    </form>
+  </div>
+</div>
+</div>

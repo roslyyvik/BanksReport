@@ -1,0 +1,64 @@
+<% layout('layouts/boilerplate') -%>
+    <style>
+        .label {
+            display: inline-block;
+            /* color: white; */
+            padding: 1rem 1.5rem;
+            font-family: sans-serif;
+            border: darkgray solid 1px;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+    </style>
+
+    <div style="min-height:100%">
+        <div class="container bg-light col-sm-6 py-5 my-5">
+            <div class="col-10 container">
+                <h4 class="text-center">
+                    <img src="<%= currentUser.image.path %>" alt="<%= currentUser.username %>'s profile image" style="margin-bottom:20px;" class="profile-image">
+                </h4>
+                <form action="/profile?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <div class="form-group text-center text-primary">
+                        <h3>
+                            <%= currentUser.username %>
+                        </h3>
+                        <h5>
+                            <%= currentUser.email %>
+                        </h5>
+                    </div>
+                    <div class="form-group">
+                        <label for="username"></label>
+                        <input type="text" class="form-control py-4" name="username" id="username" value="<%= currentUser.username %>" placeholder="username" autofocus required>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="current-password"></label>
+                        <input type="password" class="form-control py-4" name="currentPassword" id="current-password" placeholder="поточний пароль" required>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="new-password"></label>
+                        <input type="password" class="form-control py-4" name="newPassword" id="new-password" placeholder="новий пароль">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="password-confirmation"></label>
+                        <input type="password" class="form-control py-4" name="passwordConfirmation" id="password-confirmation" placeholder="підтвердити пароль">
+                    </div>
+                    <div class="form-group mt-3" id="validation-message">
+
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control py-4" name="email" id="email" value="<%= currentUser.email %>" placeholder="email">
+                    </div>
+                    <div class="form-group mt-3 text-dark">
+                        <input type="file" name="image" id="real-file" hidden/>
+                        <label class="label" id="custom-button" for="upload">Обрати файл <i style='font-size:20px; margin-left:5px;' class='fas'>&#xf56f;</i></label>
+                        <span id="custom-text"> Не обрано жодного файлу</span>
+                    </div>
+                    <input type="submit" class="form-control btn btn-primary shadow-sm mt-3 pm-4" id="update-profile">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascripts/profile.js" charset="utf-8"></script>
