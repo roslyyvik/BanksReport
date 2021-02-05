@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const { storage } = require('../cloudinary');
-const parser = multer({ storage });
+const parser = multer({ storage: storage });
 const {
     landingPage,
     getRegister,
