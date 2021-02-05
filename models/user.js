@@ -4,13 +4,13 @@ const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
     email: { type: String, unique: true, required: true },
-    // image: {
-    //     secure_url: { type: String, default: '/images/default-profile.jpg' },
-    //     public_id: String
-    // },
+    image: {
+        path: { type: String, default: '/images/image.png' },
+        filename: String
+    },
     avatar: {
         type: String,
-        default: '/images/default-profile.jpg'
+        default: '/images/image.png'
     },
     cloudinary_id: {
         type: String

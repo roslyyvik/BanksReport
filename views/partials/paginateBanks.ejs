@@ -1,13 +1,13 @@
-<div style="margin:20px 0;">
+<div class="pagination pagination-sm" style="margin:20px 0;">
   <% if(banks.page - 1) { %>
-    <a href="<%= paginateUrl %><%= banks.page - 1 %>"><i class="fas fa-angle-double-left"></i></a>
+    <a class="page-link" href="<%= paginateUrl %><%= banks.page - 1 %>"><i class="fas fa-angle-double-left"></i></a>
   <% } %>
   <% if(banks.pages > 1 && banks.docs.length) { %>
   <% for( let i = 1; i <= banks.pages; i++ ) { %>
-    <a href="<%= paginateUrl %><%= i %>"<%= i=== banks.page ? 'style=color:#fff' : ''  %>><%= i %></a>
+    <a class="page-link" href="<%= paginateUrl %><%= i %>"<%= i=== banks.page ? 'style=color:#fff' : ''  %>><%= i %></a>
   <% } %>
   <% } %>
   <% if ((banks.page + 1) <= banks.pages) { %>
-    <a href="<%= paginateUrl %><%= banks.page + 1 %>"><i class="fas fa-angle-double-right"></i></a>
+    <a class="page-link" href="<%= paginateUrl %><%= banks.page + 1 %>"><i class="fas fa-angle-double-right"></i></a>
   <% } %>
 </div>

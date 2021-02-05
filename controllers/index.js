@@ -104,8 +104,8 @@ module.exports = {
     async postRegister(req, res, next) {
         try {
             if (req.file) {
-                const { secure_url, public_id } = req.file;
-                req.body.image = { secure_url, public_id };
+                const { path, filename } = req.file;
+                req.body.image = { path, filename };
             }
             const user = await User.register(new User(req.body), req.body.password);
             req.login(user, function(err) {
@@ -158,48 +158,48 @@ module.exports = {
         res.render('profile')
     },
     async updateProfile(req, res, next) {
-        try {
-            let user = await User.findById(req.params.id)
-                // Delete image from cloudinary
-            await cloudinary.uploader.destroy(user.cloudinary_id)
-                // Upload image to cloudinary
-            const result = await cloudinary.uploader.upload(req.file.path)
-            const data = {
-                name: req.body.name || user.name,
-                email: req.body.email || user.email,
-                avatar: result.secure_url || user.avatar,
-                cloudinary_id: result.public_id || user.cloudinary_id
-            }
-            user = await User.findByIdAndUpdate(req.params.id, data, { new: true })
-                // res.json(result)
-            await user.save()
-            const login = util.promisify(req.login.bind(req))
-            await login(user)
-            req.session.success = "Профіль успішно оновлено!"
-            res.redirect('/profile')
-            console.log(result);
-        } catch (err) {
-            console.log(err);
-        }
-        // const {
-        //     username,
-        //     email
-        // } = req.body
-        // const { user } = res.locals
-        // if (username) user.username = username
-        // if (email) user.email = email
-        // if (req.file) {
-        //     if (user.image.public_id)
-        //         await cloudinary.uploader.destroy(user.image.public_id)
-        //     const { secure_url, public_id } = req.file;
-        //     user.image = { secure_url, public_id }
+        // try {
+        //     let user = await User.findById(req.params.id)
+        //         // Delete image from cloudinary
+        //     await cloudinary.uploader.destroy(user.cloudinary_id)
+        //         // Upload image to cloudinary
+        //     const result = await cloudinary.uploader.upload(req.file.path)
+        //     const data = {
+        //         name: req.body.name || user.name,
+        //         email: req.body.email || user.email,
+        //         avatar: result.secure_url || user.avatar,
+        //         cloudinary_id: result.public_id || user.cloudinary_id
+        //     }
+        //     user = await User.findByIdAndUpdate(req.params.id, data, { new: true })
+        //         // res.json(result)
+        //     await user.save()
+        //     const login = util.promisify(req.login.bind(req))
+        //     await login(user)
+        //     req.session.success = "Профіль успішно оновлено!"
+        //     res.redirect('/profile')
+        //     console.log(result);
+        // } catch (err) {
+        //     console.log(err);
         // }
-        // console.log(user.image)
-        // await user.save()
-        // const login = util.promisify(req.login.bind(req))
-        // await login(user)
-        // req.session.success = "Профіль успішно оновлено!"
-        // res.redirect('/profile')
+        const {
+            username,
+            email
+        } = req.body
+        const { user } = res.locals
+        if (username) user.username = username
+        if (email) user.email = email
+        if (req.file) {
+            if (user.image.filename)
+                await cloudinary.uploader.destroy(user.image.filename)
+            const { path, filename } = req.file;
+            user.image = { path, filename }
+        }
+        console.log(user.image)
+        await user.save()
+        const login = util.promisify(req.login.bind(req))
+        await login(user)
+        req.session.success = "Профіль успішно оновлено!"
+        res.redirect('/profile')
     },
 
     getForgotPw(req, res, next) {
@@ -233,7 +233,7 @@ module.exports = {
                     service: 'gmail',
                     auth: {
                         user: process.env.EMAIL || 'vlasnifinansy@gmail.com', // TODO: your gmail account
-                        pass: process.env.PASSWORD || '66117754' // TODO: your gmail password
+                        pass: process.env.PASSWORD || 'vn66117754vs' // TODO: your gmail password
                     }
                 });
                 //                 var email_smtp = nodemailer.createTransport({
@@ -305,7 +305,7 @@ module.exports = {
                     service: 'gmail',
                     auth: {
                         user: process.env.EMAIL || 'vlasnifinansy@gmail.com', // TODO: your gmail account
-                        pass: process.env.PASSWORD || '66117754' // TODO: your gmail password
+                        pass: process.env.PASSWORD || 'vn66117754vs' // TODO: your gmail password
                     }
                 });
                 var mailOptions = {

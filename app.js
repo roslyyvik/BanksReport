@@ -17,12 +17,13 @@ const indexRouter = require('./routes/index');
 // const usersRouter = require('./routes/users');
 const banksRouter = require('./routes/banks');
 const donateRouter = require('./routes/donate');
+const sitemapRouter = require('./routes/sitemap')
 
 const app = express();
 
 // mongodb://ulnoxiqbclzntauq4vej:XeYfW8fCY7uQ7dT8m3Qi@b9bj0vydfoetek8-mongodb.services.clever-cloud.com:27017/b9bj0vydfoetek8
 // mongoose.connect('mongoimport --host academind-shard-0/academind-shard-00-00-ec3oo.mongodb.net:27017,academind-shard-00-01-ec3oo.mongodb.net:27017,academind-shard-00-02-ec3oo.mongodb.net:27017 --ssl --username dbRosvik --password 66117754 --authenticationDatabase admin --db bank-reports --collection bank --type json --file test.json', {
-mongoose.connect('mongodb+srv://dbRosvik:66117754@academind-ec3oo.mongodb.net/bank-reports', {
+mongoose.connect('mongodb+srv://dbRosvik:66117754@academind-ec3oo.mongodb.net/subdocuments', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
@@ -85,6 +86,7 @@ app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 app.use('/banks', banksRouter);
 app.use('/donate', donateRouter);
+app.use('/sitemap.xml', sitemapRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -7,25 +7,28 @@
             border: 1px solid grey;
             border-collapse: collapse;
         }
-
+        
         th,
         td {
             padding: 10px;
             font-size: 17px;
         }
-        canvas{
-          background:#1f1c30;
+        
+        canvas {
+            background: #1f1c30;
         }
+        
         @media only screen and (max-width: 992px) {
-      /* For mobile phones: */
-      .col-lg-1 {
-        display: none;
-      }
+            /* For mobile phones: */
+            .col-lg-1 {
+                display: none;
+            }
+        }
     </style>
-    <div class="container-fluid p-3">
-      <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa">&#xf077;</i></button>
-        <div class="row p-5">
-            <div class="col-lg-11">
+    <div class="container-fluid">
+        <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa">&#xf077;</i></button>
+        <div class="row">
+            <div class="col-lg-10 pl-4 pt-5">
                 <h1>
                     Фінансові показники банків України
                 </h1>
@@ -72,12 +75,12 @@
                             <thead>
                                 <tr>
                                     <th>Норматив</th>
-                                    <th>2019_04_01</th>
                                     <th>2019_07_01</th>
                                     <th>2019_10_01</th>
                                     <th>2020_01_01</th>
                                     <th>2020_04_01</th>
                                     <th>2020_07_01</th>
+                                    <th>2020_10_01</th>
                                 </tr>
                             </thead>
                             <% ratios.normatives.forEach(function(normative) { %>
@@ -87,22 +90,22 @@
                                             <%= normative.normative %>
                                         </td>
                                         <td>
-                                            <%= normative.D2019_04_01.toFixed(2) %>
+                                            <%= normative.D2019_07_01.toLocaleString() %>
                                         </td>
                                         <td>
-                                            <%= normative.D2019_07_01.toFixed(2) %>
+                                            <%= normative.D2019_10_01.toLocaleString() %>
                                         </td>
                                         <td>
-                                            <%= normative.D2019_10_01.toFixed(2) %>
+                                            <%= normative.D2020_01_01.toLocaleString() %>
                                         </td>
                                         <td>
-                                            <%= normative.D2020_01_01.toFixed(2) %>
+                                            <%= normative.D2020_04_01.toLocaleString() %>
                                         </td>
                                         <td>
-                                            <%= normative.D2020_04_01.toFixed(2) %>
+                                            <%= normative.D2020_07_01.toLocaleString() %>
                                         </td>
                                         <td>
-                                            <%= normative.D2020_07_01.toFixed(2) %>
+                                            <%= normative.D2020_10_01.toLocaleString() %>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -194,11 +197,11 @@
                         <thead>
                             <tr>
                                 <th rowspan="2"></th>
-                                <th colspan="2">2019_07_01</th>
                                 <th colspan="2">2019_10_01</th>
                                 <th colspan="2">2020_01_01</th>
                                 <th colspan="2">2020_04_01</th>
                                 <th colspan="2">2020_07_01</th>
+                                <th colspan="2">2020_10_01</th>
                             </tr>
                             <tr>
                                 <th>Система</th>
@@ -216,56 +219,52 @@
                         <tbody>
                             <tr>
                                 <td>Якість кредитного портфелю(Резерви/кредитний портфель),%</td>
-                                <td>49,55</td>
-                                <td>
-                                    <%= ((assets3_3.indicators[1].D2019_07_01 + assets3_3.indicators[3].D2019_07_01)/(assets3_3.indicators[0].D2019_07_01 + assets3_3.indicators[2].D2019_07_01)*(-100)).toFixed(2) %>
-                                </td>
-                                <td>48,19</td>
+                                <td>48.19</td>
                                 <td>
                                     <%= ((assets3_3.indicators[1].D2019_10_01 + assets3_3.indicators[3].D2019_10_01)/(assets3_3.indicators[0].D2019_10_01 + assets3_3.indicators[2].D2019_10_01)*(-100)).toFixed(2) %>
                                 </td>
-                                <td>47,63</td>
+                                <td>47.63</td>
                                 <td>
                                     <%= ((assets3_3.indicators[1].D2020_01_01 + assets3_3.indicators[3].D2020_01_01)/(assets3_3.indicators[0].D2020_01_01 + assets3_3.indicators[2].D2020_01_01)*(-100)).toFixed(2) %>
                                 </td>
-                                <td>48,34</td>
+                                <td>48.34</td>
                                 <td>
                                     <%= ((assets3_3.indicators[1].D2020_04_01 + assets3_3.indicators[3].D2020_04_01)/(assets3_3.indicators[0].D2020_04_01 + assets3_3.indicators[2].D2020_04_01)*(-100)).toFixed(2) %>
                                 </td>
-                                <td>48,67</td>
+                                <td>48.67</td>
                                 <td>
                                     <%= ((assets3_3.indicators[1].D2020_07_01 + assets3_3.indicators[3].D2020_07_01)/(assets3_3.indicators[0].D2020_07_01 + assets3_3.indicators[2].D2020_07_01)*(-100)).toFixed(2) %>
+                                </td>
+                                <td>45.64</td>
+                                <td>
+                                    <%= ((assets3_3.indicators[1].D2020_10_01 + assets3_3.indicators[3].D2020_10_01)/(assets3_3.indicators[0].D2020_10_01 + assets3_3.indicators[2].D2020_10_01)*(-100)).toFixed(2) %>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Якість кредитного портфелю юр. осіб,%</td>
                                 <td></td>
                                 <td>
-                                    <%= ((assets3_3.indicators[1].D2019_07_01 / assets3_3.indicators[0].D2019_07_01)*(-100)).toFixed(2) %>
+                                    <%= ((assets3_3.indicators[1].D2019_10_01 / assets3_3.indicators[0].D2019_10_01)*(-100)).toLocaleString() %>
                                 </td>
                                 <td></td>
                                 <td>
-                                    <%= ((assets3_3.indicators[1].D2019_10_01 / assets3_3.indicators[0].D2019_10_01)*(-100)).toFixed(2) %>
+                                    <%= ((assets3_3.indicators[1].D2020_01_01 / assets3_3.indicators[0].D2020_01_01)*(-100)).toLocaleString() %>
                                 </td>
                                 <td></td>
                                 <td>
-                                    <%= ((assets3_3.indicators[1].D2020_01_01 / assets3_3.indicators[0].D2020_01_01)*(-100)).toFixed(2) %>
+                                    <%= ((assets3_3.indicators[1].D2020_04_01 / assets3_3.indicators[0].D2020_04_01)*(-100)).toLocaleString() %>
                                 </td>
                                 <td></td>
                                 <td>
-                                    <%= ((assets3_3.indicators[1].D2020_04_01 / assets3_3.indicators[0].D2020_04_01)*(-100)).toFixed(2) %>
+                                    <%= ((assets3_3.indicators[1].D2020_07_01 / assets3_3.indicators[0].D2020_07_01)*(-100)).toLocaleString() %>
                                 </td>
                                 <td></td>
                                 <td>
-                                    <%= ((assets3_3.indicators[1].D2020_07_01 / assets3_3.indicators[0].D2020_07_01)*(-100)).toFixed(2) %>
+                                    <%= ((assets3_3.indicators[1].D2020_10_01 / assets3_3.indicators[0].D2020_10_01)*(-100)).toLocaleString() %>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Якість кредитного портфелю фіз. осіб,%</td>
-                                <td></td>
-                                <td>
-                                    <%= ((assets3_3.indicators[3].D2019_07_01 / assets3_3.indicators[2].D2019_07_01)*(-100)).toFixed(2) %>
-                                </td>
                                 <td></td>
                                 <td>
                                     <%= ((assets3_3.indicators[3].D2019_10_01 / assets3_3.indicators[2].D2019_10_01)*(-100)).toFixed(2) %>
@@ -281,6 +280,10 @@
                                 <td></td>
                                 <td>
                                     <%= ((assets3_3.indicators[3].D2020_07_01 / assets3_3.indicators[2].D2020_07_01)*(-100)).toFixed(2) %>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <%= ((assets3_3.indicators[3].D2020_10_01 / assets3_3.indicators[2].D2020_10_01)*(-100)).toFixed(2) %>
                                 </td>
                             </tr>
                         </tbody>
@@ -305,30 +308,36 @@
                     <button class="accordion" id="assetsBar0_0"><i class='fas fa-chart-bar'></i></button>
                     <button class="accordion" id="assetsLine0_0"><i class='fas fa-chart-line'></i></button>
                     <script>
-                        var chartLabels = ["2018_01_01", "2018_04_01", "2018_07_01", "2018_10_01", "2019_01_01", "2019_04_01", "2019_07_01", "2019_10_01", "2020_01_01", "2020_04_01", "2020_07_01"]
+                        var chartLabels = ["2018_04_01", "2018_07_01", "2018_10_01", "2019_01_01", "2019_04_01", "2019_07_01", "2019_10_01", "2020_01_01", "2020_04_01", "2020_07_01", "2020_10_01", ]
                         var ctx = document.getElementById("assets0_0").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chart0_0 = new Chart(ctx, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= assets0_0.indicators[3].items %>',
                                     backgroundColor: '#ffa31a',
-                                    data: [<%= assets0_0.indicators[3].D2018_01_01.toFixed() %>, <%= assets0_0.indicators[3].D2018_04_01.toFixed() %>, <%= assets0_0.indicators[3].D2018_07_01.toFixed() %>, <%= assets0_0.indicators[3].D2018_10_01.toFixed() %>, <%= assets0_0.indicators[3].D2019_01_01.toFixed() %>, <%= assets0_0.indicators[3].D2019_04_01.toFixed() %>, <%= assets0_0.indicators[3].D2019_07_01.toFixed() %>, <%= assets0_0.indicators[3].D2019_10_01.toFixed() %>, <%= assets0_0.indicators[3].D2020_01_01.toFixed() %>, <%= assets0_0.indicators[3].D2020_04_01.toFixed() %>, <%= assets0_0.indicators[3].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets0_0.indicators[3].D2018_04_01.toFixed() %>', '<%= assets0_0.indicators[3].D2018_07_01.toFixed() %>', '<%= assets0_0.indicators[3].D2018_10_01.toFixed() %>',
+                                        '<%= assets0_0.indicators[3].D2019_01_01.toFixed() %>',
+                                        '<%= assets0_0.indicators[3].D2019_04_01.toFixed() %>',
+                                        '<%= assets0_0.indicators[3].D2019_07_01.toFixed() %>', '<%= assets0_0.indicators[3].D2019_10_01.toFixed() %>',
+                                        '<%= assets0_0.indicators[3].D2020_01_01.toFixed() %>',
+                                        '<%= assets0_0.indicators[3].D2020_04_01.toFixed() %>', '<%= assets0_0.indicators[3].D2020_07_01.toFixed() %>', '<%= assets0_0.indicators[3].D2020_10_01.toFixed() %>'
+                                    ],
                                 }, {
                                     label: '<%= assets0_0.indicators[0].items %>',
                                     backgroundColor: "#47d147",
-                                    data: [<%= assets0_0.indicators[0].D2018_01_01.toFixed() %>, <%= assets0_0.indicators[0].D2018_04_01.toFixed() %>, <%= assets0_0.indicators[0].D2018_07_01.toFixed() %>, <%= assets0_0.indicators[0].D2018_10_01.toFixed() %>, <%= assets0_0.indicators[0].D2019_01_01.toFixed() %>, <%= assets0_0.indicators[0].D2019_04_01.toFixed() %>, <%= assets0_0.indicators[0].D2019_07_01.toFixed() %>, <%= assets0_0.indicators[0].D2019_10_01.toFixed() %>, <%= assets0_0.indicators[0].D2020_01_01.toFixed() %>, <%= assets0_0.indicators[0].D2020_04_01.toFixed() %>, <%= assets0_0.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets0_0.indicators[0].D2018_04_01.toFixed() %>', '<%= assets0_0.indicators[0].D2018_07_01.toFixed() %>', '<%= assets0_0.indicators[0].D2018_10_01.toFixed() %>', '<%= assets0_0.indicators[0].D2019_01_01.toFixed() %>', '<%= assets0_0.indicators[0].D2019_04_01.toFixed() %>', '<%= assets0_0.indicators[0].D2019_07_01.toFixed() %>', '<%= assets0_0.indicators[0].D2019_10_01.toFixed() %>', '<%= assets0_0.indicators[0].D2020_01_01.toFixed() %>', '<%= assets0_0.indicators[0].D2020_04_01.toFixed() %>', '<%= assets0_0.indicators[0].D2020_07_01.toFixed() %>', '<%= assets0_0.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets0_0.indicators[1].items %>',
                                     backgroundColor: "#ff4d4d",
-                                    data: [<%= assets0_0.indicators[1].D2018_01_01.toFixed() %>, <%= assets0_0.indicators[1].D2018_04_01.toFixed() %>, <%= assets0_0.indicators[1].D2018_07_01.toFixed() %>, <%= assets0_0.indicators[1].D2018_10_01.toFixed() %>, <%= assets0_0.indicators[1].D2019_01_01.toFixed() %>, <%= assets0_0.indicators[1].D2019_04_01.toFixed() %>, <%= assets0_0.indicators[1].D2019_07_01.toFixed() %>, <%= assets0_0.indicators[1].D2019_10_01.toFixed() %>, <%= assets0_0.indicators[1].D2020_01_01.toFixed() %>, <%= assets0_0.indicators[1].D2020_04_01.toFixed() %>, <%= assets0_0.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets0_0.indicators[1].D2018_04_01.toFixed() %>', '<%= assets0_0.indicators[1].D2018_07_01.toFixed() %>', '<%= assets0_0.indicators[1].D2018_10_01.toFixed() %>', '<%= assets0_0.indicators[1].D2019_01_01.toFixed() %>', '<%= assets0_0.indicators[1].D2019_04_01.toFixed() %>', '<%= assets0_0.indicators[1].D2019_07_01.toFixed() %>', '<%= assets0_0.indicators[1].D2019_10_01.toFixed() %>', '<%= assets0_0.indicators[1].D2020_01_01.toFixed() %>', '<%= assets0_0.indicators[1].D2020_04_01.toFixed() %>', '<%= assets0_0.indicators[1].D2020_07_01.toFixed() %>', '<%= assets0_0.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets0_0.indicators[2].items %>',
                                     backgroundColor: "#4d4dff",
-                                    data: [<%= assets0_0.indicators[2].D2018_01_01.toFixed() %>, <%= assets0_0.indicators[2].D2018_04_01.toFixed() %>, <%= assets0_0.indicators[2].D2018_07_01.toFixed() %>, <%= assets0_0.indicators[2].D2018_10_01.toFixed() %>, <%= assets0_0.indicators[2].D2019_01_01.toFixed() %>, <%= assets0_0.indicators[2].D2019_04_01.toFixed() %>, <%= assets0_0.indicators[2].D2019_07_01.toFixed() %>, <%= assets0_0.indicators[2].D2019_10_01.toFixed() %>, <%= assets0_0.indicators[2].D2020_01_01.toFixed() %>, <%= assets0_0.indicators[2].D2020_04_01.toFixed() %>, <%= assets0_0.indicators[2].D2020_07_01.toFixed() %>],
-                                }, ],
+                                    data: ['<%= assets0_0.indicators[2].D2018_04_01.toFixed() %>', '<%= assets0_0.indicators[2].D2018_07_01.toFixed() %>', '<%= assets0_0.indicators[2].D2018_10_01.toFixed() %>', '<%= assets0_0.indicators[2].D2019_01_01.toFixed() %>', '<%= assets0_0.indicators[2].D2019_04_01.toFixed() %>', '<%= assets0_0.indicators[2].D2019_07_01.toFixed() %>', '<%= assets0_0.indicators[2].D2019_10_01.toFixed() %>', '<%= assets0_0.indicators[2].D2020_01_01.toFixed() %>', '<%= assets0_0.indicators[2].D2020_04_01.toFixed() %>', '<%= assets0_0.indicators[2].D2020_07_01.toFixed() %>', '<%= assets0_0.indicators[2].D2020_10_01.toFixed() %>'],
+                                }],
                             },
                             options: {
                                 scales: {
@@ -369,8 +378,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -381,6 +389,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% assets0_0.indicators.forEach(function(asset) { %>
@@ -388,9 +397,6 @@
                                         <tr>
                                             <td>
                                                 <%= asset.items %>
-                                            </td>
-                                            <td>
-                                                <%= asset.D2018_01_01.toLocaleString() %>
                                             </td>
                                             <td>
                                                 <%= asset.D2018_04_01.toLocaleString() %>
@@ -422,6 +428,9 @@
                                             <td>
                                                 <%= asset.D2020_07_01.toLocaleString() %>
                                             </td>
+                                            <td>
+                                                <%= asset.D2020_10_01.toLocaleString() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -441,25 +450,25 @@
                         var ctx = document.getElementById("assets1_0").getContext('2d');
                         Chart.defaults.global.animation.duration = 1000
                         var chart1_0 = new Chart(ctx, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= assets1_0.indicators[3].items %>',
                                     backgroundColor: '#ffa31a',
-                                    data: [<%= assets1_0.indicators[3].D2018_01_01.toFixed() %>, <%= assets1_0.indicators[3].D2018_04_01.toFixed() %>, <%= assets1_0.indicators[3].D2018_07_01.toFixed() %>, <%= assets1_0.indicators[3].D2018_10_01.toFixed() %>, <%= assets1_0.indicators[3].D2019_01_01.toFixed() %>, <%= assets1_0.indicators[3].D2019_04_01.toFixed() %>, <%= assets1_0.indicators[3].D2019_07_01.toFixed() %>, <%= assets1_0.indicators[3].D2019_10_01.toFixed() %>, <%= assets1_0.indicators[3].D2020_01_01.toFixed() %>, <%= assets1_0.indicators[3].D2020_04_01.toFixed() %>, <%= assets1_0.indicators[3].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets1_0.indicators[3].D2018_04_01.toFixed() %>', '<%= assets1_0.indicators[3].D2018_07_01.toFixed() %>', '<%= assets1_0.indicators[3].D2018_10_01.toFixed() %>', '<%= assets1_0.indicators[3].D2019_01_01.toFixed() %>', '<%= assets1_0.indicators[3].D2019_04_01.toFixed() %>', '<%= assets1_0.indicators[3].D2019_07_01.toFixed() %>', '<%= assets1_0.indicators[3].D2019_10_01.toFixed() %>', '<%= assets1_0.indicators[3].D2020_01_01.toFixed() %>', '<%= assets1_0.indicators[3].D2020_04_01.toFixed() %>', '<%= assets1_0.indicators[3].D2020_07_01.toFixed() %>', '<%= assets1_0.indicators[3].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets1_0.indicators[0].items %>',
                                     backgroundColor: "#47d147",
-                                    data: [<%= assets1_0.indicators[0].D2018_01_01.toFixed() %>, <%= assets1_0.indicators[0].D2018_04_01.toFixed() %>, <%= assets1_0.indicators[0].D2018_07_01.toFixed() %>, <%= assets1_0.indicators[0].D2018_10_01.toFixed() %>, <%= assets1_0.indicators[0].D2019_01_01.toFixed() %>, <%= assets1_0.indicators[0].D2019_04_01.toFixed() %>, <%= assets1_0.indicators[0].D2019_07_01.toFixed() %>, <%= assets1_0.indicators[0].D2019_10_01.toFixed() %>, <%= assets1_0.indicators[0].D2020_01_01.toFixed() %>, <%= assets1_0.indicators[0].D2020_04_01.toFixed() %>, <%= assets1_0.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets1_0.indicators[0].D2018_04_01.toFixed() %>', '<%= assets1_0.indicators[0].D2018_07_01.toFixed() %>', '<%= assets1_0.indicators[0].D2018_10_01.toFixed() %>', '<%= assets1_0.indicators[0].D2019_01_01.toFixed() %>', '<%= assets1_0.indicators[0].D2019_04_01.toFixed() %>', '<%= assets1_0.indicators[0].D2019_07_01.toFixed() %>', '<%= assets1_0.indicators[0].D2019_10_01.toFixed() %>', '<%= assets1_0.indicators[0].D2020_01_01.toFixed() %>', '<%= assets1_0.indicators[0].D2020_04_01.toFixed() %>', '<%= assets1_0.indicators[0].D2020_07_01.toFixed() %>', '<%= assets1_0.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets1_0.indicators[1].items %>',
                                     backgroundColor: "#ff4d4d",
-                                    data: [<%= assets1_0.indicators[1].D2018_01_01.toFixed() %>, <%= assets1_0.indicators[1].D2018_04_01.toFixed() %>, <%= assets1_0.indicators[1].D2018_07_01.toFixed() %>, <%= assets1_0.indicators[1].D2018_10_01.toFixed() %>, <%= assets1_0.indicators[1].D2019_01_01.toFixed() %>, <%= assets1_0.indicators[1].D2019_04_01.toFixed() %>, <%= assets1_0.indicators[1].D2019_07_01.toFixed() %>, <%= assets1_0.indicators[1].D2019_10_01.toFixed() %>, <%= assets1_0.indicators[1].D2020_01_01.toFixed() %>, <%= assets1_0.indicators[1].D2020_04_01.toFixed() %>, <%= assets1_0.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets1_0.indicators[1].D2018_04_01.toFixed() %>', '<%= assets1_0.indicators[1].D2018_07_01.toFixed() %>', '<%= assets1_0.indicators[1].D2018_10_01.toFixed() %>', '<%= assets1_0.indicators[1].D2019_01_01.toFixed() %>', '<%= assets1_0.indicators[1].D2019_04_01.toFixed() %>', '<%= assets1_0.indicators[1].D2019_07_01.toFixed() %>', '<%= assets1_0.indicators[1].D2019_10_01.toFixed() %>', '<%= assets1_0.indicators[1].D2020_01_01.toFixed() %>', '<%= assets1_0.indicators[1].D2020_04_01.toFixed() %>', '<%= assets1_0.indicators[1].D2020_07_01.toFixed() %>', '<%= assets1_0.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets1_0.indicators[2].items %>',
                                     backgroundColor: "#4d4dff",
-                                    data: [<%= assets1_0.indicators[2].D2018_01_01.toFixed() %>, <%= assets1_0.indicators[2].D2018_04_01.toFixed() %>, <%= assets1_0.indicators[2].D2018_07_01.toFixed() %>, <%= assets1_0.indicators[2].D2018_10_01.toFixed() %>, <%= assets1_0.indicators[2].D2019_01_01.toFixed() %>, <%= assets1_0.indicators[2].D2019_04_01.toFixed() %>, <%= assets1_0.indicators[2].D2019_07_01.toFixed() %>, <%= assets1_0.indicators[2].D2019_10_01.toFixed() %>, <%= assets1_0.indicators[2].D2020_01_01.toFixed() %>, <%= assets1_0.indicators[2].D2020_04_01.toFixed() %>, <%= assets1_0.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets1_0.indicators[2].D2018_04_01.toFixed() %>', '<%= assets1_0.indicators[2].D2018_07_01.toFixed() %>', '<%= assets1_0.indicators[2].D2018_10_01.toFixed() %>', '<%= assets1_0.indicators[2].D2019_01_01.toFixed() %>', '<%= assets1_0.indicators[2].D2019_04_01.toFixed() %>', '<%= assets1_0.indicators[2].D2019_07_01.toFixed() %>', '<%= assets1_0.indicators[2].D2019_10_01.toFixed() %>', '<%= assets1_0.indicators[2].D2020_01_01.toFixed() %>', '<%= assets1_0.indicators[2].D2020_04_01.toFixed() %>', '<%= assets1_0.indicators[2].D2020_07_01.toFixed() %>', '<%= assets1_0.indicators[2].D2020_10_01.toFixed() %>'],
                                 }, ],
                             },
                             options: {
@@ -498,8 +507,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -510,6 +518,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% assets1_0.indicators.forEach(function(asset) { %>
@@ -517,9 +526,6 @@
                                         <tr>
                                             <td>
                                                 <%= asset.items %>
-                                            </td>
-                                            <td>
-                                                <%= asset.D2018_01_01.toLocaleString() %>
                                             </td>
                                             <td>
                                                 <%= asset.D2018_04_01.toLocaleString() %>
@@ -551,6 +557,9 @@
                                             <td>
                                                 <%= asset.D2020_07_01.toLocaleString() %>
                                             </td>
+                                            <td>
+                                                <%= asset.D2020_10_01.toLocaleString() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -570,29 +579,29 @@
                         var ctx = document.getElementById("assets1_1").getContext('2d');
                         Chart.defaults.global.animation.duration = 1000
                         var chart1_1 = new Chart(ctx, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= assets1_1.indicators[3].items %>',
                                     backgroundColor: '#ffa31a',
-                                    data: [<%= assets1_1.indicators[3].D2018_01_01.toFixed() %>, <%= assets1_1.indicators[3].D2018_04_01.toFixed() %>, <%= assets1_1.indicators[3].D2018_07_01.toFixed() %>, <%= assets1_1.indicators[3].D2018_10_01.toFixed() %>, <%= assets1_1.indicators[3].D2019_01_01.toFixed() %>, <%= assets1_1.indicators[3].D2019_04_01.toFixed() %>, <%= assets1_1.indicators[3].D2019_07_01.toFixed() %>, <%= assets1_1.indicators[3].D2019_10_01.toFixed() %>, <%= assets1_1.indicators[3].D2020_01_01.toFixed() %>, <%= assets1_1.indicators[3].D2020_04_01.toFixed() %>, <%= assets1_1.indicators[3].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets1_1.indicators[3].D2018_04_01.toFixed() %>', '<%= assets1_1.indicators[3].D2018_07_01.toFixed() %>', '<%= assets1_1.indicators[3].D2018_10_01.toFixed() %>', '<%= assets1_1.indicators[3].D2019_01_01.toFixed() %>', ' <%= assets1_1.indicators[3].D2019_04_01.toFixed() %>', '<%= assets1_1.indicators[3].D2019_07_01.toFixed() %>', '<%= assets1_1.indicators[3].D2019_10_01.toFixed() %>', '<%= assets1_1.indicators[3].D2020_01_01.toFixed() %>', '<%= assets1_1.indicators[3].D2020_04_01.toFixed() %>', '<%= assets1_1.indicators[3].D2020_07_01.toFixed() %>', '<%= assets1_1.indicators[3].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets1_1.indicators[0].items %>',
                                     backgroundColor: "#47d147",
-                                    data: [<%= assets1_1.indicators[0].D2018_01_01.toFixed() %>, <%= assets1_1.indicators[0].D2018_04_01.toFixed() %>, <%= assets1_1.indicators[0].D2018_07_01.toFixed() %>, <%= assets1_1.indicators[0].D2018_10_01.toFixed() %>, <%= assets1_1.indicators[0].D2019_01_01.toFixed() %>, <%= assets1_1.indicators[0].D2019_04_01.toFixed() %>, <%= assets1_1.indicators[0].D2019_07_01.toFixed() %>, <%= assets1_1.indicators[0].D2019_10_01.toFixed() %>, <%= assets1_1.indicators[0].D2020_01_01.toFixed() %>, <%= assets1_1.indicators[0].D2020_04_01.toFixed() %>, <%= assets1_1.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets1_1.indicators[0].D2018_04_01.toFixed() %>', '<%= assets1_1.indicators[0].D2018_07_01.toFixed() %>', '<%= assets1_1.indicators[0].D2018_10_01.toFixed() %>', '<%= assets1_1.indicators[0].D2019_01_01.toFixed() %>', '<%= assets1_1.indicators[0].D2019_04_01.toFixed() %>', '<%= assets1_1.indicators[0].D2019_07_01.toFixed() %>', '<%= assets1_1.indicators[0].D2019_10_01.toFixed() %>', '<%= assets1_1.indicators[0].D2020_01_01.toFixed() %>', '<%= assets1_1.indicators[0].D2020_04_01.toFixed() %>', '<%= assets1_1.indicators[0].D2020_07_01.toFixed() %>', '<%= assets1_1.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets1_1.indicators[1].items %>',
                                     backgroundColor: "#ff4d4d",
-                                    data: [<%= assets1_1.indicators[1].D2018_01_01.toFixed() %>, <%= assets1_1.indicators[1].D2018_04_01.toFixed() %>, <%= assets1_1.indicators[1].D2018_07_01.toFixed() %>, <%= assets1_1.indicators[1].D2018_10_01.toFixed() %>, <%= assets1_1.indicators[1].D2019_01_01.toFixed() %>, <%= assets1_1.indicators[1].D2019_04_01.toFixed() %>, <%= assets1_1.indicators[1].D2019_07_01.toFixed() %>, <%= assets1_1.indicators[1].D2019_10_01.toFixed() %>, <%= assets1_1.indicators[1].D2020_01_01.toFixed() %>, <%= assets1_1.indicators[1].D2020_04_01.toFixed() %>, <%= assets1_1.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets1_1.indicators[1].D2018_04_01.toFixed() %>', '<%= assets1_1.indicators[1].D2018_07_01.toFixed() %>', '<%= assets1_1.indicators[1].D2018_10_01.toFixed() %>', '<%= assets1_1.indicators[1].D2019_01_01.toFixed() %>', '<%= assets1_1.indicators[1].D2019_04_01.toFixed() %>', '<%= assets1_1.indicators[1].D2019_07_01.toFixed() %>', '<%= assets1_1.indicators[1].D2019_10_01.toFixed() %>', '<%= assets1_1.indicators[1].D2020_01_01.toFixed() %>', '<%= assets1_1.indicators[1].D2020_04_01.toFixed() %>', '<%= assets1_1.indicators[1].D2020_07_01.toFixed() %>', '<%= assets1_1.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets1_1.indicators[2].items %>',
                                     backgroundColor: "#4d4dff",
-                                    data: [<%= assets1_1.indicators[2].D2018_01_01.toFixed() %>, <%= assets1_1.indicators[2].D2018_04_01.toFixed() %>, <%= assets1_1.indicators[2].D2018_07_01.toFixed() %>, <%= assets1_1.indicators[2].D2018_10_01.toFixed() %>, <%= assets1_1.indicators[2].D2019_01_01.toFixed() %>, <%= assets1_1.indicators[2].D2019_04_01.toFixed() %>, <%= assets1_1.indicators[2].D2019_07_01.toFixed() %>, <%= assets1_1.indicators[2].D2019_10_01.toFixed() %>, <%= assets1_1.indicators[2].D2020_01_01.toFixed() %>, <%= assets1_1.indicators[2].D2020_04_01.toFixed() %>, <%= assets1_1.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets1_1.indicators[2].D2018_04_01.toFixed() %>', '<%= assets1_1.indicators[2].D2018_07_01.toFixed() %>', '<%= assets1_1.indicators[2].D2018_10_01.toFixed() %>', '<%= assets1_1.indicators[2].D2019_01_01.toFixed() %>', '<%= assets1_1.indicators[2].D2019_04_01.toFixed() %>', '<%= assets1_1.indicators[2].D2019_07_01.toFixed() %>', '<%= assets1_1.indicators[2].D2019_10_01.toFixed() %>', '<%= assets1_1.indicators[2].D2020_01_01.toFixed() %>', '<%= assets1_1.indicators[2].D2020_04_01.toFixed() %>', '<%= assets1_1.indicators[2].D2020_07_01.toFixed() %>', '<%= assets1_1.indicators[2].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets1_1.indicators[4].items %>',
                                     backgroundColor: '#e63900',
-                                    data: [<%= assets1_1.indicators[4].D2018_01_01.toFixed() %>, <%= assets1_1.indicators[4].D2018_04_01.toFixed() %>, <%= assets1_1.indicators[4].D2018_07_01.toFixed() %>, <%= assets1_1.indicators[4].D2018_10_01.toFixed() %>, <%= assets1_1.indicators[4].D2019_01_01.toFixed() %>, <%= assets1_1.indicators[4].D2019_04_01.toFixed() %>, <%= assets1_1.indicators[4].D2019_07_01.toFixed() %>, <%= assets1_1.indicators[4].D2019_10_01.toFixed() %>, <%= assets1_1.indicators[4].D2020_01_01.toFixed() %>, <%= assets1_1.indicators[4].D2020_04_01.toFixed() %>, <%= assets1_1.indicators[4].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets1_1.indicators[4].D2018_04_01.toFixed() %>', '<%= assets1_1.indicators[4].D2018_07_01.toFixed() %>', '<%= assets1_1.indicators[4].D2018_10_01.toFixed() %>', '<%= assets1_1.indicators[4].D2019_01_01.toFixed() %>', '<%= assets1_1.indicators[4].D2019_04_01.toFixed() %>', '<%= assets1_1.indicators[4].D2019_07_01.toFixed() %>', '<%= assets1_1.indicators[4].D2019_10_01.toFixed() %>', '<%= assets1_1.indicators[4].D2020_01_01.toFixed() %>', '<%= assets1_1.indicators[4].D2020_04_01.toFixed() %>', '<%= assets1_1.indicators[4].D2020_07_01.toFixed() %>', '<%= assets1_1.indicators[4].D2020_10_01.toFixed() %>'],
                                 }],
                             },
                             options: {
@@ -630,8 +639,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -642,6 +650,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% assets1_1.indicators.forEach(function(asset) { %>
@@ -649,9 +658,6 @@
                                         <tr>
                                             <td>
                                                 <%= asset.items %>
-                                            </td>
-                                            <td>
-                                                <%= asset.D2018_01_01.toLocaleString() %>
                                             </td>
                                             <td>
                                                 <%= asset.D2018_04_01.toLocaleString() %>
@@ -683,6 +689,9 @@
                                             <td>
                                                 <%= asset.D2020_07_01.toLocaleString() %>
                                             </td>
+                                            <td>
+                                                <%= asset.D2020_10_01.toLocaleString() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -703,25 +712,25 @@
                         var ctx3_3 = document.getElementById("assets3_3").getContext('2d');
                         Chart.defaults.global.animation.duration = 1000
                         var chart3_3 = new Chart(ctx3_3, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= assets3_3.indicators[3].items %>',
                                     backgroundColor: '#ffa31a',
-                                    data: [<%= assets3_3.indicators[3].D2018_01_01.toFixed() %>, <%= assets3_3.indicators[3].D2018_04_01.toFixed() %>, <%= assets3_3.indicators[3].D2018_07_01.toFixed() %>, <%= assets3_3.indicators[3].D2018_10_01.toFixed() %>, <%= assets3_3.indicators[3].D2019_01_01.toFixed() %>, <%= assets3_3.indicators[3].D2019_04_01.toFixed() %>, <%= assets3_3.indicators[3].D2019_07_01.toFixed() %>, <%= assets3_3.indicators[3].D2019_10_01.toFixed() %>, <%= assets3_3.indicators[3].D2020_01_01.toFixed() %>, <%= assets3_3.indicators[3].D2020_04_01.toFixed() %>, <%= assets3_3.indicators[3].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets3_3.indicators[3].D2018_04_01.toFixed() %>', '<%= assets3_3.indicators[3].D2018_07_01.toFixed() %>', '<%= assets3_3.indicators[3].D2018_10_01.toFixed() %>', '<%= assets3_3.indicators[3].D2019_01_01.toFixed() %>', '<%= assets3_3.indicators[3].D2019_04_01.toFixed() %>', '<%= assets3_3.indicators[3].D2019_07_01.toFixed() %>', '<%= assets3_3.indicators[3].D2019_10_01.toFixed() %>', '<%= assets3_3.indicators[3].D2020_01_01.toFixed() %>', '<%= assets3_3.indicators[3].D2020_04_01.toFixed() %>', '<%= assets3_3.indicators[3].D2020_07_01.toFixed() %>', '<%= assets3_3.indicators[3].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets3_3.indicators[0].items %>',
                                     backgroundColor: "#47d147",
-                                    data: [<%= assets3_3.indicators[0].D2018_01_01.toFixed() %>, <%= assets3_3.indicators[0].D2018_04_01.toFixed() %>, <%= assets3_3.indicators[0].D2018_07_01.toFixed() %>, <%= assets3_3.indicators[0].D2018_10_01.toFixed() %>, <%= assets3_3.indicators[0].D2019_01_01.toFixed() %>, <%= assets3_3.indicators[0].D2019_04_01.toFixed() %>, <%= assets3_3.indicators[0].D2019_07_01.toFixed() %>, <%= assets3_3.indicators[0].D2019_10_01.toFixed() %>, <%= assets3_3.indicators[0].D2020_01_01.toFixed() %>, <%= assets3_3.indicators[0].D2020_04_01.toFixed() %>, <%= assets3_3.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets3_3.indicators[0].D2018_04_01.toFixed() %>', '<%= assets3_3.indicators[0].D2018_07_01.toFixed() %>', '<%= assets3_3.indicators[0].D2018_10_01.toFixed() %>', '<%= assets3_3.indicators[0].D2019_01_01.toFixed() %>', '<%= assets3_3.indicators[0].D2019_04_01.toFixed() %>', '<%= assets3_3.indicators[0].D2019_07_01.toFixed() %>', '<%= assets3_3.indicators[0].D2019_10_01.toFixed() %>', '<%= assets3_3.indicators[0].D2020_01_01.toFixed() %>', '<%= assets3_3.indicators[0].D2020_04_01.toFixed() %>', '<%= assets3_3.indicators[0].D2020_07_01.toFixed() %>', '<%= assets3_3.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets3_3.indicators[1].items %>',
                                     backgroundColor: "#ff4d4d",
-                                    data: [<%= assets3_3.indicators[1].D2018_01_01.toFixed() %>, <%= assets3_3.indicators[1].D2018_04_01.toFixed() %>, <%= assets3_3.indicators[1].D2018_07_01.toFixed() %>, <%= assets3_3.indicators[1].D2018_10_01.toFixed() %>, <%= assets3_3.indicators[1].D2019_01_01.toFixed() %>, <%= assets3_3.indicators[1].D2019_04_01.toFixed() %>, <%= assets3_3.indicators[1].D2019_07_01.toFixed() %>, <%= assets3_3.indicators[1].D2019_10_01.toFixed() %>, <%= assets3_3.indicators[1].D2020_01_01.toFixed() %>, <%= assets3_3.indicators[1].D2020_04_01.toFixed() %>, <%= assets3_3.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets3_3.indicators[1].D2018_04_01.toFixed() %>', '<%= assets3_3.indicators[1].D2018_07_01.toFixed() %>', '<%= assets3_3.indicators[1].D2018_10_01.toFixed() %>', '<%= assets3_3.indicators[1].D2019_01_01.toFixed() %>', '<%= assets3_3.indicators[1].D2019_04_01.toFixed() %>', '<%= assets3_3.indicators[1].D2019_07_01.toFixed() %>', '<%= assets3_3.indicators[1].D2019_10_01.toFixed() %>', '<%= assets3_3.indicators[1].D2020_01_01.toFixed() %>', '<%= assets3_3.indicators[1].D2020_04_01.toFixed() %>', '<%= assets3_3.indicators[1].D2020_07_01.toFixed() %>', '<%= assets3_3.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets3_3.indicators[2].items %>',
                                     backgroundColor: "#4d4dff",
-                                    data: [<%= assets3_3.indicators[2].D2018_01_01.toFixed() %>, <%= assets3_3.indicators[2].D2018_04_01.toFixed() %>, <%= assets3_3.indicators[2].D2018_07_01.toFixed() %>, <%= assets3_3.indicators[2].D2018_10_01.toFixed() %>, <%= assets3_3.indicators[2].D2019_01_01.toFixed() %>, <%= assets3_3.indicators[2].D2019_04_01.toFixed() %>, <%= assets3_3.indicators[2].D2019_07_01.toFixed() %>, <%= assets3_3.indicators[2].D2019_10_01.toFixed() %>, <%= assets3_3.indicators[2].D2020_01_01.toFixed() %>, <%= assets3_3.indicators[2].D2020_04_01.toFixed() %>, <%= assets3_3.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets3_3.indicators[2].D2018_04_01.toFixed() %>', '<%= assets3_3.indicators[2].D2018_07_01.toFixed() %>', '<%= assets3_3.indicators[2].D2018_10_01.toFixed() %>', '<%= assets3_3.indicators[2].D2019_01_01.toFixed() %>', '<%= assets3_3.indicators[2].D2019_04_01.toFixed() %>', '<%= assets3_3.indicators[2].D2019_07_01.toFixed() %>', '<%= assets3_3.indicators[2].D2019_10_01.toFixed() %>', '<%= assets3_3.indicators[2].D2020_01_01.toFixed() %>', '<%= assets3_3.indicators[2].D2020_04_01.toFixed() %>', '<%= assets3_3.indicators[2].D2020_07_01.toFixed() %>', '<%= assets3_3.indicators[2].D2020_10_01.toFixed() %>'],
                                 }],
                             },
                             options: {
@@ -759,8 +768,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -771,6 +779,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% assets3_3.indicators.forEach(function(asset) { %>
@@ -778,9 +787,6 @@
                                         <tr>
                                             <td>
                                                 <%= asset.items %>
-                                            </td>
-                                            <td>
-                                                <%= asset.D2018_01_01.toLocaleString() %>
                                             </td>
                                             <td>
                                                 <%= asset.D2018_04_01.toLocaleString() %>
@@ -812,6 +818,9 @@
                                             <td>
                                                 <%= asset.D2020_07_01.toLocaleString() %>
                                             </td>
+                                            <td>
+                                                <%= asset.D2020_10_01.toLocaleString() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -832,33 +841,33 @@
                         var ctx4_4 = document.getElementById("assets4_4").getContext('2d');
                         Chart.defaults.global.animation.duration = 1000
                         var chart4_4 = new Chart(ctx4_4, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= assets4_4.indicators[3].items %>',
                                     backgroundColor: '#ffa31a',
-                                    data: [<%= assets4_4.indicators[3].D2018_01_01.toFixed() %>, <%= assets4_4.indicators[3].D2018_04_01.toFixed() %>, <%= assets4_4.indicators[3].D2018_07_01.toFixed() %>, <%= assets4_4.indicators[3].D2018_10_01.toFixed() %>, <%= assets4_4.indicators[3].D2019_01_01.toFixed() %>, <%= assets4_4.indicators[3].D2019_04_01.toFixed() %>, <%= assets4_4.indicators[3].D2019_07_01.toFixed() %>, <%= assets4_4.indicators[3].D2019_10_01.toFixed() %>, <%= assets4_4.indicators[3].D2020_01_01.toFixed() %>, <%= assets4_4.indicators[3].D2020_04_01.toFixed() %>, <%= assets4_4.indicators[3].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets4_4.indicators[3].D2018_04_01.toFixed() %>', '<%= assets4_4.indicators[3].D2018_07_01.toFixed() %>', '<%= assets4_4.indicators[3].D2018_10_01.toFixed() %>', '<%= assets4_4.indicators[3].D2019_01_01.toFixed() %>', '<%= assets4_4.indicators[3].D2019_04_01.toFixed() %>', '<%= assets4_4.indicators[3].D2019_07_01.toFixed() %>', '<%= assets4_4.indicators[3].D2019_10_01.toFixed() %>', '<%= assets4_4.indicators[3].D2020_01_01.toFixed() %>', '<%= assets4_4.indicators[3].D2020_04_01.toFixed() %>', '<%= assets4_4.indicators[3].D2020_07_01.toFixed() %>', '<%= assets4_4.indicators[3].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets4_4.indicators[0].items %>',
                                     backgroundColor: "#47d147",
-                                    data: [<%= assets4_4.indicators[0].D2018_01_01.toFixed() %>, <%= assets4_4.indicators[0].D2018_04_01.toFixed() %>, <%= assets4_4.indicators[0].D2018_07_01.toFixed() %>, <%= assets4_4.indicators[0].D2018_10_01.toFixed() %>, <%= assets4_4.indicators[0].D2019_01_01.toFixed() %>, <%= assets4_4.indicators[0].D2019_04_01.toFixed() %>, <%= assets4_4.indicators[0].D2019_07_01.toFixed() %>, <%= assets4_4.indicators[0].D2019_10_01.toFixed() %>, <%= assets4_4.indicators[0].D2020_01_01.toFixed() %>, <%= assets4_4.indicators[0].D2020_04_01.toFixed() %>, <%= assets4_4.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets4_4.indicators[0].D2018_04_01.toFixed() %>', '<%= assets4_4.indicators[0].D2018_07_01.toFixed() %>', '<%= assets4_4.indicators[0].D2018_10_01.toFixed() %>', '<%= assets4_4.indicators[0].D2019_01_01.toFixed() %>', '<%= assets4_4.indicators[0].D2019_04_01.toFixed() %>', '<%= assets4_4.indicators[0].D2019_07_01.toFixed() %>', '<%= assets4_4.indicators[0].D2019_10_01.toFixed() %>', '<%= assets4_4.indicators[0].D2020_01_01.toFixed() %>', '<%= assets4_4.indicators[0].D2020_04_01.toFixed() %>', '<%= assets4_4.indicators[0].D2020_07_01.toFixed() %>', '<%= assets4_4.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets4_4.indicators[1].items %>',
                                     backgroundColor: "#ff4d4d",
-                                    data: [<%= assets4_4.indicators[1].D2018_01_01.toFixed() %>, <%= assets4_4.indicators[1].D2018_04_01.toFixed() %>, <%= assets4_4.indicators[1].D2018_07_01.toFixed() %>, <%= assets4_4.indicators[1].D2018_10_01.toFixed() %>, <%= assets4_4.indicators[1].D2019_01_01.toFixed() %>, <%= assets4_4.indicators[1].D2019_04_01.toFixed() %>, <%= assets4_4.indicators[1].D2019_07_01.toFixed() %>, <%= assets4_4.indicators[1].D2019_10_01.toFixed() %>, <%= assets4_4.indicators[1].D2020_01_01.toFixed() %>, <%= assets4_4.indicators[1].D2020_04_01.toFixed() %>, <%= assets4_4.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets4_4.indicators[1].D2018_04_01.toFixed() %>', '<%= assets4_4.indicators[1].D2018_07_01.toFixed() %>', '<%= assets4_4.indicators[1].D2018_10_01.toFixed() %>', '<%= assets4_4.indicators[1].D2019_01_01.toFixed() %>', '<%= assets4_4.indicators[1].D2019_04_01.toFixed() %>', '<%= assets4_4.indicators[1].D2019_07_01.toFixed() %>', '<%= assets4_4.indicators[1].D2019_10_01.toFixed() %>', '<%= assets4_4.indicators[1].D2020_01_01.toFixed() %>', '<%= assets4_4.indicators[1].D2020_04_01.toFixed() %>', '<%= assets4_4.indicators[1].D2020_07_01.toFixed() %>', '<%= assets4_4.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets4_4.indicators[2].items %>',
                                     backgroundColor: "#00e6e6",
-                                    data: [<%= assets4_4.indicators[2].D2018_01_01.toFixed() %>, <%= assets4_4.indicators[2].D2018_04_01.toFixed() %>, <%= assets4_4.indicators[2].D2018_07_01.toFixed() %>, <%= assets4_4.indicators[2].D2018_10_01.toFixed() %>, <%= assets4_4.indicators[2].D2019_01_01.toFixed() %>, <%= assets4_4.indicators[2].D2019_04_01.toFixed() %>, <%= assets4_4.indicators[2].D2019_07_01.toFixed() %>, <%= assets4_4.indicators[2].D2019_10_01.toFixed() %>, <%= assets4_4.indicators[2].D2020_01_01.toFixed() %>, <%= assets4_4.indicators[2].D2020_04_01.toFixed() %>, <%= assets4_4.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets4_4.indicators[2].D2018_04_01.toFixed() %>', '<%= assets4_4.indicators[2].D2018_07_01.toFixed() %>', '<%= assets4_4.indicators[2].D2018_10_01.toFixed() %>', '<%= assets4_4.indicators[2].D2019_01_01.toFixed() %>', '<%= assets4_4.indicators[2].D2019_04_01.toFixed() %>', '<%= assets4_4.indicators[2].D2019_07_01.toFixed() %>', '<%= assets4_4.indicators[2].D2019_10_01.toFixed() %>', '<%= assets4_4.indicators[2].D2020_01_01.toFixed() %>', '<%= assets4_4.indicators[2].D2020_04_01.toFixed() %>', '<%= assets4_4.indicators[2].D2020_07_01.toFixed() %>', '<%= assets4_4.indicators[2].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets4_4.indicators[4].items %>',
                                     backgroundColor: "#4d4dff",
-                                    data: [<%= assets4_4.indicators[4].D2018_01_01.toFixed() %>, <%= assets4_4.indicators[4].D2018_04_01.toFixed() %>, <%= assets4_4.indicators[4].D2018_07_01.toFixed() %>, <%= assets4_4.indicators[4].D2018_10_01.toFixed() %>, <%= assets4_4.indicators[4].D2019_01_01.toFixed() %>, <%= assets4_4.indicators[4].D2019_04_01.toFixed() %>, <%= assets4_4.indicators[4].D2019_07_01.toFixed() %>, <%= assets4_4.indicators[4].D2019_10_01.toFixed() %>, <%= assets4_4.indicators[4].D2020_01_01.toFixed() %>, <%= assets4_4.indicators[4].D2020_04_01.toFixed() %>, <%= assets4_4.indicators[4].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets4_4.indicators[4].D2018_04_01.toFixed() %>', '<%= assets4_4.indicators[4].D2018_07_01.toFixed() %>', '<%= assets4_4.indicators[4].D2018_10_01.toFixed() %>', '<%= assets4_4.indicators[4].D2019_01_01.toFixed() %>', '<%= assets4_4.indicators[4].D2019_04_01.toFixed() %>', '<%= assets4_4.indicators[4].D2019_07_01.toFixed() %>', '<%= assets4_4.indicators[4].D2019_10_01.toFixed() %>', '<%= assets4_4.indicators[4].D2020_01_01.toFixed() %>', '<%= assets4_4.indicators[4].D2020_04_01.toFixed() %>', '<%= assets4_4.indicators[4].D2020_07_01.toFixed() %>', '<%= assets4_4.indicators[4].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets4_4.indicators[5].items %>',
                                     backgroundColor: "#e6e600",
-                                    data: [<%= assets4_4.indicators[5].D2018_01_01.toFixed() %>, <%= assets4_4.indicators[5].D2018_04_01.toFixed() %>, <%= assets4_4.indicators[5].D2018_07_01.toFixed() %>, <%= assets4_4.indicators[5].D2018_10_01.toFixed() %>, <%= assets4_4.indicators[5].D2019_01_01.toFixed() %>, <%= assets4_4.indicators[5].D2019_04_01.toFixed() %>, <%= assets4_4.indicators[5].D2019_07_01.toFixed() %>, <%= assets4_4.indicators[5].D2019_10_01.toFixed() %>, <%= assets4_4.indicators[5].D2020_01_01.toFixed() %>, <%= assets4_4.indicators[5].D2020_04_01.toFixed() %>, <%= assets4_4.indicators[5].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets4_4.indicators[5].D2018_04_01.toFixed() %>', '<%= assets4_4.indicators[5].D2018_07_01.toFixed() %>', '<%= assets4_4.indicators[5].D2018_10_01.toFixed() %>', '<%= assets4_4.indicators[5].D2019_01_01.toFixed() %>', '<%= assets4_4.indicators[5].D2019_04_01.toFixed() %>', '<%= assets4_4.indicators[5].D2019_07_01.toFixed() %>', '<%= assets4_4.indicators[5].D2019_10_01.toFixed() %>', '<%= assets4_4.indicators[5].D2020_01_01.toFixed() %>', '<%= assets4_4.indicators[5].D2020_04_01.toFixed() %>', '<%= assets4_4.indicators[5].D2020_07_01.toFixed() %>', '<%= assets4_4.indicators[5].D2020_10_01.toFixed() %>'],
                                 }],
                             },
                             options: {
@@ -896,8 +905,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -908,6 +916,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% assets4_4.indicators.forEach(function(asset) { %>
@@ -915,9 +924,6 @@
                                         <tr>
                                             <td>
                                                 <%= asset.items %>
-                                            </td>
-                                            <td>
-                                                <%= asset.D2018_01_01.toLocaleString() %>
                                             </td>
                                             <td>
                                                 <%= asset.D2018_04_01.toLocaleString() %>
@@ -949,6 +955,9 @@
                                             <td>
                                                 <%= asset.D2020_07_01.toLocaleString() %>
                                             </td>
+                                            <td>
+                                                <%= asset.D2020_10_01.toLocaleString() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -969,33 +978,33 @@
                         var ctx5_5 = document.getElementById("assets5_5").getContext('2d');
                         Chart.defaults.global.animation.duration = 1000
                         var chart5_5 = new Chart(ctx5_5, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= assets5_5.indicators[3].items %>',
                                     backgroundColor: '#ffa31a',
-                                    data: [<%= assets5_5.indicators[3].D2018_01_01.toFixed() %>, <%= assets5_5.indicators[3].D2018_04_01.toFixed() %>, <%= assets5_5.indicators[3].D2018_07_01.toFixed() %>, <%= assets5_5.indicators[3].D2018_10_01.toFixed() %>, <%= assets5_5.indicators[3].D2019_01_01.toFixed() %>, <%= assets5_5.indicators[3].D2019_04_01.toFixed() %>, <%= assets5_5.indicators[3].D2019_07_01.toFixed() %>, <%= assets5_5.indicators[3].D2019_10_01.toFixed() %>, <%= assets5_5.indicators[3].D2020_01_01.toFixed() %>, <%= assets5_5.indicators[3].D2020_04_01.toFixed() %>, <%= assets5_5.indicators[3].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets5_5.indicators[3].D2018_04_01.toFixed() %>', '<%= assets5_5.indicators[3].D2018_07_01.toFixed() %>', '<%= assets5_5.indicators[3].D2018_10_01.toFixed() %>', '<%= assets5_5.indicators[3].D2019_01_01.toFixed() %>', '<%= assets5_5.indicators[3].D2019_04_01.toFixed() %>', '<%= assets5_5.indicators[3].D2019_07_01.toFixed() %>', '<%= assets5_5.indicators[3].D2019_10_01.toFixed() %>', '<%= assets5_5.indicators[3].D2020_01_01.toFixed() %>', '<%= assets5_5.indicators[3].D2020_04_01.toFixed() %>', '<%= assets5_5.indicators[3].D2020_07_01.toFixed() %>', '<%= assets5_5.indicators[3].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets5_5.indicators[0].items %>',
                                     backgroundColor: "#47d147",
-                                    data: [<%= assets5_5.indicators[0].D2018_01_01.toFixed() %>, <%= assets5_5.indicators[0].D2018_04_01.toFixed() %>, <%= assets5_5.indicators[0].D2018_07_01.toFixed() %>, <%= assets5_5.indicators[0].D2018_10_01.toFixed() %>, <%= assets5_5.indicators[0].D2019_01_01.toFixed() %>, <%= assets5_5.indicators[0].D2019_04_01.toFixed() %>, <%= assets5_5.indicators[0].D2019_07_01.toFixed() %>, <%= assets5_5.indicators[0].D2019_10_01.toFixed() %>, <%= assets5_5.indicators[0].D2020_01_01.toFixed() %>, <%= assets5_5.indicators[0].D2020_04_01.toFixed() %>, <%= assets5_5.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets5_5.indicators[0].D2018_04_01.toFixed() %>', '<%= assets5_5.indicators[0].D2018_07_01.toFixed() %>', '<%= assets5_5.indicators[0].D2018_10_01.toFixed() %>', '<%= assets5_5.indicators[0].D2019_01_01.toFixed() %>', '<%= assets5_5.indicators[0].D2019_04_01.toFixed() %>', '<%= assets5_5.indicators[0].D2019_07_01.toFixed() %>', '<%= assets5_5.indicators[0].D2019_10_01.toFixed() %>', '<%= assets5_5.indicators[0].D2020_01_01.toFixed() %>', '<%= assets5_5.indicators[0].D2020_04_01.toFixed() %>', '<%= assets5_5.indicators[0].D2020_07_01.toFixed() %>', '<%= assets5_5.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets5_5.indicators[1].items %>',
                                     backgroundColor: "#ff4d4d",
-                                    data: [<%= assets5_5.indicators[1].D2018_01_01.toFixed() %>, <%= assets5_5.indicators[1].D2018_04_01.toFixed() %>, <%= assets5_5.indicators[1].D2018_07_01.toFixed() %>, <%= assets5_5.indicators[1].D2018_10_01.toFixed() %>, <%= assets5_5.indicators[1].D2019_01_01.toFixed() %>, <%= assets5_5.indicators[1].D2019_04_01.toFixed() %>, <%= assets5_5.indicators[1].D2019_07_01.toFixed() %>, <%= assets5_5.indicators[1].D2019_10_01.toFixed() %>, <%= assets5_5.indicators[1].D2020_01_01.toFixed() %>, <%= assets5_5.indicators[1].D2020_04_01.toFixed() %>, <%= assets5_5.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets5_5.indicators[1].D2018_04_01.toFixed() %>', '<%= assets5_5.indicators[1].D2018_07_01.toFixed() %>', '<%= assets5_5.indicators[1].D2018_10_01.toFixed() %>', '<%= assets5_5.indicators[1].D2019_01_01.toFixed() %>', '<%= assets5_5.indicators[1].D2019_04_01.toFixed() %>', '<%= assets5_5.indicators[1].D2019_07_01.toFixed() %>', '<%= assets5_5.indicators[1].D2019_10_01.toFixed() %>', '<%= assets5_5.indicators[1].D2020_01_01.toFixed() %>', '<%= assets5_5.indicators[1].D2020_04_01.toFixed() %>', '<%= assets5_5.indicators[1].D2020_07_01.toFixed() %>', '<%= assets5_5.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets5_5.indicators[2].items %>',
                                     backgroundColor: "#4d4dff",
-                                    data: [<%= assets5_5.indicators[2].D2018_01_01.toFixed() %>, <%= assets5_5.indicators[2].D2018_04_01.toFixed() %>, <%= assets5_5.indicators[2].D2018_07_01.toFixed() %>, <%= assets5_5.indicators[2].D2018_10_01.toFixed() %>, <%= assets5_5.indicators[2].D2019_01_01.toFixed() %>, <%= assets5_5.indicators[2].D2019_04_01.toFixed() %>, <%= assets5_5.indicators[2].D2019_07_01.toFixed() %>, <%= assets5_5.indicators[2].D2019_10_01.toFixed() %>, <%= assets5_5.indicators[2].D2020_01_01.toFixed() %>, <%= assets5_5.indicators[2].D2020_04_01.toFixed() %>, <%= assets5_5.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets5_5.indicators[2].D2018_04_01.toFixed() %>', '<%= assets5_5.indicators[2].D2018_07_01.toFixed() %>', '<%= assets5_5.indicators[2].D2018_10_01.toFixed() %>', '<%= assets5_5.indicators[2].D2019_01_01.toFixed() %>', '<%= assets5_5.indicators[2].D2019_04_01.toFixed() %>', '<%= assets5_5.indicators[2].D2019_07_01.toFixed() %>', ' <%= assets5_5.indicators[2].D2019_10_01.toFixed() %>', '<%= assets5_5.indicators[2].D2020_01_01.toFixed() %>', '<%= assets5_5.indicators[2].D2020_04_01.toFixed() %>', '<%= assets5_5.indicators[2].D2020_07_01.toFixed() %>', '<%= assets5_5.indicators[2].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets5_5.indicators[4].items %>',
                                     backgroundColor: "#e6e600",
-                                    data: [<%= assets5_5.indicators[4].D2018_01_01.toFixed() %>, <%= assets5_5.indicators[4].D2018_04_01.toFixed() %>, <%= assets5_5.indicators[4].D2018_07_01.toFixed() %>, <%= assets5_5.indicators[4].D2018_10_01.toFixed() %>, <%= assets5_5.indicators[4].D2019_01_01.toFixed() %>, <%= assets5_5.indicators[4].D2019_04_01.toFixed() %>, <%= assets5_5.indicators[4].D2019_07_01.toFixed() %>, <%= assets5_5.indicators[4].D2019_10_01.toFixed() %>, <%= assets5_5.indicators[4].D2020_01_01.toFixed() %>, <%= assets5_5.indicators[4].D2020_04_01.toFixed() %>, <%= assets5_5.indicators[4].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets5_5.indicators[4].D2018_04_01.toFixed() %>', '<%= assets5_5.indicators[4].D2018_07_01.toFixed() %>', '<%= assets5_5.indicators[4].D2018_10_01.toFixed() %>', '<%= assets5_5.indicators[4].D2019_01_01.toFixed() %>', ' <%= assets5_5.indicators[4].D2019_04_01.toFixed() %>', '<%= assets5_5.indicators[4].D2019_07_01.toFixed() %>', ' <%= assets5_5.indicators[4].D2019_10_01.toFixed() %>', '<%= assets5_5.indicators[4].D2020_01_01.toFixed() %>', '<%= assets5_5.indicators[4].D2020_04_01.toFixed() %>', '<%= assets5_5.indicators[4].D2020_07_01.toFixed() %>', '<%= assets5_5.indicators[4].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets5_5.indicators[5].items %>',
                                     backgroundColor: "#e600e6",
-                                    data: [<%= assets5_5.indicators[5].D2018_01_01.toFixed() %>, <%= assets5_5.indicators[5].D2018_04_01.toFixed() %>, <%= assets5_5.indicators[5].D2018_07_01.toFixed() %>, <%= assets5_5.indicators[5].D2018_10_01.toFixed() %>, <%= assets5_5.indicators[5].D2019_01_01.toFixed() %>, <%= assets5_5.indicators[5].D2019_04_01.toFixed() %>, <%= assets5_5.indicators[5].D2019_07_01.toFixed() %>, <%= assets5_5.indicators[5].D2019_10_01.toFixed() %>, <%= assets5_5.indicators[5].D2020_01_01.toFixed() %>, <%= assets5_5.indicators[5].D2020_04_01.toFixed() %>, <%= assets5_5.indicators[5].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets5_5.indicators[5].D2018_04_01.toFixed() %>', '<%= assets5_5.indicators[5].D2018_07_01.toFixed() %>', '<%= assets5_5.indicators[5].D2018_10_01.toFixed() %>', '<%= assets5_5.indicators[5].D2019_01_01.toFixed() %>', '<%= assets5_5.indicators[5].D2019_04_01.toFixed() %>', '<%= assets5_5.indicators[5].D2019_07_01.toFixed() %>', '<%= assets5_5.indicators[5].D2019_10_01.toFixed() %>', '<%= assets5_5.indicators[5].D2020_01_01.toFixed() %>', '<%= assets5_5.indicators[5].D2020_04_01.toFixed() %>', '<%= assets5_5.indicators[5].D2020_07_01.toFixed() %>', '<%= assets5_5.indicators[5].D2020_10_01.toFixed() %>'],
                                 }],
                             },
                             options: {
@@ -1033,8 +1042,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -1045,6 +1053,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% assets5_5.indicators.forEach(function(asset) { %>
@@ -1052,9 +1061,6 @@
                                         <tr>
                                             <td>
                                                 <%= asset.items %>
-                                            </td>
-                                            <td>
-                                                <%= asset.D2018_01_01.toLocaleString() %>
                                             </td>
                                             <td>
                                                 <%= asset.D2018_04_01.toLocaleString() %>
@@ -1086,6 +1092,9 @@
                                             <td>
                                                 <%= asset.D2020_07_01.toLocaleString() %>
                                             </td>
+                                            <td>
+                                                <%= asset.D2020_10_01.toLocaleString() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -1108,32 +1117,32 @@
                         var ctx6_6 = document.getElementById("assets6_6").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chart6_6 = new Chart(ctx6_6, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= assets6_6.indicators[0].items %>',
                                     backgroundColor: "#47d147",
                                     borderColor: '#47d147',
-                                    data: [<%= assets6_6.indicators[0].D2018_01_01.toFixed() %>, <%= assets6_6.indicators[0].D2018_04_01.toFixed() %>, <%= assets6_6.indicators[0].D2018_07_01.toFixed() %>, <%= assets6_6.indicators[0].D2018_10_01.toFixed() %>, <%= assets6_6.indicators[0].D2019_01_01.toFixed() %>, <%= assets6_6.indicators[0].D2019_04_01.toFixed() %>, <%= assets6_6.indicators[0].D2019_07_01.toFixed() %>, <%= assets6_6.indicators[0].D2019_10_01.toFixed() %>, <%= assets6_6.indicators[0].D2020_01_01.toFixed() %>, <%= assets6_6.indicators[0].D2020_04_01.toFixed() %>, <%= assets6_6.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets6_6.indicators[0].D2018_04_01.toFixed() %>', '<%= assets6_6.indicators[0].D2018_07_01.toFixed() %>', '<%= assets6_6.indicators[0].D2018_10_01.toFixed() %>', '<%= assets6_6.indicators[0].D2019_01_01.toFixed() %>', '<%= assets6_6.indicators[0].D2019_04_01.toFixed() %>', '<%= assets6_6.indicators[0].D2019_07_01.toFixed() %>', '<%= assets6_6.indicators[0].D2019_10_01.toFixed() %>', '<%= assets6_6.indicators[0].D2020_01_01.toFixed() %>', '<%= assets6_6.indicators[0].D2020_04_01.toFixed() %>', '<%= assets6_6.indicators[0].D2020_07_01.toFixed() %>', '<%= assets6_6.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets6_6.indicators[1].items %>',
                                     fill: false,
                                     backgroundColor: "#ff4d4d",
                                     borderColor: '#ff4d4d',
-                                    data: [<%= assets6_6.indicators[1].D2018_01_01.toFixed() %>, <%= assets6_6.indicators[1].D2018_04_01.toFixed() %>, <%= assets6_6.indicators[1].D2018_07_01.toFixed() %>, <%= assets6_6.indicators[1].D2018_10_01.toFixed() %>, <%= assets6_6.indicators[1].D2019_01_01.toFixed() %>, <%= assets6_6.indicators[1].D2019_04_01.toFixed() %>, <%= assets6_6.indicators[1].D2019_07_01.toFixed() %>, <%= assets6_6.indicators[1].D2019_10_01.toFixed() %>, <%= assets6_6.indicators[1].D2020_01_01.toFixed() %>, <%= assets6_6.indicators[1].D2020_04_01.toFixed() %>, <%= assets6_6.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets6_6.indicators[1].D2018_04_01.toFixed() %>', '<%= assets6_6.indicators[1].D2018_07_01.toFixed() %>', '<%= assets6_6.indicators[1].D2018_10_01.toFixed() %>', '<%= assets6_6.indicators[1].D2019_01_01.toFixed() %>', '<%= assets6_6.indicators[1].D2019_04_01.toFixed() %>', '<%= assets6_6.indicators[1].D2019_07_01.toFixed() %>', '<%= assets6_6.indicators[1].D2019_10_01.toFixed() %>', '<%= assets6_6.indicators[1].D2020_01_01.toFixed() %>', '<%= assets6_6.indicators[1].D2020_04_01.toFixed() %>', '<%= assets6_6.indicators[1].D2020_07_01.toFixed() %>', '<%= assets6_6.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets6_6.indicators[2].items %>',
                                     fill: false,
                                     backgroundColor: "#4d4dff",
                                     borderColor: "#4d4dff",
-                                    data: [<%= assets6_6.indicators[2].D2018_01_01.toFixed() %>, <%= assets6_6.indicators[2].D2018_04_01.toFixed() %>, <%= assets6_6.indicators[2].D2018_07_01.toFixed() %>, <%= assets6_6.indicators[2].D2018_10_01.toFixed() %>, <%= assets6_6.indicators[2].D2019_01_01.toFixed() %>, <%= assets6_6.indicators[2].D2019_04_01.toFixed() %>, <%= assets6_6.indicators[2].D2019_07_01.toFixed() %>, <%= assets6_6.indicators[2].D2019_10_01.toFixed() %>, <%= assets6_6.indicators[2].D2020_01_01.toFixed() %>, <%= assets6_6.indicators[2].D2020_04_01.toFixed() %>, <%= assets6_6.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets6_6.indicators[2].D2018_04_01.toFixed() %>', '<%= assets6_6.indicators[2].D2018_07_01.toFixed() %>', '<%= assets6_6.indicators[2].D2018_10_01.toFixed() %>', '<%= assets6_6.indicators[2].D2019_01_01.toFixed() %>', '<%= assets6_6.indicators[2].D2019_04_01.toFixed() %>', '<%= assets6_6.indicators[2].D2019_07_01.toFixed() %>', '<%= assets6_6.indicators[2].D2019_10_01.toFixed() %>', '<%= assets6_6.indicators[2].D2020_01_01.toFixed() %>', '<%= assets6_6.indicators[2].D2020_04_01.toFixed() %>', '<%= assets6_6.indicators[2].D2020_07_01.toFixed() %>', '<%= assets6_6.indicators[2].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets6_6.indicators[3].items %>',
                                     fill: false,
                                     backgroundColor: '#ffa31a',
                                     borderColor: '#ffa31a',
-                                    data: [<%= assets6_6.indicators[3].D2018_01_01.toFixed() %>, <%= assets6_6.indicators[3].D2018_04_01.toFixed() %>, <%= assets6_6.indicators[3].D2018_07_01.toFixed() %>, <%= assets6_6.indicators[3].D2018_10_01.toFixed() %>, <%= assets6_6.indicators[3].D2019_01_01.toFixed() %>, <%= assets6_6.indicators[3].D2019_04_01.toFixed() %>, <%= assets6_6.indicators[3].D2019_07_01.toFixed() %>, <%= assets6_6.indicators[3].D2019_10_01.toFixed() %>, <%= assets6_6.indicators[3].D2020_01_01.toFixed() %>, <%= assets6_6.indicators[3].D2020_04_01.toFixed() %>, <%= assets6_6.indicators[3].D2020_07_01.toFixed() %>],
+                                    data: ['<%= assets6_6.indicators[3].D2018_04_01.toFixed() %>', '<%= assets6_6.indicators[3].D2018_07_01.toFixed() %>', '<%= assets6_6.indicators[3].D2018_10_01.toFixed() %>', '<%= assets6_6.indicators[3].D2019_01_01.toFixed() %>', ' <%= assets6_6.indicators[3].D2019_04_01.toFixed() %>', '<%= assets6_6.indicators[3].D2019_07_01.toFixed() %>', ' <%= assets6_6.indicators[3].D2019_10_01.toFixed() %>', '<%= assets6_6.indicators[3].D2020_01_01.toFixed() %>', '<%= assets6_6.indicators[3].D2020_04_01.toFixed() %>', '<%= assets6_6.indicators[3].D2020_07_01.toFixed() %>', '<%= assets6_6.indicators[3].D2020_10_01.toFixed() %>'],
                                 }, ],
                             },
                             options: {
@@ -1179,8 +1188,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -1191,6 +1199,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% assets6_6.indicators.forEach(function(asset) { %>
@@ -1198,9 +1207,6 @@
                                         <tr>
                                             <td>
                                                 <%= asset.items %>
-                                            </td>
-                                            <td>
-                                                <%= asset.D2018_01_01.toLocaleString() %>
                                             </td>
                                             <td>
                                                 <%= asset.D2018_04_01.toLocaleString() %>
@@ -1232,6 +1238,9 @@
                                             <td>
                                                 <%= asset.D2020_07_01.toLocaleString() %>
                                             </td>
+                                            <td>
+                                                <%= asset.D2020_10_01.toLocaleString() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -1245,11 +1254,11 @@
                         <thead>
                             <tr>
                                 <th rowspan="2"></th>
-                                <th colspan="2">2019_07_01</th>
                                 <th colspan="2">2019_10_01</th>
                                 <th colspan="2">2020_01_01</th>
                                 <th colspan="2">2020_04_01</th>
                                 <th colspan="2">2020_07_01</th>
+                                <th colspan="2">2020_10_01</th>
                             </tr>
                             <tr>
                                 <th>Система</th>
@@ -1267,48 +1276,48 @@
                         <tbody>
                             <tr>
                                 <td>Кошти Юр.осіб/Пасиви,%</td>
-                                <td>29,13</td>
-                                <td>
-                                    <%= ((liabilities2_2.indicators[0].D2019_07_01 / liabilities0_0.indicators[2].D2019_07_01)*100).toFixed(2) %>
-                                </td>
-                                <td>29,74</td>
+                                <td>29.74</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[0].D2019_10_01 / liabilities0_0.indicators[2].D2019_10_01)*100).toFixed(2) %>
                                 </td>
-                                <td>31,32</td>
+                                <td>31.32</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[0].D2020_01_01 / liabilities0_0.indicators[2].D2020_01_01)*100).toFixed(2) %>
                                 </td>
-                                <td>33,36</td>
+                                <td>33.36</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[0].D2020_04_01 / liabilities0_0.indicators[2].D2020_04_01)*100).toFixed(2) %>
                                 </td>
-                                <td>33,52</td>
+                                <td>33.52</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[0].D2020_07_01 / liabilities0_0.indicators[2].D2020_07_01)*100).toFixed(2) %>
+                                </td>
+                                <td>34.69</td>
+                                <td>
+                                    <%= ((liabilities2_2.indicators[0].D2020_07_01 / liabilities0_0.indicators[2].D2020_10_01)*100).toFixed(2) %>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Кошти Фіз.осіб/Пасиви,%</td>
-                                <td>38,47</td>
-                                <td>
-                                    <%= ((liabilities2_2.indicators[2].D2019_07_01 / liabilities0_0.indicators[2].D2019_07_01)*100).toFixed(2) %>
-                                </td>
-                                <td>38,88</td>
+                                <td>38.88</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[2].D2019_10_01 / liabilities0_0.indicators[2].D2019_10_01)*100).toFixed(2) %>
                                 </td>
-                                <td>37,67</td>
+                                <td>37.67</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[2].D2020_01_01 / liabilities0_0.indicators[2].D2020_01_01)*100).toFixed(2) %>
                                 </td>
-                                <td>36,97</td>
+                                <td>36.97</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[2].D2020_04_01 / liabilities0_0.indicators[2].D2020_04_01)*100).toFixed(2) %>
                                 </td>
-                                <td>39,38</td>
+                                <td>39.38</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[2].D2020_07_01 / liabilities0_0.indicators[2].D2020_07_01)*100).toFixed(2) %>
+                                </td>
+                                <td>38.02</td>
+                                <td>
+                                    <%= ((liabilities2_2.indicators[2].D2020_10_01 / liabilities0_0.indicators[2].D2020_10_01)*100).toFixed(2) %>
                                 </td>
                             </tr>
                         </tbody>
@@ -1335,26 +1344,26 @@
                         var ctxliabil0_0 = document.getElementById("liabilit0_0").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartliabil0_0 = new Chart(ctxliabil0_0, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= liabilities0_0.indicators[0].items %>',
                                     backgroundColor: "#47d147",
                                     borderColor: '#47d147',
-                                    data: [<%= liabilities0_0.indicators[0].D2018_01_01.toFixed() %>, <%= liabilities0_0.indicators[0].D2018_04_01.toFixed() %>, <%= liabilities0_0.indicators[0].D2018_07_01.toFixed() %>, <%= liabilities0_0.indicators[0].D2018_10_01.toFixed() %>, <%= liabilities0_0.indicators[0].D2019_01_01.toFixed() %>, <%= liabilities0_0.indicators[0].D2019_04_01.toFixed() %>, <%= liabilities0_0.indicators[0].D2019_07_01.toFixed() %>, <%= liabilities0_0.indicators[0].D2019_10_01.toFixed() %>, <%= liabilities0_0.indicators[0].D2020_01_01.toFixed() %>, <%= liabilities0_0.indicators[0].D2020_04_01.toFixed() %>, <%= liabilities0_0.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= liabilities0_0.indicators[0].D2018_04_01.toFixed() %>', '<%= liabilities0_0.indicators[0].D2018_07_01.toFixed() %>', '<%= liabilities0_0.indicators[0].D2018_10_01.toFixed() %>', '<%= liabilities0_0.indicators[0].D2019_01_01.toFixed() %>', '<%= liabilities0_0.indicators[0].D2019_04_01.toFixed() %>', '<%= liabilities0_0.indicators[0].D2019_07_01.toFixed() %>', '<%= liabilities0_0.indicators[0].D2019_10_01.toFixed() %>', '<%= liabilities0_0.indicators[0].D2020_01_01.toFixed() %>', '<%= liabilities0_0.indicators[0].D2020_04_01.toFixed() %>', '<%= liabilities0_0.indicators[0].D2020_07_01.toFixed() %>', '<%= liabilities0_0.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= liabilities0_0.indicators[1].items %>',
                                     fill: false,
                                     backgroundColor: "#ff4d4d",
                                     borderColor: '#ff4d4d',
-                                    data: [<%= liabilities0_0.indicators[1].D2018_01_01.toFixed() %>, <%= liabilities0_0.indicators[1].D2018_04_01.toFixed() %>, <%= liabilities0_0.indicators[1].D2018_07_01.toFixed() %>, <%= liabilities0_0.indicators[1].D2018_10_01.toFixed() %>, <%= liabilities0_0.indicators[1].D2019_01_01.toFixed() %>, <%= liabilities0_0.indicators[1].D2019_04_01.toFixed() %>, <%= liabilities0_0.indicators[1].D2019_07_01.toFixed() %>, <%= liabilities0_0.indicators[1].D2019_10_01.toFixed() %>, <%= liabilities0_0.indicators[1].D2020_01_01.toFixed() %>, <%= liabilities0_0.indicators[1].D2020_04_01.toFixed() %>, <%= liabilities0_0.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= liabilities0_0.indicators[1].D2018_04_01.toFixed() %>', '<%= liabilities0_0.indicators[1].D2018_07_01.toFixed() %>', '<%= liabilities0_0.indicators[1].D2018_10_01.toFixed() %>', '<%= liabilities0_0.indicators[1].D2019_01_01.toFixed() %>', '<%= liabilities0_0.indicators[1].D2019_04_01.toFixed() %>', '<%= liabilities0_0.indicators[1].D2019_07_01.toFixed() %>', '<%= liabilities0_0.indicators[1].D2019_10_01.toFixed() %>', '<%= liabilities0_0.indicators[1].D2020_01_01.toFixed() %>', '<%= liabilities0_0.indicators[1].D2020_04_01.toFixed() %>', '<%= liabilities0_0.indicators[1].D2020_07_01.toFixed() %>', '<%= liabilities0_0.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= liabilities0_0.indicators[2].items %>',
                                     fill: false,
                                     backgroundColor: "#4d4dff",
                                     borderColor: "#4d4dff",
-                                    data: [<%= liabilities0_0.indicators[2].D2018_01_01.toFixed() %>, <%= liabilities0_0.indicators[2].D2018_04_01.toFixed() %>, <%= liabilities0_0.indicators[2].D2018_07_01.toFixed() %>, <%= liabilities0_0.indicators[2].D2018_10_01.toFixed() %>, <%= liabilities0_0.indicators[2].D2019_01_01.toFixed() %>, <%= liabilities0_0.indicators[2].D2019_04_01.toFixed() %>, <%= liabilities0_0.indicators[2].D2019_07_01.toFixed() %>, <%= liabilities0_0.indicators[2].D2019_10_01.toFixed() %>, <%= liabilities0_0.indicators[2].D2020_01_01.toFixed() %>, <%= liabilities0_0.indicators[2].D2020_04_01.toFixed() %>, <%= liabilities0_0.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= liabilities0_0.indicators[2].D2018_04_01.toFixed() %>', '<%= liabilities0_0.indicators[2].D2018_07_01.toFixed() %>', '<%= liabilities0_0.indicators[2].D2018_10_01.toFixed() %>', '<%= liabilities0_0.indicators[2].D2019_01_01.toFixed() %>', '<%= liabilities0_0.indicators[2].D2019_04_01.toFixed() %>', '<%= liabilities0_0.indicators[2].D2019_07_01.toFixed() %>', '<%= liabilities0_0.indicators[2].D2019_10_01.toFixed() %>', '<%= liabilities0_0.indicators[2].D2020_01_01.toFixed() %>', '<%= liabilities0_0.indicators[2].D2020_04_01.toFixed() %>', '<%= liabilities0_0.indicators[2].D2020_07_01.toFixed() %>', '<%= liabilities0_0.indicators[2].D2020_10_01.toFixed() %>'],
                                 }],
                             },
                             options: {
@@ -1401,8 +1410,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -1413,6 +1421,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% liabilities0_0.indicators.forEach(function(liabilit) { %>
@@ -1420,9 +1429,6 @@
                                         <tr>
                                             <td>
                                                 <%= liabilit.items %>
-                                            </td>
-                                            <td>
-                                                <%= liabilit.D2018_01_01.toFixed() %>
                                             </td>
                                             <td>
                                                 <%= liabilit.D2018_04_01.toFixed() %>
@@ -1454,6 +1460,9 @@
                                             <td>
                                                 <%= liabilit.D2020_07_01.toFixed() %>
                                             </td>
+                                            <td>
+                                                <%= liabilit.D2020_10_01.toFixed() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -1477,38 +1486,38 @@
                         var ctxliabil1_1 = document.getElementById("liabilit1_1").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartliabil1_1 = new Chart(ctxliabil1_1, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= liabilities1_1.indicators[0].items %>',
                                     backgroundColor: "#47d147",
                                     borderColor: '#47d147',
-                                    data: [<%= liabilities1_1.indicators[0].D2018_01_01.toFixed() %>, <%= liabilities1_1.indicators[0].D2018_04_01.toFixed() %>, <%= liabilities1_1.indicators[0].D2018_07_01.toFixed() %>, <%= liabilities1_1.indicators[0].D2018_10_01.toFixed() %>, <%= liabilities1_1.indicators[0].D2019_01_01.toFixed() %>, <%= liabilities1_1.indicators[0].D2019_04_01.toFixed() %>, <%= liabilities1_1.indicators[0].D2019_07_01.toFixed() %>, <%= liabilities1_1.indicators[0].D2019_10_01.toFixed() %>, <%= liabilities1_1.indicators[0].D2020_01_01.toFixed() %>, <%= liabilities1_1.indicators[0].D2020_04_01.toFixed() %>, <%= liabilities1_1.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= liabilities1_1.indicators[0].D2018_04_01.toFixed() %>', '<%= liabilities1_1.indicators[0].D2018_07_01.toFixed() %>', '<%= liabilities1_1.indicators[0].D2018_10_01.toFixed() %>', '<%= liabilities1_1.indicators[0].D2019_01_01.toFixed() %>', '<%= liabilities1_1.indicators[0].D2019_04_01.toFixed() %>', '<%= liabilities1_1.indicators[0].D2019_07_01.toFixed() %>', '<%= liabilities1_1.indicators[0].D2019_10_01.toFixed() %>', '<%= liabilities1_1.indicators[0].D2020_01_01.toFixed() %>', '<%= liabilities1_1.indicators[0].D2020_04_01.toFixed() %>', '<%= liabilities1_1.indicators[0].D2020_07_01.toFixed() %>', '<%= liabilities1_1.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= liabilities1_1.indicators[1].items %>',
                                     fill: false,
                                     backgroundColor: "#ff4d4d",
                                     borderColor: '#ff4d4d',
-                                    data: [<%= liabilities1_1.indicators[1].D2018_01_01.toFixed() %>, <%= liabilities1_1.indicators[1].D2018_04_01.toFixed() %>, <%= liabilities1_1.indicators[1].D2018_07_01.toFixed() %>, <%= liabilities1_1.indicators[1].D2018_10_01.toFixed() %>, <%= liabilities1_1.indicators[1].D2019_01_01.toFixed() %>, <%= liabilities1_1.indicators[1].D2019_04_01.toFixed() %>, <%= liabilities1_1.indicators[1].D2019_07_01.toFixed() %>, <%= liabilities1_1.indicators[1].D2019_10_01.toFixed() %>, <%= liabilities1_1.indicators[1].D2020_01_01.toFixed() %>, <%= liabilities1_1.indicators[1].D2020_04_01.toFixed() %>, <%= liabilities1_1.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= liabilities1_1.indicators[1].D2018_04_01.toFixed() %>', '<%= liabilities1_1.indicators[1].D2018_07_01.toFixed() %>', '<%= liabilities1_1.indicators[1].D2018_10_01.toFixed() %>', '<%= liabilities1_1.indicators[1].D2019_01_01.toFixed() %>', '<%= liabilities1_1.indicators[1].D2019_04_01.toFixed() %>', '<%= liabilities1_1.indicators[1].D2019_07_01.toFixed() %>', '<%= liabilities1_1.indicators[1].D2019_10_01.toFixed() %>', '<%= liabilities1_1.indicators[1].D2020_01_01.toFixed() %>', '<%= liabilities1_1.indicators[1].D2020_04_01.toFixed() %>', '<%= liabilities1_1.indicators[1].D2020_07_01.toFixed() %>', '<%= liabilities1_1.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= liabilities1_1.indicators[2].items %>',
                                     fill: false,
                                     backgroundColor: "#4d4dff",
                                     borderColor: "#4d4dff",
-                                    data: [<%= liabilities1_1.indicators[2].D2018_01_01.toFixed() %>, <%= liabilities1_1.indicators[2].D2018_04_01.toFixed() %>, <%= liabilities1_1.indicators[2].D2018_07_01.toFixed() %>, <%= liabilities1_1.indicators[2].D2018_10_01.toFixed() %>, <%= liabilities1_1.indicators[2].D2019_01_01.toFixed() %>, <%= liabilities1_1.indicators[2].D2019_04_01.toFixed() %>, <%= liabilities1_1.indicators[2].D2019_07_01.toFixed() %>, <%= liabilities1_1.indicators[2].D2019_10_01.toFixed() %>, <%= liabilities1_1.indicators[2].D2020_01_01.toFixed() %>, <%= liabilities1_1.indicators[2].D2020_04_01.toFixed() %>, <%= liabilities1_1.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= liabilities1_1.indicators[2].D2018_04_01.toFixed() %>', '<%= liabilities1_1.indicators[2].D2018_07_01.toFixed() %>', '<%= liabilities1_1.indicators[2].D2018_10_01.toFixed() %>', '<%= liabilities1_1.indicators[2].D2019_01_01.toFixed() %>', '<%= liabilities1_1.indicators[2].D2019_04_01.toFixed() %>', '<%= liabilities1_1.indicators[2].D2019_07_01.toFixed() %>', '<%= liabilities1_1.indicators[2].D2019_10_01.toFixed() %>', '<%= liabilities1_1.indicators[2].D2020_01_01.toFixed() %>', '<%= liabilities1_1.indicators[2].D2020_04_01.toFixed() %>', '<%= liabilities1_1.indicators[2].D2020_07_01.toFixed() %>', '<%= liabilities1_1.indicators[2].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= liabilities1_1.indicators[3].items %>',
                                     fill: false,
                                     backgroundColor: "#ffa31a",
                                     borderColor: "#ffa31a",
-                                    data: [<%= liabilities1_1.indicators[3].D2018_01_01.toFixed() %>, <%= liabilities1_1.indicators[3].D2018_04_01.toFixed() %>, <%= liabilities1_1.indicators[3].D2018_07_01.toFixed() %>, <%= liabilities1_1.indicators[3].D2018_10_01.toFixed() %>, <%= liabilities1_1.indicators[3].D2019_01_01.toFixed() %>, <%= liabilities1_1.indicators[3].D2019_04_01.toFixed() %>, <%= liabilities1_1.indicators[3].D2019_07_01.toFixed() %>, <%= liabilities1_1.indicators[3].D2019_10_01.toFixed() %>, <%= liabilities1_1.indicators[3].D2020_01_01.toFixed() %>, <%= liabilities1_1.indicators[3].D2020_04_01.toFixed() %>, <%= liabilities1_1.indicators[3].D2020_07_01.toFixed() %>],
+                                    data: ['<%= liabilities1_1.indicators[3].D2018_04_01.toFixed() %>', '<%= liabilities1_1.indicators[3].D2018_07_01.toFixed() %>', '<%= liabilities1_1.indicators[3].D2018_10_01.toFixed() %>', '<%= liabilities1_1.indicators[3].D2019_01_01.toFixed() %>', '<%= liabilities1_1.indicators[3].D2019_04_01.toFixed() %>', '<%= liabilities1_1.indicators[3].D2019_07_01.toFixed() %>', '<%= liabilities1_1.indicators[3].D2019_10_01.toFixed() %>', '<%= liabilities1_1.indicators[3].D2020_01_01.toFixed() %>', '<%= liabilities1_1.indicators[3].D2020_04_01.toFixed() %>', '<%= liabilities1_1.indicators[3].D2020_07_01.toFixed() %>', '<%= liabilities1_1.indicators[3].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= liabilities1_1.indicators[4].items %>',
                                     fill: false,
                                     backgroundColor: "#e6e600",
                                     borderColor: "#e6e600",
-                                    data: [<%= liabilities1_1.indicators[4].D2018_01_01.toFixed() %>, <%= liabilities1_1.indicators[4].D2018_04_01.toFixed() %>, <%= liabilities1_1.indicators[4].D2018_07_01.toFixed() %>, <%= liabilities1_1.indicators[4].D2018_10_01.toFixed() %>, <%= liabilities1_1.indicators[4].D2019_01_01.toFixed() %>, <%= liabilities1_1.indicators[4].D2019_04_01.toFixed() %>, <%= liabilities1_1.indicators[4].D2019_07_01.toFixed() %>, <%= liabilities1_1.indicators[4].D2019_10_01.toFixed() %>, <%= liabilities1_1.indicators[4].D2020_01_01.toFixed() %>, <%= liabilities1_1.indicators[4].D2020_04_01.toFixed() %>, <%= liabilities1_1.indicators[4].D2020_07_01.toFixed() %>],
+                                    data: ['<%= liabilities1_1.indicators[4].D2018_04_01.toFixed() %>', '<%= liabilities1_1.indicators[4].D2018_07_01.toFixed() %>', '<%= liabilities1_1.indicators[4].D2018_10_01.toFixed() %>', '<%= liabilities1_1.indicators[4].D2019_01_01.toFixed() %>', '<%= liabilities1_1.indicators[4].D2019_04_01.toFixed() %>', '<%= liabilities1_1.indicators[4].D2019_07_01.toFixed() %>', '<%= liabilities1_1.indicators[4].D2019_10_01.toFixed() %>', '<%= liabilities1_1.indicators[4].D2020_01_01.toFixed() %>', '<%= liabilities1_1.indicators[4].D2020_04_01.toFixed() %>', '<%= liabilities1_1.indicators[4].D2020_07_01.toFixed() %>', '<%= liabilities1_1.indicators[4].D2020_10_01.toFixed() %>'],
                                 }],
                             },
                             options: {
@@ -1555,8 +1564,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -1567,6 +1575,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% liabilities1_1.indicators.forEach(function(liabilit) { %>
@@ -1574,9 +1583,6 @@
                                         <tr>
                                             <td>
                                                 <%= liabilit.items %>
-                                            </td>
-                                            <td>
-                                                <%= liabilit.D2018_01_01.toLocaleString() %>
                                             </td>
                                             <td>
                                                 <%= liabilit.D2018_04_01.toLocaleString() %>
@@ -1608,6 +1614,9 @@
                                             <td>
                                                 <%= liabilit.D2020_07_01.toLocaleString() %>
                                             </td>
+                                            <td>
+                                                <%= liabilit.D2020_10_01.toLocaleString() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -1631,32 +1640,32 @@
                         var ctxliabil2_2 = document.getElementById("liabilit2_2").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartliabil2_2 = new Chart(ctxliabil2_2, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= liabilities2_2.indicators[0].items %>',
                                     backgroundColor: "#47d147",
                                     borderColor: '#47d147',
-                                    data: [<%= liabilities2_2.indicators[0].D2018_01_01.toFixed() %>, <%= liabilities2_2.indicators[0].D2018_04_01.toFixed() %>, <%= liabilities2_2.indicators[0].D2018_07_01.toFixed() %>, <%= liabilities2_2.indicators[0].D2018_10_01.toFixed() %>, <%= liabilities2_2.indicators[0].D2019_01_01.toFixed() %>, <%= liabilities2_2.indicators[0].D2019_04_01.toFixed() %>, <%= liabilities2_2.indicators[0].D2019_07_01.toFixed() %>, <%= liabilities2_2.indicators[0].D2019_10_01.toFixed() %>, <%= liabilities2_2.indicators[0].D2020_01_01.toFixed() %>, <%= liabilities2_2.indicators[0].D2020_04_01.toFixed() %>, <%= liabilities2_2.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= liabilities2_2.indicators[0].D2018_04_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2018_07_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2018_10_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2019_01_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2019_04_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2019_07_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2019_10_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2020_01_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2020_04_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2020_07_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= liabilities2_2.indicators[1].items %>',
                                     fill: false,
                                     backgroundColor: "#ff4d4d",
                                     borderColor: '#ff4d4d',
-                                    data: [<%= liabilities2_2.indicators[1].D2018_01_01.toFixed() %>, <%= liabilities2_2.indicators[1].D2018_04_01.toFixed() %>, <%= liabilities2_2.indicators[1].D2018_07_01.toFixed() %>, <%= liabilities2_2.indicators[1].D2018_10_01.toFixed() %>, <%= liabilities2_2.indicators[1].D2019_01_01.toFixed() %>, <%= liabilities2_2.indicators[1].D2019_04_01.toFixed() %>, <%= liabilities2_2.indicators[1].D2019_07_01.toFixed() %>, <%= liabilities2_2.indicators[1].D2019_10_01.toFixed() %>, <%= liabilities2_2.indicators[1].D2020_01_01.toFixed() %>, <%= liabilities2_2.indicators[1].D2020_04_01.toFixed() %>, <%= liabilities2_2.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= liabilities2_2.indicators[1].D2018_04_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2018_07_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2018_10_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2019_01_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2019_04_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2019_07_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2019_10_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2020_01_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2020_04_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2020_07_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= liabilities2_2.indicators[2].items %>',
                                     fill: false,
                                     backgroundColor: "#4d4dff",
                                     borderColor: "#4d4dff",
-                                    data: [<%= liabilities2_2.indicators[2].D2018_01_01.toFixed() %>, <%= liabilities2_2.indicators[2].D2018_04_01.toFixed() %>, <%= liabilities2_2.indicators[2].D2018_07_01.toFixed() %>, <%= liabilities2_2.indicators[2].D2018_10_01.toFixed() %>, <%= liabilities2_2.indicators[2].D2019_01_01.toFixed() %>, <%= liabilities2_2.indicators[2].D2019_04_01.toFixed() %>, <%= liabilities2_2.indicators[2].D2019_07_01.toFixed() %>, <%= liabilities2_2.indicators[2].D2019_10_01.toFixed() %>, <%= liabilities2_2.indicators[2].D2020_01_01.toFixed() %>, <%= liabilities2_2.indicators[2].D2020_04_01.toFixed() %>, <%= liabilities2_2.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= liabilities2_2.indicators[2].D2018_04_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2018_07_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2018_10_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2019_01_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2019_04_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2019_07_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2019_10_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2020_01_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2020_04_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2020_07_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= liabilities2_2.indicators[3].items %>',
                                     fill: false,
                                     backgroundColor: "#ffa31a",
                                     borderColor: "#ffa31a",
-                                    data: [<%= liabilities2_2.indicators[3].D2018_01_01.toFixed() %>, <%= liabilities2_2.indicators[3].D2018_04_01.toFixed() %>, <%= liabilities2_2.indicators[3].D2018_07_01.toFixed() %>, <%= liabilities2_2.indicators[3].D2018_10_01.toFixed() %>, <%= liabilities2_2.indicators[3].D2019_01_01.toFixed() %>, <%= liabilities2_2.indicators[3].D2019_04_01.toFixed() %>, <%= liabilities2_2.indicators[3].D2019_07_01.toFixed() %>, <%= liabilities2_2.indicators[3].D2019_10_01.toFixed() %>, <%= liabilities2_2.indicators[3].D2020_01_01.toFixed() %>, <%= liabilities2_2.indicators[3].D2020_04_01.toFixed() %>, <%= liabilities2_2.indicators[3].D2020_07_01.toFixed() %>],
+                                    data: ['<%= liabilities2_2.indicators[3].D2018_04_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2018_07_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2018_10_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2019_01_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2019_04_01.toFixed() %>', ' <%= liabilities2_2.indicators[3].D2019_07_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2019_10_01.toFixed() %>', ' <%= liabilities2_2.indicators[3].D2020_01_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2020_04_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2020_07_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2020_10_01.toFixed() %>'],
                                 }],
                             },
                             options: {
@@ -1703,8 +1712,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -1715,6 +1723,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% liabilities2_2.indicators.forEach(function(liabilit) { %>
@@ -1722,9 +1731,6 @@
                                         <tr>
                                             <td>
                                                 <%= liabilit.items %>
-                                            </td>
-                                            <td>
-                                                <%= liabilit.D2018_01_01.toLocaleString() %>
                                             </td>
                                             <td>
                                                 <%= liabilit.D2018_04_01.toLocaleString() %>
@@ -1756,6 +1762,9 @@
                                             <td>
                                                 <%= liabilit.D2020_07_01.toLocaleString() %>
                                             </td>
+                                            <td>
+                                                <%= liabilit.D2020_10_01.toLocaleString() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -1769,11 +1778,11 @@
                         <thead>
                             <tr>
                                 <th rowspan="2"></th>
-                                <th colspan="2">2019_07_01</th>
                                 <th colspan="2">2019_10_01</th>
                                 <th colspan="2">2020_01_01</th>
                                 <th colspan="2">2020_04_01</th>
                                 <th colspan="2">2020_07_01</th>
+                                <th colspan="2">2020_10_01</th>
                             </tr>
                             <tr>
                                 <th>Система</th>
@@ -1791,25 +1800,25 @@
                         <tbody>
                             <tr>
                                 <td>Капітал/Статутний фонд,%</td>
-                                <td>36,5</td>
-                                <td>
-                                    <%= ((capital0_0.indicators[2].D2019_07_01 / capital0_0.indicators[0].D2019_07_01)*100).toFixed(2) %>
-                                </td>
-                                <td>35,46</td>
+                                <td>35.46</td>
                                 <td>
                                     <%= ((capital0_0.indicators[2].D2019_10_01 / capital0_0.indicators[0].D2019_10_01)*100).toFixed(2) %>
                                 </td>
-                                <td>39,55</td>
+                                <td>39.55</td>
                                 <td>
                                     <%= ((capital0_0.indicators[2].D2020_01_01 / capital0_0.indicators[0].D2020_01_01)*100).toFixed(2) %>
                                 </td>
-                                <td>42,47</td>
+                                <td>42.47</td>
                                 <td>
                                     <%= ((capital0_0.indicators[2].D2020_04_01 / capital0_0.indicators[0].D2020_04_01)*100).toFixed(2) %>
                                 </td>
-                                <td>41,58</td>
+                                <td>41.58</td>
                                 <td>
                                     <%= ((capital0_0.indicators[2].D2020_07_01 / capital0_0.indicators[0].D2020_07_01)*100).toFixed(2) %>
+                                </td>
+                                <td>43.32</td>
+                                <td>
+                                    <%= ((capital0_0.indicators[2].D2020_10_01 / capital0_0.indicators[0].D2020_10_01)*100).toFixed(2) %>
                                 </td>
                             </tr>
                         </tbody>
@@ -1833,26 +1842,26 @@
                         var ctxcapital0_0 = document.getElementById("capital0_0").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartcapital0_0 = new Chart(ctxcapital0_0, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= capital0_0.indicators[0].items %>',
                                     backgroundColor: "#47d147",
                                     borderColor: '#47d147',
-                                    data: [<%= capital0_0.indicators[0].D2018_01_01.toFixed() %>, <%= capital0_0.indicators[0].D2018_04_01.toFixed() %>, <%= capital0_0.indicators[0].D2018_07_01.toFixed() %>, <%= capital0_0.indicators[0].D2018_10_01.toFixed() %>, <%= capital0_0.indicators[0].D2019_01_01.toFixed() %>, <%= capital0_0.indicators[0].D2019_04_01.toFixed() %>, <%= capital0_0.indicators[0].D2019_07_01.toFixed() %>, <%= capital0_0.indicators[0].D2019_10_01.toFixed() %>, <%= capital0_0.indicators[0].D2020_01_01.toFixed() %>, <%= capital0_0.indicators[0].D2020_04_01.toFixed() %>, <%= capital0_0.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= capital0_0.indicators[0].D2018_04_01.toFixed() %>', '<%= capital0_0.indicators[0].D2018_07_01.toFixed() %>', '<%= capital0_0.indicators[0].D2018_10_01.toFixed() %>', '<%= capital0_0.indicators[0].D2019_01_01.toFixed() %>', '<%= capital0_0.indicators[0].D2019_04_01.toFixed() %>', ' <%= capital0_0.indicators[0].D2019_07_01.toFixed() %>', '<%= capital0_0.indicators[0].D2019_10_01.toFixed() %>', '<%= capital0_0.indicators[0].D2020_01_01.toFixed() %>', ' <%= capital0_0.indicators[0].D2020_04_01.toFixed() %>', '<%= capital0_0.indicators[0].D2020_07_01.toFixed() %>', '<%= capital0_0.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= capital0_0.indicators[1].items %>',
                                     fill: false,
                                     backgroundColor: "#ff4d4d",
                                     borderColor: '#ff4d4d',
-                                    data: [<%= capital0_0.indicators[1].D2018_01_01.toFixed() %>, <%= capital0_0.indicators[1].D2018_04_01.toFixed() %>, <%= capital0_0.indicators[1].D2018_07_01.toFixed() %>, <%= capital0_0.indicators[1].D2018_10_01.toFixed() %>, <%= capital0_0.indicators[1].D2019_01_01.toFixed() %>, <%= capital0_0.indicators[1].D2019_04_01.toFixed() %>, <%= capital0_0.indicators[1].D2019_07_01.toFixed() %>, <%= capital0_0.indicators[1].D2019_10_01.toFixed() %>, <%= capital0_0.indicators[1].D2020_01_01.toFixed() %>, <%= capital0_0.indicators[1].D2020_04_01.toFixed() %>, <%= capital0_0.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= capital0_0.indicators[1].D2018_04_01.toFixed() %>', '<%= capital0_0.indicators[1].D2018_07_01.toFixed() %>', '<%= capital0_0.indicators[1].D2018_10_01.toFixed() %>', '<%= capital0_0.indicators[1].D2019_01_01.toFixed() %>', '<%= capital0_0.indicators[1].D2019_04_01.toFixed() %>', '<%= capital0_0.indicators[1].D2019_07_01.toFixed() %>', '<%= capital0_0.indicators[1].D2019_10_01.toFixed() %>', '<%= capital0_0.indicators[1].D2020_01_01.toFixed() %>', '<%= capital0_0.indicators[1].D2020_04_01.toFixed() %>', '<%= capital0_0.indicators[1].D2020_07_01.toFixed() %>', '<%= capital0_0.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= capital0_0.indicators[2].items %>',
                                     fill: false,
                                     backgroundColor: "#4d4dff",
                                     borderColor: "#4d4dff",
-                                    data: [<%= capital0_0.indicators[2].D2018_01_01.toFixed() %>, <%= capital0_0.indicators[2].D2018_04_01.toFixed() %>, <%= capital0_0.indicators[2].D2018_07_01.toFixed() %>, <%= capital0_0.indicators[2].D2018_10_01.toFixed() %>, <%= capital0_0.indicators[2].D2019_01_01.toFixed() %>, <%= capital0_0.indicators[2].D2019_04_01.toFixed() %>, <%= capital0_0.indicators[2].D2019_07_01.toFixed() %>, <%= capital0_0.indicators[2].D2019_10_01.toFixed() %>, <%= capital0_0.indicators[2].D2020_01_01.toFixed() %>, <%= capital0_0.indicators[2].D2020_04_01.toFixed() %>, <%= capital0_0.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= capital0_0.indicators[2].D2018_04_01.toFixed() %>', ' <%= capital0_0.indicators[2].D2018_07_01.toFixed() %>', '<%= capital0_0.indicators[2].D2018_10_01.toFixed() %>', '<%= capital0_0.indicators[2].D2019_01_01.toFixed() %>', '<%= capital0_0.indicators[2].D2019_04_01.toFixed() %>', '<%= capital0_0.indicators[2].D2019_07_01.toFixed() %>', '<%= capital0_0.indicators[2].D2019_10_01.toFixed() %>', '<%= capital0_0.indicators[2].D2020_01_01.toFixed() %>', '<%= capital0_0.indicators[2].D2020_04_01.toFixed() %>', '<%= capital0_0.indicators[2].D2020_07_01.toFixed() %>', '<%= capital0_0.indicators[2].D2020_10_01.toFixed() %>'],
                                 }],
                             },
                             options: {
@@ -1898,8 +1907,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -1910,6 +1918,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% capital0_0.indicators.forEach(function(capit) { %>
@@ -1917,9 +1926,6 @@
                                         <tr>
                                             <td>
                                                 <%= capit.items %>
-                                            </td>
-                                            <td>
-                                                <%= capit.D2018_01_01.toLocaleString() %>
                                             </td>
                                             <td>
                                                 <%= capit.D2018_04_01.toLocaleString() %>
@@ -1951,6 +1957,9 @@
                                             <td>
                                                 <%= capit.D2020_07_01.toLocaleString() %>
                                             </td>
+                                            <td>
+                                                <%= capit.D2020_10_01.toLocaleString() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -1972,32 +1981,32 @@
                         var ctxcapital1_1 = document.getElementById("capital1_1").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartcapital1_1 = new Chart(ctxcapital1_1, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= capital1_1.indicators[0].items %>',
                                     backgroundColor: "#47d147",
                                     borderColor: '#47d147',
-                                    data: [<%= capital1_1.indicators[0].D2018_01_01.toFixed() %>, <%= capital1_1.indicators[0].D2018_04_01.toFixed() %>, <%= capital1_1.indicators[0].D2018_07_01.toFixed() %>, <%= capital1_1.indicators[0].D2018_10_01.toFixed() %>, <%= capital1_1.indicators[0].D2019_01_01.toFixed() %>, <%= capital1_1.indicators[0].D2019_04_01.toFixed() %>, <%= capital1_1.indicators[0].D2019_07_01.toFixed() %>, <%= capital1_1.indicators[0].D2019_10_01.toFixed() %>, <%= capital1_1.indicators[0].D2020_01_01.toFixed() %>, <%= capital1_1.indicators[0].D2020_04_01.toFixed() %>, <%= capital1_1.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= capital1_1.indicators[0].D2018_04_01.toFixed() %>', '<%= capital1_1.indicators[0].D2018_07_01.toFixed() %>', '<%= capital1_1.indicators[0].D2018_10_01.toFixed() %>', '<%= capital1_1.indicators[0].D2019_01_01.toFixed() %>', '<%= capital1_1.indicators[0].D2019_04_01.toFixed() %>', '<%= capital1_1.indicators[0].D2019_07_01.toFixed() %>', '<%= capital1_1.indicators[0].D2019_10_01.toFixed() %>', '<%= capital1_1.indicators[0].D2020_01_01.toFixed() %>', '<%= capital1_1.indicators[0].D2020_04_01.toFixed() %>', '<%= capital1_1.indicators[0].D2020_07_01.toFixed() %>', '<%= capital1_1.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= capital1_1.indicators[1].items %>',
                                     fill: false,
                                     backgroundColor: "#ff4d4d",
                                     borderColor: '#ff4d4d',
-                                    data: [<%= capital1_1.indicators[1].D2018_01_01.toFixed() %>, <%= capital1_1.indicators[1].D2018_04_01.toFixed() %>, <%= capital1_1.indicators[1].D2018_07_01.toFixed() %>, <%= capital1_1.indicators[1].D2018_10_01.toFixed() %>, <%= capital1_1.indicators[1].D2019_01_01.toFixed() %>, <%= capital1_1.indicators[1].D2019_04_01.toFixed() %>, <%= capital1_1.indicators[1].D2019_07_01.toFixed() %>, <%= capital1_1.indicators[1].D2019_10_01.toFixed() %>, <%= capital1_1.indicators[1].D2020_01_01.toFixed() %>, <%= capital1_1.indicators[1].D2020_04_01.toFixed() %>, <%= capital1_1.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= capital1_1.indicators[1].D2018_04_01.toFixed() %>', '<%= capital1_1.indicators[1].D2018_07_01.toFixed() %>', '<%= capital1_1.indicators[1].D2018_10_01.toFixed() %>', '<%= capital1_1.indicators[1].D2019_01_01.toFixed() %>', '<%= capital1_1.indicators[1].D2019_04_01.toFixed() %>', '<%= capital1_1.indicators[1].D2019_07_01.toFixed() %>', '<%= capital1_1.indicators[1].D2019_10_01.toFixed() %>', '<%= capital1_1.indicators[1].D2020_01_01.toFixed() %>', '<%= capital1_1.indicators[1].D2020_04_01.toFixed() %>', '<%= capital1_1.indicators[1].D2020_07_01.toFixed() %>', '<%= capital1_1.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= capital1_1.indicators[2].items %>',
                                     fill: false,
                                     backgroundColor: "#4d4dff",
                                     borderColor: "#4d4dff",
-                                    data: [<%= capital1_1.indicators[2].D2018_01_01.toFixed() %>, <%= capital1_1.indicators[2].D2018_04_01.toFixed() %>, <%= capital1_1.indicators[2].D2018_07_01.toFixed() %>, <%= capital1_1.indicators[2].D2018_10_01.toFixed() %>, <%= capital1_1.indicators[2].D2019_01_01.toFixed() %>, <%= capital1_1.indicators[2].D2019_04_01.toFixed() %>, <%= capital1_1.indicators[2].D2019_07_01.toFixed() %>, <%= capital1_1.indicators[2].D2019_10_01.toFixed() %>, <%= capital1_1.indicators[2].D2020_01_01.toFixed() %>, <%= capital1_1.indicators[2].D2020_04_01.toFixed() %>, <%= capital1_1.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= capital1_1.indicators[2].D2018_04_01.toFixed() %>', '<%= capital1_1.indicators[2].D2018_07_01.toFixed() %>', '<%= capital1_1.indicators[2].D2018_10_01.toFixed() %>', '<%= capital1_1.indicators[2].D2019_01_01.toFixed() %>', '<%= capital1_1.indicators[2].D2019_04_01.toFixed() %>', '<%= capital1_1.indicators[2].D2019_07_01.toFixed() %>', '<%= capital1_1.indicators[2].D2019_10_01.toFixed() %>', '<%= capital1_1.indicators[2].D2020_01_01.toFixed() %>', '<%= capital1_1.indicators[2].D2020_04_01.toFixed() %>', '<%= capital1_1.indicators[2].D2020_07_01.toFixed() %>', '<%= capital1_1.indicators[2].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= capital1_1.indicators[3].items %>',
                                     fill: false,
                                     backgroundColor: "#ffa31a",
                                     borderColor: "#ffa31a",
-                                    data: [<%= capital1_1.indicators[3].D2018_01_01.toFixed() %>, <%= capital1_1.indicators[3].D2018_04_01.toFixed() %>, <%= capital1_1.indicators[3].D2018_07_01.toFixed() %>, <%= capital1_1.indicators[3].D2018_10_01.toFixed() %>, <%= capital1_1.indicators[3].D2019_01_01.toFixed() %>, <%= capital1_1.indicators[3].D2019_04_01.toFixed() %>, <%= capital1_1.indicators[3].D2019_07_01.toFixed() %>, <%= capital1_1.indicators[3].D2019_10_01.toFixed() %>, <%= capital1_1.indicators[3].D2020_01_01.toFixed() %>, <%= capital1_1.indicators[3].D2020_04_01.toFixed() %>, <%= capital1_1.indicators[3].D2020_07_01.toFixed() %>],
+                                    data: ['<%= capital1_1.indicators[3].D2018_04_01.toFixed() %>', '<%= capital1_1.indicators[3].D2018_07_01.toFixed() %>', '<%= capital1_1.indicators[3].D2018_10_01.toFixed() %>', '<%= capital1_1.indicators[3].D2019_01_01.toFixed() %>', '<%= capital1_1.indicators[3].D2019_04_01.toFixed() %>', '<%= capital1_1.indicators[3].D2019_07_01.toFixed() %>', '<%= capital1_1.indicators[3].D2019_10_01.toFixed() %>', '<%= capital1_1.indicators[3].D2020_01_01.toFixed() %>', '<%= capital1_1.indicators[3].D2020_04_01.toFixed() %>', '<%= capital1_1.indicators[3].D2020_07_01.toFixed() %>', '<%= capital1_1.indicators[3].D2020_10_01.toFixed() %>'],
                                 }],
                             },
                             options: {
@@ -2040,8 +2049,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -2052,6 +2060,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% capital1_1.indicators.forEach(function(capit) { %>
@@ -2059,9 +2068,6 @@
                                         <tr>
                                             <td>
                                                 <%= capit.items %>
-                                            </td>
-                                            <td>
-                                                <%= capit.D2018_01_01.toLocaleString() %>
                                             </td>
                                             <td>
                                                 <%= capit.D2018_04_01.toLocaleString() %>
@@ -2093,6 +2099,9 @@
                                             <td>
                                                 <%= capit.D2020_07_01.toLocaleString() %>
                                             </td>
+                                            <td>
+                                                <%= capit.D2020_10_01.toLocaleString() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -2105,11 +2114,11 @@
                         <thead>
                             <tr>
                                 <th rowspan="2"></th>
-                                <th colspan="2">2019_07_01</th>
                                 <th colspan="2">2019_10_01</th>
                                 <th colspan="2">2020_01_01</th>
                                 <th colspan="2">2020_04_01</th>
                                 <th colspan="2">2020_07_01</th>
+                                <th colspan="2">2020_10_01</th>
                             </tr>
                             <tr>
                                 <th>Система</th>
@@ -2127,48 +2136,48 @@
                         <tbody>
                             <tr>
                                 <td>Рентабельність активів,%</td>
-                                <td>3,81</td>
-                                <td>
-                                    <%= ((profits0_0.indicators[2].D2019_07_01 / assets0_0.indicators[2].D2019_07_01)*100).toFixed(2) %>
-                                </td>
-                                <td>4,6</td>
+                                <td>4.6</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2019_10_01 / assets0_0.indicators[2].D2019_10_01)*100).toFixed(2) %>
                                 </td>
-                                <td>4,75</td>
+                                <td>4.75</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2020_01_01 / assets0_0.indicators[2].D2020_01_01)*100).toFixed(2) %>
                                 </td>
-                                <td>4,26</td>
+                                <td>1.03</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2020_04_01 / assets0_0.indicators[2].D2020_04_01)*100).toFixed(2) %>
                                 </td>
-                                <td>3,06</td>
+                                <td>1.50</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2020_07_01 / assets0_0.indicators[2].D2020_07_01)*100).toFixed(2) %>
+                                </td>
+                                <td>2.20</td>
+                                <td>
+                                    <%= ((profits0_0.indicators[2].D2020_10_01 / assets0_0.indicators[2].D2020_10_01)*100).toFixed(2) %>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Рентабельність капіталу, %</td>
-                                <td>31,29</td>
-                                <td>
-                                    <%= ((profits0_0.indicators[2].D2019_07_01 / capital0_0.indicators[2].D2019_07_01)*100).toFixed(2) %>
-                                </td>
-                                <td>37,86</td>
+                                <td>37.86</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2019_10_01 / capital0_0.indicators[2].D2019_10_01)*100).toFixed(2) %>
                                 </td>
-                                <td>38,32</td>
+                                <td>38.32</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2020_01_01 / capital0_0.indicators[2].D2020_01_01)*100).toFixed(2) %>
                                 </td>
-                                <td>33,45</td>
+                                <td>7.83</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2020_04_01 / capital0_0.indicators[2].D2020_04_01)*100).toFixed(2) %>
                                 </td>
-                                <td>22,91</td>
+                                <td>12.08</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2020_07_01 / capital0_0.indicators[2].D2020_07_01)*100).toFixed(2) %>
+                                </td>
+                                <td>18.07</td>
+                                <td>
+                                    <%= ((profits0_0.indicators[2].D2020_10_01 / capital0_0.indicators[2].D2020_10_01)*100).toFixed(2) %>
                                 </td>
                             </tr>
                         </tbody>
@@ -2196,26 +2205,26 @@
                         var ctxprofit0_0 = document.getElementById("profit0_0").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartprofit0_0 = new Chart(ctxprofit0_0, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= profits0_0.indicators[0].items %>',
                                     backgroundColor: "#47d147",
                                     borderColor: '#47d147',
-                                    data: [<%= profits0_0.indicators[0].D2018_01_01.toFixed() %>, <%= profits0_0.indicators[0].D2018_04_01.toFixed() %>, <%= profits0_0.indicators[0].D2018_07_01.toFixed() %>, <%= profits0_0.indicators[0].D2018_10_01.toFixed() %>, <%= profits0_0.indicators[0].D2019_01_01.toFixed() %>, <%= profits0_0.indicators[0].D2019_04_01.toFixed() %>, <%= profits0_0.indicators[0].D2019_07_01.toFixed() %>, <%= profits0_0.indicators[0].D2019_10_01.toFixed() %>, <%= profits0_0.indicators[0].D2020_01_01.toFixed() %>, <%= profits0_0.indicators[0].D2020_04_01.toFixed() %>, <%= profits0_0.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits0_0.indicators[0].D2018_04_01.toFixed() %>', '<%= profits0_0.indicators[0].D2018_07_01.toFixed() %>', '<%= profits0_0.indicators[0].D2018_10_01.toFixed() %>', '<%= profits0_0.indicators[0].D2019_01_01.toFixed() %>', '<%= profits0_0.indicators[0].D2019_04_01.toFixed() %>', '<%= profits0_0.indicators[0].D2019_07_01.toFixed() %>', '<%= profits0_0.indicators[0].D2019_10_01.toFixed() %>', '<%= profits0_0.indicators[0].D2020_01_01.toFixed() %>', '<%= profits0_0.indicators[0].D2020_04_01.toFixed() %>', '<%= profits0_0.indicators[0].D2020_07_01.toFixed() %>', '<%= profits0_0.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits0_0.indicators[1].items %>',
                                     fill: false,
                                     backgroundColor: "#ff4d4d",
                                     borderColor: '#ff4d4d',
-                                    data: [<%= profits0_0.indicators[1].D2018_01_01.toFixed() %>, <%= profits0_0.indicators[1].D2018_04_01.toFixed() %>, <%= profits0_0.indicators[1].D2018_07_01.toFixed() %>, <%= profits0_0.indicators[1].D2018_10_01.toFixed() %>, <%= profits0_0.indicators[1].D2019_01_01.toFixed() %>, <%= profits0_0.indicators[1].D2019_04_01.toFixed() %>, <%= profits0_0.indicators[1].D2019_07_01.toFixed() %>, <%= profits0_0.indicators[1].D2019_10_01.toFixed() %>, <%= profits0_0.indicators[1].D2020_01_01.toFixed() %>, <%= profits0_0.indicators[1].D2020_04_01.toFixed() %>, <%= profits0_0.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits0_0.indicators[1].D2018_04_01.toFixed() %>', '<%= profits0_0.indicators[1].D2018_07_01.toFixed() %>', '<%= profits0_0.indicators[1].D2018_10_01.toFixed() %>', '<%= profits0_0.indicators[1].D2019_01_01.toFixed() %>', '<%= profits0_0.indicators[1].D2019_04_01.toFixed() %>', '<%= profits0_0.indicators[1].D2019_07_01.toFixed() %>', '<%= profits0_0.indicators[1].D2019_10_01.toFixed() %>', '<%= profits0_0.indicators[1].D2020_01_01.toFixed() %>', '<%= profits0_0.indicators[1].D2020_04_01.toFixed() %>', '<%= profits0_0.indicators[1].D2020_07_01.toFixed() %>', '<%= profits0_0.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits0_0.indicators[2].items %>',
                                     fill: false,
                                     backgroundColor: "#4d4dff",
                                     borderColor: "#4d4dff",
-                                    data: [<%= profits0_0.indicators[2].D2018_01_01.toFixed() %>, <%= profits0_0.indicators[2].D2018_04_01.toFixed() %>, <%= profits0_0.indicators[2].D2018_07_01.toFixed() %>, <%= profits0_0.indicators[2].D2018_10_01.toFixed() %>, <%= profits0_0.indicators[2].D2019_01_01.toFixed() %>, <%= profits0_0.indicators[2].D2019_04_01.toFixed() %>, <%= profits0_0.indicators[2].D2019_07_01.toFixed() %>, <%= profits0_0.indicators[2].D2019_10_01.toFixed() %>, <%= profits0_0.indicators[2].D2020_01_01.toFixed() %>, <%= profits0_0.indicators[2].D2020_04_01.toFixed() %>, <%= profits0_0.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits0_0.indicators[2].D2018_04_01.toFixed() %>', '<%= profits0_0.indicators[2].D2018_07_01.toFixed() %>', '<%= profits0_0.indicators[2].D2018_10_01.toFixed() %>', '<%= profits0_0.indicators[2].D2019_01_01.toFixed() %>', ' <%= profits0_0.indicators[2].D2019_04_01.toFixed() %>', '<%= profits0_0.indicators[2].D2019_07_01.toFixed() %>', '<%= profits0_0.indicators[2].D2019_10_01.toFixed() %>', '<%= profits0_0.indicators[2].D2020_01_01.toFixed() %>', '<%= profits0_0.indicators[2].D2020_04_01.toFixed() %>', '<%= profits0_0.indicators[2].D2020_07_01.toFixed() %>', '<%= profits0_0.indicators[2].D2020_10_01.toFixed() %>'],
                                 }],
                             },
                             options: {
@@ -2262,8 +2271,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -2274,6 +2282,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% profits0_0.indicators.forEach(function(profit) { %>
@@ -2281,9 +2290,6 @@
                                         <tr>
                                             <td>
                                                 <%= profit.items %>
-                                            </td>
-                                            <td>
-                                                <%= profit.D2018_01_01.toLocaleString() %>
                                             </td>
                                             <td>
                                                 <%= profit.D2018_04_01.toLocaleString() %>
@@ -2315,6 +2321,9 @@
                                             <td>
                                                 <%= profit.D2020_07_01.toLocaleString() %>
                                             </td>
+                                            <td>
+                                                <%= profit.D2020_10_01.toLocaleString() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -2335,44 +2344,44 @@
                         var ctxprofit1_1 = document.getElementById("profit1_1").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartprofit1_1 = new Chart(ctxprofit1_1, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= profits1_1.indicators[0].items %>',
                                     backgroundColor: "#47d147",
                                     borderColor: '#47d147',
-                                    data: [<%= profits1_1.indicators[0].D2018_01_01.toFixed() %>, <%= profits1_1.indicators[0].D2018_04_01.toFixed() %>, <%= profits1_1.indicators[0].D2018_07_01.toFixed() %>, <%= profits1_1.indicators[0].D2018_10_01.toFixed() %>, <%= profits1_1.indicators[0].D2019_01_01.toFixed() %>, <%= profits1_1.indicators[0].D2019_04_01.toFixed() %>, <%= profits1_1.indicators[0].D2019_07_01.toFixed() %>, <%= profits1_1.indicators[0].D2019_10_01.toFixed() %>, <%= profits1_1.indicators[0].D2020_01_01.toFixed() %>, <%= profits1_1.indicators[0].D2020_04_01.toFixed() %>, <%= profits1_1.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits1_1.indicators[0].D2018_04_01.toFixed() %>', '<%= profits1_1.indicators[0].D2018_07_01.toFixed() %>', '<%= profits1_1.indicators[0].D2018_10_01.toFixed() %>', '<%= profits1_1.indicators[0].D2019_01_01.toFixed() %>', '<%= profits1_1.indicators[0].D2019_04_01.toFixed() %>', '<%= profits1_1.indicators[0].D2019_07_01.toFixed() %>', '<%= profits1_1.indicators[0].D2019_10_01.toFixed() %>', '<%= profits1_1.indicators[0].D2020_01_01.toFixed() %>', '<%= profits1_1.indicators[0].D2020_04_01.toFixed() %>', '<%= profits1_1.indicators[0].D2020_07_01.toFixed() %>', '<%= profits1_1.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits1_1.indicators[1].items %>',
                                     fill: false,
                                     backgroundColor: "#ff4d4d",
                                     borderColor: '#ff4d4d',
-                                    data: [<%= profits1_1.indicators[1].D2018_01_01.toFixed() %>, <%= profits1_1.indicators[1].D2018_04_01.toFixed() %>, <%= profits1_1.indicators[1].D2018_07_01.toFixed() %>, <%= profits1_1.indicators[1].D2018_10_01.toFixed() %>, <%= profits1_1.indicators[1].D2019_01_01.toFixed() %>, <%= profits1_1.indicators[1].D2019_04_01.toFixed() %>, <%= profits1_1.indicators[1].D2019_07_01.toFixed() %>, <%= profits1_1.indicators[1].D2019_10_01.toFixed() %>, <%= profits1_1.indicators[1].D2020_01_01.toFixed() %>, <%= profits1_1.indicators[1].D2020_04_01.toFixed() %>, <%= profits1_1.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits1_1.indicators[1].D2018_04_01.toFixed() %>', '<%= profits1_1.indicators[1].D2018_07_01.toFixed() %>', '<%= profits1_1.indicators[1].D2018_10_01.toFixed() %>', '<%= profits1_1.indicators[1].D2019_01_01.toFixed() %>', '<%= profits1_1.indicators[1].D2019_04_01.toFixed() %>', '<%= profits1_1.indicators[1].D2019_07_01.toFixed() %>', '<%= profits1_1.indicators[1].D2019_10_01.toFixed() %>', '<%= profits1_1.indicators[1].D2020_01_01.toFixed() %>', '<%= profits1_1.indicators[1].D2020_04_01.toFixed() %>', '<%= profits1_1.indicators[1].D2020_07_01.toFixed() %>', '<%= profits1_1.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits1_1.indicators[2].items %>',
                                     fill: false,
                                     backgroundColor: "#4d4dff",
                                     borderColor: "#4d4dff",
-                                    data: [<%= profits1_1.indicators[2].D2018_01_01.toFixed() %>, <%= profits1_1.indicators[2].D2018_04_01.toFixed() %>, <%= profits1_1.indicators[2].D2018_07_01.toFixed() %>, <%= profits1_1.indicators[2].D2018_10_01.toFixed() %>, <%= profits1_1.indicators[2].D2019_01_01.toFixed() %>, <%= profits1_1.indicators[2].D2019_04_01.toFixed() %>, <%= profits1_1.indicators[2].D2019_07_01.toFixed() %>, <%= profits1_1.indicators[2].D2019_10_01.toFixed() %>, <%= profits1_1.indicators[2].D2020_01_01.toFixed() %>, <%= profits1_1.indicators[2].D2020_04_01.toFixed() %>, <%= profits1_1.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits1_1.indicators[2].D2018_04_01.toFixed() %>', '<%= profits1_1.indicators[2].D2018_07_01.toFixed() %>', '<%= profits1_1.indicators[2].D2018_10_01.toFixed() %>', '<%= profits1_1.indicators[2].D2019_01_01.toFixed() %>', '<%= profits1_1.indicators[2].D2019_04_01.toFixed() %>', '<%= profits1_1.indicators[2].D2019_07_01.toFixed() %>', '<%= profits1_1.indicators[2].D2019_10_01.toFixed() %>', '<%= profits1_1.indicators[2].D2020_01_01.toFixed() %>', '<%= profits1_1.indicators[2].D2020_04_01.toFixed() %>', '<%= profits1_1.indicators[2].D2020_07_01.toFixed() %>', '<%= profits1_1.indicators[2].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits1_1.indicators[3].items %>',
                                     fill: false,
                                     backgroundColor: "#e6e600",
                                     borderColor: '#e6e600',
-                                    data: [<%= profits1_1.indicators[3].D2018_01_01.toFixed() %>, <%= profits1_1.indicators[3].D2018_04_01.toFixed() %>, <%= profits1_1.indicators[3].D2018_07_01.toFixed() %>, <%= profits1_1.indicators[3].D2018_10_01.toFixed() %>, <%= profits1_1.indicators[3].D2019_01_01.toFixed() %>, <%= profits1_1.indicators[3].D2019_04_01.toFixed() %>, <%= profits1_1.indicators[3].D2019_07_01.toFixed() %>, <%= profits1_1.indicators[3].D2019_10_01.toFixed() %>, <%= profits1_1.indicators[3].D2020_01_01.toFixed() %>, <%= profits1_1.indicators[3].D2020_04_01.toFixed() %>, <%= profits1_1.indicators[3].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits1_1.indicators[3].D2018_04_01.toFixed() %>', '<%= profits1_1.indicators[3].D2018_07_01.toFixed() %>', '<%= profits1_1.indicators[3].D2018_10_01.toFixed() %>', '<%= profits1_1.indicators[3].D2019_01_01.toFixed() %>', '<%= profits1_1.indicators[3].D2019_04_01.toFixed() %>', '<%= profits1_1.indicators[3].D2019_07_01.toFixed() %>', '<%= profits1_1.indicators[3].D2019_10_01.toFixed() %>', '<%= profits1_1.indicators[3].D2020_01_01.toFixed() %>', '<%= profits1_1.indicators[3].D2020_04_01.toFixed() %>', '<%= profits1_1.indicators[3].D2020_07_01.toFixed() %>', '<%= profits1_1.indicators[3].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits1_1.indicators[4].items %>',
                                     fill: false,
                                     backgroundColor: "#ffa31a",
                                     borderColor: "#ffa31a",
-                                    data: [<%= profits1_1.indicators[4].D2018_01_01.toFixed() %>, <%= profits1_1.indicators[4].D2018_04_01.toFixed() %>, <%= profits1_1.indicators[4].D2018_07_01.toFixed() %>, <%= profits1_1.indicators[4].D2018_10_01.toFixed() %>, <%= profits1_1.indicators[4].D2019_01_01.toFixed() %>, <%= profits1_1.indicators[4].D2019_04_01.toFixed() %>, <%= profits1_1.indicators[4].D2019_07_01.toFixed() %>, <%= profits1_1.indicators[4].D2019_10_01.toFixed() %>, <%= profits1_1.indicators[4].D2020_01_01.toFixed() %>, <%= profits1_1.indicators[4].D2020_04_01.toFixed() %>, <%= profits1_1.indicators[4].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits1_1.indicators[4].D2018_04_01.toFixed() %>', '<%= profits1_1.indicators[4].D2018_07_01.toFixed() %>', '<%= profits1_1.indicators[4].D2018_10_01.toFixed() %>', '<%= profits1_1.indicators[4].D2019_01_01.toFixed() %>', '<%= profits1_1.indicators[4].D2019_04_01.toFixed() %>', '<%= profits1_1.indicators[4].D2019_07_01.toFixed() %>', '<%= profits1_1.indicators[4].D2019_10_01.toFixed() %>', '<%= profits1_1.indicators[4].D2020_01_01.toFixed() %>', '<%= profits1_1.indicators[4].D2020_04_01.toFixed() %>', '<%= profits1_1.indicators[4].D2020_07_01.toFixed() %>', '<%= profits1_1.indicators[4].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits1_1.indicators[5].items %>',
                                     fill: false,
                                     backgroundColor: "#e600e6",
                                     borderColor: "#e600e6",
-                                    data: [<%= profits1_1.indicators[5].D2018_01_01.toFixed() %>, <%= profits1_1.indicators[5].D2018_04_01.toFixed() %>, <%= profits1_1.indicators[5].D2018_07_01.toFixed() %>, <%= profits1_1.indicators[5].D2018_10_01.toFixed() %>, <%= profits1_1.indicators[5].D2019_01_01.toFixed() %>, <%= profits1_1.indicators[5].D2019_04_01.toFixed() %>, <%= profits1_1.indicators[5].D2019_07_01.toFixed() %>, <%= profits1_1.indicators[5].D2019_10_01.toFixed() %>, <%= profits1_1.indicators[5].D2020_01_01.toFixed() %>, <%= profits1_1.indicators[5].D2020_04_01.toFixed() %>, <%= profits1_1.indicators[5].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits1_1.indicators[5].D2018_04_01.toFixed() %>', '<%= profits1_1.indicators[5].D2018_07_01.toFixed() %>', '<%= profits1_1.indicators[5].D2018_10_01.toFixed() %>', '<%= profits1_1.indicators[5].D2019_01_01.toFixed() %>', '<%= profits1_1.indicators[5].D2019_04_01.toFixed() %>', '<%= profits1_1.indicators[5].D2019_07_01.toFixed() %>', '<%= profits1_1.indicators[5].D2019_10_01.toFixed() %>', '<%= profits1_1.indicators[5].D2020_01_01.toFixed() %>', '<%= profits1_1.indicators[5].D2020_04_01.toFixed() %>', '<%= profits1_1.indicators[5].D2020_07_01.toFixed() %>', '<%= profits1_1.indicators[5].D2020_10_01.toFixed() %>'],
                                 }, ],
                             },
                             options: {
@@ -2418,8 +2427,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -2430,6 +2438,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% profits1_1.indicators.forEach(function(profit) { %>
@@ -2437,9 +2446,6 @@
                                         <tr>
                                             <td>
                                                 <%= profit.items %>
-                                            </td>
-                                            <td>
-                                                <%= profit.D2018_01_01.toLocaleString() %>
                                             </td>
                                             <td>
                                                 <%= profit.D2018_04_01.toLocaleString() %>
@@ -2471,6 +2477,9 @@
                                             <td>
                                                 <%= profit.D2020_07_01.toLocaleString() %>
                                             </td>
+                                            <td>
+                                                <%= profit.D2020_10_01.toLocaleString() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -2491,38 +2500,38 @@
                         var ctxprofit2_2 = document.getElementById("profit2_2").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartprofit2_2 = new Chart(ctxprofit2_2, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= profits2_2.indicators[0].items %>',
                                     backgroundColor: "#47d147",
                                     borderColor: '#47d147',
-                                    data: [<%= profits2_2.indicators[0].D2018_01_01.toFixed() %>, <%= profits2_2.indicators[0].D2018_04_01.toFixed() %>, <%= profits2_2.indicators[0].D2018_07_01.toFixed() %>, <%= profits2_2.indicators[0].D2018_10_01.toFixed() %>, <%= profits2_2.indicators[0].D2019_01_01.toFixed() %>, <%= profits2_2.indicators[0].D2019_04_01.toFixed() %>, <%= profits2_2.indicators[0].D2019_07_01.toFixed() %>, <%= profits2_2.indicators[0].D2019_10_01.toFixed() %>, <%= profits2_2.indicators[0].D2020_01_01.toFixed() %>, <%= profits2_2.indicators[0].D2020_04_01.toFixed() %>, <%= profits2_2.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits2_2.indicators[0].D2018_04_01.toFixed() %>', '<%= profits2_2.indicators[0].D2018_07_01.toFixed() %>', '<%= profits2_2.indicators[0].D2018_10_01.toFixed() %>', '<%= profits2_2.indicators[0].D2019_01_01.toFixed() %>', '<%= profits2_2.indicators[0].D2019_04_01.toFixed() %>', '<%= profits2_2.indicators[0].D2019_07_01.toFixed() %>', '<%= profits2_2.indicators[0].D2019_10_01.toFixed() %>', '<%= profits2_2.indicators[0].D2020_01_01.toFixed() %>', '<%= profits2_2.indicators[0].D2020_04_01.toFixed() %>', '<%= profits2_2.indicators[0].D2020_07_01.toFixed() %>', '<%= profits2_2.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits2_2.indicators[1].items %>',
                                     fill: false,
                                     backgroundColor: "#ff4d4d",
                                     borderColor: '#ff4d4d',
-                                    data: [<%= profits2_2.indicators[1].D2018_01_01.toFixed() %>, <%= profits2_2.indicators[1].D2018_04_01.toFixed() %>, <%= profits2_2.indicators[1].D2018_07_01.toFixed() %>, <%= profits2_2.indicators[1].D2018_10_01.toFixed() %>, <%= profits2_2.indicators[1].D2019_01_01.toFixed() %>, <%= profits2_2.indicators[1].D2019_04_01.toFixed() %>, <%= profits2_2.indicators[1].D2019_07_01.toFixed() %>, <%= profits2_2.indicators[1].D2019_10_01.toFixed() %>, <%= profits2_2.indicators[1].D2020_01_01.toFixed() %>, <%= profits2_2.indicators[1].D2020_04_01.toFixed() %>, <%= profits2_2.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits2_2.indicators[1].D2018_04_01.toFixed() %>', '<%= profits2_2.indicators[1].D2018_07_01.toFixed() %>', '<%= profits2_2.indicators[1].D2018_10_01.toFixed() %>', '<%= profits2_2.indicators[1].D2019_01_01.toFixed() %>', '<%= profits2_2.indicators[1].D2019_04_01.toFixed() %>', '<%= profits2_2.indicators[1].D2019_07_01.toFixed() %>', '<%= profits2_2.indicators[1].D2019_10_01.toFixed() %>', '<%= profits2_2.indicators[1].D2020_01_01.toFixed() %>', '<%= profits2_2.indicators[1].D2020_04_01.toFixed() %>', '<%= profits2_2.indicators[1].D2020_07_01.toFixed() %>', '<%= profits2_2.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits2_2.indicators[2].items %>',
                                     fill: false,
                                     backgroundColor: "#4d4dff",
                                     borderColor: "#4d4dff",
-                                    data: [<%= profits2_2.indicators[2].D2018_01_01.toFixed() %>, <%= profits2_2.indicators[2].D2018_04_01.toFixed() %>, <%= profits2_2.indicators[2].D2018_07_01.toFixed() %>, <%= profits2_2.indicators[2].D2018_10_01.toFixed() %>, <%= profits2_2.indicators[2].D2019_01_01.toFixed() %>, <%= profits2_2.indicators[2].D2019_04_01.toFixed() %>, <%= profits2_2.indicators[2].D2019_07_01.toFixed() %>, <%= profits2_2.indicators[2].D2019_10_01.toFixed() %>, <%= profits2_2.indicators[2].D2020_01_01.toFixed() %>, <%= profits2_2.indicators[2].D2020_04_01.toFixed() %>, <%= profits2_2.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits2_2.indicators[2].D2018_04_01.toFixed() %>', '<%= profits2_2.indicators[2].D2018_07_01.toFixed() %>', '<%= profits2_2.indicators[2].D2018_10_01.toFixed() %>', '<%= profits2_2.indicators[2].D2019_01_01.toFixed() %>', '<%= profits2_2.indicators[2].D2019_04_01.toFixed() %>', '<%= profits2_2.indicators[2].D2019_07_01.toFixed() %>', '<%= profits2_2.indicators[2].D2019_10_01.toFixed() %>', '<%= profits2_2.indicators[2].D2020_01_01.toFixed() %>', '<%= profits2_2.indicators[2].D2020_04_01.toFixed() %>', '<%= profits2_2.indicators[2].D2020_07_01.toFixed() %>', '<%= profits2_2.indicators[2].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits2_2.indicators[3].items %>',
                                     fill: false,
                                     backgroundColor: "#e6e600",
                                     borderColor: '#e6e600',
-                                    data: [<%= profits2_2.indicators[3].D2018_01_01.toFixed() %>, <%= profits2_2.indicators[3].D2018_04_01.toFixed() %>, <%= profits2_2.indicators[3].D2018_07_01.toFixed() %>, <%= profits2_2.indicators[3].D2018_10_01.toFixed() %>, <%= profits2_2.indicators[3].D2019_01_01.toFixed() %>, <%= profits2_2.indicators[3].D2019_04_01.toFixed() %>, <%= profits2_2.indicators[3].D2019_07_01.toFixed() %>, <%= profits2_2.indicators[3].D2019_10_01.toFixed() %>, <%= profits2_2.indicators[3].D2020_01_01.toFixed() %>, <%= profits2_2.indicators[3].D2020_04_01.toFixed() %>, <%= profits2_2.indicators[3].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits2_2.indicators[3].D2018_04_01.toFixed() %>', '<%= profits2_2.indicators[3].D2018_07_01.toFixed() %>', '<%= profits2_2.indicators[3].D2018_10_01.toFixed() %>', '<%= profits2_2.indicators[3].D2019_01_01.toFixed() %>', '<%= profits2_2.indicators[3].D2019_04_01.toFixed() %>', '<%= profits2_2.indicators[3].D2019_07_01.toFixed() %>', '<%= profits2_2.indicators[3].D2019_10_01.toFixed() %>', '<%= profits2_2.indicators[3].D2020_01_01.toFixed() %>', '<%= profits2_2.indicators[3].D2020_04_01.toFixed() %>', '<%= profits2_2.indicators[3].D2020_07_01.toFixed() %>', '<%= profits2_2.indicators[3].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits2_2.indicators[4].items %>',
                                     fill: false,
                                     backgroundColor: "#ffa31a",
                                     borderColor: "#ffa31a",
-                                    data: [<%= profits2_2.indicators[4].D2018_01_01.toFixed() %>, <%= profits2_2.indicators[4].D2018_04_01.toFixed() %>, <%= profits2_2.indicators[4].D2018_07_01.toFixed() %>, <%= profits2_2.indicators[4].D2018_10_01.toFixed() %>, <%= profits2_2.indicators[4].D2019_01_01.toFixed() %>, <%= profits2_2.indicators[4].D2019_04_01.toFixed() %>, <%= profits2_2.indicators[4].D2019_07_01.toFixed() %>, <%= profits2_2.indicators[4].D2019_10_01.toFixed() %>, <%= profits2_2.indicators[4].D2020_01_01.toFixed() %>, <%= profits2_2.indicators[4].D2020_04_01.toFixed() %>, <%= profits2_2.indicators[4].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits2_2.indicators[4].D2018_04_01.toFixed() %>', '<%= profits2_2.indicators[4].D2018_07_01.toFixed() %>', '<%= profits2_2.indicators[4].D2018_10_01.toFixed() %>', '<%= profits2_2.indicators[4].D2019_01_01.toFixed() %>', '<%= profits2_2.indicators[4].D2019_04_01.toFixed() %>', '<%= profits2_2.indicators[4].D2019_07_01.toFixed() %>', '<%= profits2_2.indicators[4].D2019_10_01.toFixed() %>', '<%= profits2_2.indicators[4].D2020_01_01.toFixed() %>', '<%= profits2_2.indicators[4].D2020_04_01.toFixed() %>', '<%= profits2_2.indicators[4].D2020_07_01.toFixed() %>', '<%= profits2_2.indicators[4].D2020_10_01.toFixed() %>'],
                                 }],
                             },
                             options: {
@@ -2568,8 +2577,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -2580,6 +2588,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% profits2_2.indicators.forEach(function(profit) { %>
@@ -2587,9 +2596,6 @@
                                         <tr>
                                             <td>
                                                 <%= profit.items %>
-                                            </td>
-                                            <td>
-                                                <%= profit.D2018_01_01.toLocaleString() %>
                                             </td>
                                             <td>
                                                 <%= profit.D2018_04_01.toLocaleString() %>
@@ -2621,6 +2627,9 @@
                                             <td>
                                                 <%= profit.D2020_07_01.toLocaleString() %>
                                             </td>
+                                            <td>
+                                                <%= profit.D2020_10_01.toLocaleString() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -2641,26 +2650,26 @@
                         var ctxprofit3_3 = document.getElementById("profit3_3").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartprofit3_3 = new Chart(ctxprofit3_3, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= profits3_3.indicators[0].items %>',
                                     backgroundColor: "#47d147",
                                     borderColor: '#47d147',
-                                    data: [<%= profits3_3.indicators[0].D2018_01_01.toFixed() %>, <%= profits3_3.indicators[0].D2018_04_01.toFixed() %>, <%= profits3_3.indicators[0].D2018_07_01.toFixed() %>, <%= profits3_3.indicators[0].D2018_10_01.toFixed() %>, <%= profits3_3.indicators[0].D2019_01_01.toFixed() %>, <%= profits3_3.indicators[0].D2019_04_01.toFixed() %>, <%= profits3_3.indicators[0].D2019_07_01.toFixed() %>, <%= profits3_3.indicators[0].D2019_10_01.toFixed() %>, <%= profits3_3.indicators[0].D2020_01_01.toFixed() %>, <%= profits3_3.indicators[0].D2020_04_01.toFixed() %>, <%= profits3_3.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits3_3.indicators[0].D2018_04_01.toFixed() %>', '<%= profits3_3.indicators[0].D2018_07_01.toFixed() %>', '<%= profits3_3.indicators[0].D2018_10_01.toFixed() %>', '<%= profits3_3.indicators[0].D2019_01_01.toFixed() %>', '<%= profits3_3.indicators[0].D2019_04_01.toFixed() %>', '<%= profits3_3.indicators[0].D2019_07_01.toFixed() %>', '<%= profits3_3.indicators[0].D2019_10_01.toFixed() %>', '<%= profits3_3.indicators[0].D2020_01_01.toFixed() %>', '<%= profits3_3.indicators[0].D2020_04_01.toFixed() %>', '<%= profits3_3.indicators[0].D2020_07_01.toFixed() %>', '<%= profits3_3.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits3_3.indicators[1].items %>',
                                     fill: false,
                                     backgroundColor: "#ff4d4d",
                                     borderColor: '#ff4d4d',
-                                    data: [<%= profits3_3.indicators[1].D2018_01_01.toFixed() %>, <%= profits3_3.indicators[1].D2018_04_01.toFixed() %>, <%= profits3_3.indicators[1].D2018_07_01.toFixed() %>, <%= profits3_3.indicators[1].D2018_10_01.toFixed() %>, <%= profits3_3.indicators[1].D2019_01_01.toFixed() %>, <%= profits3_3.indicators[1].D2019_04_01.toFixed() %>, <%= profits3_3.indicators[1].D2019_07_01.toFixed() %>, <%= profits3_3.indicators[1].D2019_10_01.toFixed() %>, <%= profits3_3.indicators[1].D2020_01_01.toFixed() %>, <%= profits3_3.indicators[1].D2020_04_01.toFixed() %>, <%= profits3_3.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits3_3.indicators[1].D2018_04_01.toFixed() %>', '<%= profits3_3.indicators[1].D2018_07_01.toFixed() %>', '<%= profits3_3.indicators[1].D2018_10_01.toFixed() %>', '<%= profits3_3.indicators[1].D2019_01_01.toFixed() %>', '<%= profits3_3.indicators[1].D2019_04_01.toFixed() %>', '<%= profits3_3.indicators[1].D2019_07_01.toFixed() %>', '<%= profits3_3.indicators[1].D2019_10_01.toFixed() %>', '<%= profits3_3.indicators[1].D2020_01_01.toFixed() %>', '<%= profits3_3.indicators[1].D2020_04_01.toFixed() %>', ' <%= profits3_3.indicators[1].D2020_07_01.toFixed() %>', ' <%= profits3_3.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits3_3.indicators[2].items %>',
                                     fill: false,
                                     backgroundColor: "#4d4dff",
                                     borderColor: "#4d4dff",
-                                    data: [<%= profits3_3.indicators[2].D2018_01_01.toFixed() %>, <%= profits3_3.indicators[2].D2018_04_01.toFixed() %>, <%= profits3_3.indicators[2].D2018_07_01.toFixed() %>, <%= profits3_3.indicators[2].D2018_10_01.toFixed() %>, <%= profits3_3.indicators[2].D2019_01_01.toFixed() %>, <%= profits3_3.indicators[2].D2019_04_01.toFixed() %>, <%= profits3_3.indicators[2].D2019_07_01.toFixed() %>, <%= profits3_3.indicators[2].D2019_10_01.toFixed() %>, <%= profits3_3.indicators[2].D2020_01_01.toFixed() %>, <%= profits3_3.indicators[2].D2020_04_01.toFixed() %>, <%= profits3_3.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits3_3.indicators[2].D2018_04_01.toFixed() %>', '<%= profits3_3.indicators[2].D2018_07_01.toFixed() %>', '<%= profits3_3.indicators[2].D2018_10_01.toFixed() %>', ' <%= profits3_3.indicators[2].D2019_01_01.toFixed() %>', '<%= profits3_3.indicators[2].D2019_04_01.toFixed() %>', '<%= profits3_3.indicators[2].D2019_07_01.toFixed() %>', '<%= profits3_3.indicators[2].D2019_10_01.toFixed() %>', '<%= profits3_3.indicators[2].D2020_01_01.toFixed() %>', '<%= profits3_3.indicators[2].D2020_04_01.toFixed() %>', '<%= profits3_3.indicators[2].D2020_07_01.toFixed() %>', '<%= profits3_3.indicators[2].D2020_10_01.toFixed() %>'],
                                 }],
                             },
                             options: {
@@ -2705,8 +2714,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -2717,6 +2725,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% profits3_3.indicators.forEach(function(profit) { %>
@@ -2724,9 +2733,6 @@
                                         <tr>
                                             <td>
                                                 <%= profit.items %>
-                                            </td>
-                                            <td>
-                                                <%= profit.D2018_01_01.toLocaleString() %>
                                             </td>
                                             <td>
                                                 <%= profit.D2018_04_01.toLocaleString() %>
@@ -2758,6 +2764,9 @@
                                             <td>
                                                 <%= profit.D2020_07_01.toLocaleString() %>
                                             </td>
+                                            <td>
+                                                <%= profit.D2020_10_01.toLocaleString() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -2778,38 +2787,38 @@
                         var ctxprofit4_4 = document.getElementById("profit4_4").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartprofit4_4 = new Chart(ctxprofit4_4, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= profits4_4.indicators[0].items %>',
                                     backgroundColor: "#47d147",
                                     borderColor: '#47d147',
-                                    data: [<%= profits4_4.indicators[0].D2018_01_01.toFixed() %>, <%= profits4_4.indicators[0].D2018_04_01.toFixed() %>, <%= profits4_4.indicators[0].D2018_07_01.toFixed() %>, <%= profits4_4.indicators[0].D2018_10_01.toFixed() %>, <%= profits4_4.indicators[0].D2019_01_01.toFixed() %>, <%= profits4_4.indicators[0].D2019_04_01.toFixed() %>, <%= profits4_4.indicators[0].D2019_07_01.toFixed() %>, <%= profits4_4.indicators[0].D2019_10_01.toFixed() %>, <%= profits4_4.indicators[0].D2020_01_01.toFixed() %>, <%= profits4_4.indicators[0].D2020_04_01.toFixed() %>, <%= profits4_4.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits4_4.indicators[0].D2018_04_01.toFixed() %>', '<%= profits4_4.indicators[0].D2018_07_01.toFixed() %>', '<%= profits4_4.indicators[0].D2018_10_01.toFixed() %>', '<%= profits4_4.indicators[0].D2019_01_01.toFixed() %>', '<%= profits4_4.indicators[0].D2019_04_01.toFixed() %>', '<%= profits4_4.indicators[0].D2019_07_01.toFixed() %>', '<%= profits4_4.indicators[0].D2019_10_01.toFixed() %>', '<%= profits4_4.indicators[0].D2020_01_01.toFixed() %>', '<%= profits4_4.indicators[0].D2020_04_01.toFixed() %>', '<%= profits4_4.indicators[0].D2020_07_01.toFixed() %>', '<%= profits4_4.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits4_4.indicators[1].items %>',
                                     fill: false,
                                     backgroundColor: "#ff4d4d",
                                     borderColor: '#ff4d4d',
-                                    data: [<%= profits4_4.indicators[1].D2018_01_01.toFixed() %>, <%= profits4_4.indicators[1].D2018_04_01.toFixed() %>, <%= profits4_4.indicators[1].D2018_07_01.toFixed() %>, <%= profits4_4.indicators[1].D2018_10_01.toFixed() %>, <%= profits4_4.indicators[1].D2019_01_01.toFixed() %>, <%= profits4_4.indicators[1].D2019_04_01.toFixed() %>, <%= profits4_4.indicators[1].D2019_07_01.toFixed() %>, <%= profits4_4.indicators[1].D2019_10_01.toFixed() %>, <%= profits4_4.indicators[1].D2020_01_01.toFixed() %>, <%= profits4_4.indicators[1].D2020_04_01.toFixed() %>, <%= profits4_4.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits4_4.indicators[1].D2018_04_01.toFixed() %>', '<%= profits4_4.indicators[1].D2018_07_01.toFixed() %>', '<%= profits4_4.indicators[1].D2018_10_01.toFixed() %>', '<%= profits4_4.indicators[1].D2019_01_01.toFixed() %>', '<%= profits4_4.indicators[1].D2019_04_01.toFixed() %>', ' <%= profits4_4.indicators[1].D2019_07_01.toFixed() %>', '<%= profits4_4.indicators[1].D2019_10_01.toFixed() %>', '<%= profits4_4.indicators[1].D2020_01_01.toFixed() %>', '<%= profits4_4.indicators[1].D2020_04_01.toFixed() %>', '<%= profits4_4.indicators[1].D2020_07_01.toFixed() %>', '<%= profits4_4.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits4_4.indicators[2].items %>',
                                     fill: false,
                                     backgroundColor: "#4d4dff",
                                     borderColor: "#4d4dff",
-                                    data: [<%= profits4_4.indicators[2].D2018_01_01.toFixed() %>, <%= profits4_4.indicators[2].D2018_04_01.toFixed() %>, <%= profits4_4.indicators[2].D2018_07_01.toFixed() %>, <%= profits4_4.indicators[2].D2018_10_01.toFixed() %>, <%= profits4_4.indicators[2].D2019_01_01.toFixed() %>, <%= profits4_4.indicators[2].D2019_04_01.toFixed() %>, <%= profits4_4.indicators[2].D2019_07_01.toFixed() %>, <%= profits4_4.indicators[2].D2019_10_01.toFixed() %>, <%= profits4_4.indicators[2].D2020_01_01.toFixed() %>, <%= profits4_4.indicators[2].D2020_04_01.toFixed() %>, <%= profits4_4.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits4_4.indicators[2].D2018_04_01.toFixed() %>', '<%= profits4_4.indicators[2].D2018_07_01.toFixed() %>', '<%= profits4_4.indicators[2].D2018_10_01.toFixed() %>', '<%= profits4_4.indicators[2].D2019_01_01.toFixed() %>', '<%= profits4_4.indicators[2].D2019_04_01.toFixed() %>', '<%= profits4_4.indicators[2].D2019_07_01.toFixed() %>', '<%= profits4_4.indicators[2].D2019_10_01.toFixed() %>', '<%= profits4_4.indicators[2].D2020_01_01.toFixed() %>', '<%= profits4_4.indicators[2].D2020_04_01.toFixed() %>', '<%= profits4_4.indicators[2].D2020_07_01.toFixed() %>', '<%= profits4_4.indicators[2].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits4_4.indicators[3].items %>',
                                     fill: false,
                                     backgroundColor: "#e6e600",
                                     borderColor: "#e6e600",
-                                    data: [<%= profits4_4.indicators[3].D2018_01_01.toFixed() %>, <%= profits4_4.indicators[3].D2018_04_01.toFixed() %>, <%= profits4_4.indicators[3].D2018_07_01.toFixed() %>, <%= profits4_4.indicators[3].D2018_10_01.toFixed() %>, <%= profits4_4.indicators[3].D2019_01_01.toFixed() %>, <%= profits4_4.indicators[3].D2019_04_01.toFixed() %>, <%= profits4_4.indicators[3].D2019_07_01.toFixed() %>, <%= profits4_4.indicators[3].D2019_10_01.toFixed() %>, <%= profits4_4.indicators[3].D2020_01_01.toFixed() %>, <%= profits4_4.indicators[3].D2020_04_01.toFixed() %>, <%= profits4_4.indicators[3].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits4_4.indicators[3].D2018_04_01.toFixed() %>', '<%= profits4_4.indicators[3].D2018_07_01.toFixed() %>', '<%= profits4_4.indicators[3].D2018_10_01.toFixed() %>', '<%= profits4_4.indicators[3].D2019_01_01.toFixed() %>', '<%= profits4_4.indicators[3].D2019_04_01.toFixed() %>', '<%= profits4_4.indicators[3].D2019_07_01.toFixed() %>', '<%= profits4_4.indicators[3].D2019_10_01.toFixed() %>', '<%= profits4_4.indicators[3].D2020_01_01.toFixed() %>', '<%= profits4_4.indicators[3].D2020_04_01.toFixed() %>', ' <%= profits4_4.indicators[3].D2020_07_01.toFixed() %>', ' <%= profits4_4.indicators[3].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits4_4.indicators[4].items %>',
                                     fill: false,
                                     backgroundColor: "#ffa31a",
                                     borderColor: "#ffa31a",
-                                    data: [<%= profits4_4.indicators[4].D2018_01_01.toFixed() %>, <%= profits4_4.indicators[4].D2018_04_01.toFixed() %>, <%= profits4_4.indicators[4].D2018_07_01.toFixed() %>, <%= profits4_4.indicators[4].D2018_10_01.toFixed() %>, <%= profits4_4.indicators[4].D2019_01_01.toFixed() %>, <%= profits4_4.indicators[4].D2019_04_01.toFixed() %>, <%= profits4_4.indicators[4].D2019_07_01.toFixed() %>, <%= profits4_4.indicators[4].D2019_10_01.toFixed() %>, <%= profits4_4.indicators[4].D2020_01_01.toFixed() %>, <%= profits4_4.indicators[4].D2020_04_01.toFixed() %>, <%= profits4_4.indicators[4].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits4_4.indicators[4].D2018_04_01.toFixed() %>', ' <%= profits4_4.indicators[4].D2018_07_01.toFixed() %>', '<%= profits4_4.indicators[4].D2018_10_01.toFixed() %>', '<%= profits4_4.indicators[4].D2019_01_01.toFixed() %>', '<%= profits4_4.indicators[4].D2019_04_01.toFixed() %>', '<%= profits4_4.indicators[4].D2019_07_01.toFixed() %>', '<%= profits4_4.indicators[4].D2019_10_01.toFixed() %>', '<%= profits4_4.indicators[4].D2020_01_01.toFixed() %>', '<%= profits4_4.indicators[4].D2020_04_01.toFixed() %>', '<%= profits4_4.indicators[4].D2020_07_01.toFixed() %>', '<%= profits4_4.indicators[4].D2020_10_01.toFixed() %>'],
                                 }],
                             },
                             options: {
@@ -2854,8 +2863,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -2866,6 +2874,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% profits4_4.indicators.forEach(function(profit) { %>
@@ -2873,9 +2882,6 @@
                                         <tr>
                                             <td>
                                                 <%= profit.items %>
-                                            </td>
-                                            <td>
-                                                <%= profit.D2018_01_01.toFixed() %>
                                             </td>
                                             <td>
                                                 <%= profit.D2018_04_01.toFixed() %>
@@ -2907,6 +2913,9 @@
                                             <td>
                                                 <%= profit.D2020_07_01.toFixed() %>
                                             </td>
+                                            <td>
+                                                <%= profit.D2020_10_01.toFixed() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -2928,26 +2937,26 @@
                         var ctxprofit5_5 = document.getElementById("profits5_5").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartprofit5_5 = new Chart(ctxprofit5_5, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= profits5_5.indicators[0].items %>',
                                     backgroundColor: "#47d147",
                                     borderColor: '#47d147',
-                                    data: [<%= profits5_5.indicators[0].D2018_01_01.toFixed() %>, <%= profits5_5.indicators[0].D2018_04_01.toFixed() %>, <%= profits5_5.indicators[0].D2018_07_01.toFixed() %>, <%= profits5_5.indicators[0].D2018_10_01.toFixed() %>, <%= profits5_5.indicators[0].D2019_01_01.toFixed() %>, <%= profits5_5.indicators[0].D2019_04_01.toFixed() %>, <%= profits5_5.indicators[0].D2019_07_01.toFixed() %>, <%= profits5_5.indicators[0].D2019_10_01.toFixed() %>, <%= profits5_5.indicators[0].D2020_01_01.toFixed() %>, <%= profits5_5.indicators[0].D2020_04_01.toFixed() %>, <%= profits5_5.indicators[0].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits5_5.indicators[0].D2018_04_01.toFixed() %>', '<%= profits5_5.indicators[0].D2018_07_01.toFixed() %>', '<%= profits5_5.indicators[0].D2018_10_01.toFixed() %>', '<%= profits5_5.indicators[0].D2019_01_01.toFixed() %>', '<%= profits5_5.indicators[0].D2019_04_01.toFixed() %>', ' <%= profits5_5.indicators[0].D2019_07_01.toFixed() %>', '<%= profits5_5.indicators[0].D2019_10_01.toFixed() %>', '<%= profits5_5.indicators[0].D2020_01_01.toFixed() %>', '<%= profits5_5.indicators[0].D2020_04_01.toFixed() %>', '<%= profits5_5.indicators[0].D2020_07_01.toFixed() %>', '<%= profits5_5.indicators[0].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits5_5.indicators[1].items %>',
                                     fill: false,
                                     backgroundColor: "#ff4d4d",
                                     borderColor: '#ff4d4d',
-                                    data: [<%= profits5_5.indicators[1].D2018_01_01.toFixed() %>, <%= profits5_5.indicators[1].D2018_04_01.toFixed() %>, <%= profits5_5.indicators[1].D2018_07_01.toFixed() %>, <%= profits5_5.indicators[1].D2018_10_01.toFixed() %>, <%= profits5_5.indicators[1].D2019_01_01.toFixed() %>, <%= profits5_5.indicators[1].D2019_04_01.toFixed() %>, <%= profits5_5.indicators[1].D2019_07_01.toFixed() %>, <%= profits5_5.indicators[1].D2019_10_01.toFixed() %>, <%= profits5_5.indicators[1].D2020_01_01.toFixed() %>, <%= profits5_5.indicators[1].D2020_04_01.toFixed() %>, <%= profits5_5.indicators[1].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits5_5.indicators[1].D2018_04_01.toFixed() %>', '<%= profits5_5.indicators[1].D2018_07_01.toFixed() %>', '<%= profits5_5.indicators[1].D2018_10_01.toFixed() %>', '<%= profits5_5.indicators[1].D2019_01_01.toFixed() %>', ' <%= profits5_5.indicators[1].D2019_04_01.toFixed() %>', '<%= profits5_5.indicators[1].D2019_07_01.toFixed() %>', ' <%= profits5_5.indicators[1].D2019_10_01.toFixed() %>', '<%= profits5_5.indicators[1].D2020_01_01.toFixed() %>', '<%= profits5_5.indicators[1].D2020_04_01.toFixed() %>', '<%= profits5_5.indicators[1].D2020_07_01.toFixed() %>', '<%= profits5_5.indicators[1].D2020_10_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits5_5.indicators[2].items %>',
                                     fill: false,
                                     backgroundColor: "#4d4dff",
                                     borderColor: "#4d4dff",
-                                    data: [<%= profits5_5.indicators[2].D2018_01_01.toFixed() %>, <%= profits5_5.indicators[2].D2018_04_01.toFixed() %>, <%= profits5_5.indicators[2].D2018_07_01.toFixed() %>, <%= profits5_5.indicators[2].D2018_10_01.toFixed() %>, <%= profits5_5.indicators[2].D2019_01_01.toFixed() %>, <%= profits5_5.indicators[2].D2019_04_01.toFixed() %>, <%= profits5_5.indicators[2].D2019_07_01.toFixed() %>, <%= profits5_5.indicators[2].D2019_10_01.toFixed() %>, <%= profits5_5.indicators[2].D2020_01_01.toFixed() %>, <%= profits5_5.indicators[2].D2020_04_01.toFixed() %>, <%= profits5_5.indicators[2].D2020_07_01.toFixed() %>],
+                                    data: ['<%= profits5_5.indicators[2].D2018_04_01.toFixed() %>', '<%= profits5_5.indicators[2].D2018_07_01.toFixed() %>', '<%= profits5_5.indicators[2].D2018_10_01.toFixed() %>', '<%= profits5_5.indicators[2].D2019_01_01.toFixed() %>', '<%= profits5_5.indicators[2].D2019_04_01.toFixed() %>', '<%= profits5_5.indicators[2].D2019_07_01.toFixed() %>', '<%= profits5_5.indicators[2].D2019_10_01.toFixed() %>', '<%= profits5_5.indicators[2].D2020_01_01.toFixed() %>', ' <%= profits5_5.indicators[2].D2020_04_01.toFixed() %>', '<%= profits5_5.indicators[2].D2020_07_01.toFixed() %>', '<%= profits5_5.indicators[2].D2020_10_01.toFixed() %>'],
                                 }],
                             },
                             options: {
@@ -2993,8 +3002,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
-                                        <th>2018_01_01</th>
+                                        <th>Назва</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -3005,6 +3013,7 @@
                                         <th>2020_01_01</th>
                                         <th>2020_04_01</th>
                                         <th>2020_07_01</th>
+                                        <th>2020_10_01</th>
                                     </tr>
                                 </thead>
                                 <% profits5_5.indicators.forEach(function(profit) { %>
@@ -3012,9 +3021,6 @@
                                         <tr>
                                             <td>
                                                 <%= profit.items %>
-                                            </td>
-                                            <td>
-                                                <%= profit.D2018_01_01.toLocaleString() %>
                                             </td>
                                             <td>
                                                 <%= profit.D2018_04_01.toLocaleString() %>
@@ -3046,6 +3052,9 @@
                                             <td>
                                                 <%= profit.D2020_07_01.toLocaleString() %>
                                             </td>
+                                            <td>
+                                                <%= profit.D2020_10_01.toLocaleString() %>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <% }); %>
@@ -3053,8 +3062,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-1">
-                <ul id="navbar" class="nav flex-column sticky-top mt-5">
+            <div class="col-lg-2">
+                <ul id="navbar" class="nav flex-column sticky-top pl-3 mt-5">
                     <li class="nav-item"><a class="nav-link" href="#normatives">Нормативи</a></li>
                     <li class="nav-item"><a class="nav-link" href="#activ">Активи</a></li>
                     <li class="nav-item"><a class="nav-link" href="#passiv">Зобов'язання</a></li>

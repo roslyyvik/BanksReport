@@ -56,9 +56,7 @@ const middleware = {
 
     async searchAndFilterBanks(req, res, next) {
         const queryKeys = Object.keys(req.query);
-
         if (queryKeys.length) {
-
             const dbQueries = [];
             let { search } = req.query;
             // if(group){
@@ -75,19 +73,16 @@ const middleware = {
                     ]
                 })
             }
-
             res.locals.dbQuery = dbQueries.length ? { $and: dbQueries } : {};
         }
         res.locals.query = req.query;
-
         queryKeys.splice(queryKeys.indexOf('page'), 1);
         const delimiter = queryKeys.length ? '&' : '?';
         res.locals.paginateUrl = req.originalUrl.replace(/(\?|\&)page=\d+/g, '') + `${delimiter}page=`;
-
         next();
     },
     deleteProfileImage: async req => {
-        if (req.file) await cloudinary.v2.uploader.destroy(req.file.public_id);
+        if (req.file) await cloudinary.uploader.destroy(req.file.filename);
     }
 }
 
