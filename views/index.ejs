@@ -18,10 +18,23 @@
             background: #1f1c30;
         }
         
+        .btn-link .fa-search {
+            display: none
+        }
+        
         @media only screen and (max-width: 992px) {
             /* For mobile phones: */
             .col-lg-1 {
                 display: none;
+            }
+        }
+        
+        @media only screen and (max-width: 400px) {
+            .navbar {
+                padding: 0.5rem 0rem
+            }
+            .navbar-expand .navbar-collapse {
+                padding-right: 0px
             }
         }
     </style>
@@ -34,13 +47,13 @@
         <a type="button" href="/banks" class="btn btn-outline-success mt-4" role="button">До перегляду</a>
         <a type="button" href="/register" class="btn btn-outline-info mt-4" role="button">Реєстрація</a>
     </div>
-    <div class="container-fluid text-center mt-5 p-4" style="border-bottom:solid 1px #292640;">
+    <div class="container-fluid mt-5 p-4" style="border-bottom:solid 1px #292640;">
         <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa">&#xf077;</i></button>
         <div class="row">
             <div class="col-md-12">
                 <h1><i style='font-size:23px' class="fas bg-success mb-2 p-3">&#xf0a0;</i></h1>
                 <h3>Кількість даних</h3>
-                <ul class="d-flex justify-content-center">
+                <ul class="">
                     <li class="">
                         <h5><span class="badge badge-success badge-pill align-items-center">74 </span> банківські установи</h5>
                     </li>
@@ -54,24 +67,39 @@
             </div>
         </div>
         <div class="row mt-5">
-            <div class="text-center col-md-6">
+            <div class="col mr-3">
+                <h1><i style='font-size:23px;' class="fas bg-success mb-2 p-3">&#xf0a0;</i></h1>
+                <h3>Кількість даних</h3>
+                <ul class="">
+                    <li class="">
+                        <h5><span class="badge badge-success badge-pill align-items-center">74 </span> банківські установи</h5>
+                    </li>
+                    <li class="">
+                        <h5> <span class="badge badge-success badge-pill">85 </span> статистичних показників </h5>
+                    </li>
+                    <li class="">
+                        <h5> <span class="badge badge-success badge-pill">11 </span> календарних періодів</h5>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
                 <h1>
                     <i style='font-size:23px' class="fas bg-success mb-2 p-3">&#xf51c;</i>
                 </h1>
                 <h3>Представлення даних</h3>
-                <ul class="d-flex justify-content-center">
+                <ul class="d-flex ">
                     <li>
-                        <h5> <i class="fa"> &#xf0ce;</i> Таблиці</h5>
                         <h5><i class="fa">&#xf25a;</i> Інтерактивні діаграми: </h5>
-                        <p class="font-italic"><i class="fa">&#xf080;</i> Гістограма (bar)</p>
                         <p class="font-italic"><i class="fa">&#xf201;</i> Лінійна (line) діаграма</p>
+                        <p class="font-italic"><i class="fa">&#xf080;</i> Гістограма (bar)</p>
+                        <h5> <i class="fa"> &#xf0ce;</i> Таблиці</h5>
                     </li>
                     <li>
 
                     </li>
                 </ul>
             </div>
-            <div class="col-md-6">
+            <div class="col">
                 <h1><i style='font-size:23px;' class="fas bg-success mb-2 p-3">&#xf66f;</i></h1>
                 <h3>Джерело даних</h3>
                 <div class="">

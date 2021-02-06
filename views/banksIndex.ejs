@@ -12,15 +12,27 @@
             padding: 10px;
             font-size: 17px;
         }
+        
+        @media only screen and (max-width: 400px) {
+            .navbar-brand>h3 {
+                display: none;
+            }
+            .navbar-brand>img {
+                margin-top: 0px;
+            }
+        }
     </style>
 
     <div class="container-fluid p-4 mt-4" style="min-height:100%">
         <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa">&#xf077;</i></button>
         <div class="row">
-            <div class="col-md-3 mt-1">
-                <% include ./partials/searchFilter %>
+            <div class="col-sm-3 mt-1">
+                <!-- <% include ./partials/searchFilter %> -->
             </div>
             <div class="col-md-9">
+                <div class="col-md-9 collapse" id="demo">
+                    <% include ./partials/searchFilter %>
+                </div>
                 <h1>
                     <%= title %>
                 </h1>
