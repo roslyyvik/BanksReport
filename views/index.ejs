@@ -37,9 +37,80 @@
                 padding-right: 0px
             }
         }
+        /* skeletabs */
+        /*! Skeletabs v2.1.1: bundled themes and effects | MIT License */
+        
+        .skltbs-tab-group {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background-image: linear-gradient(45deg, #0047f5, #0047f5 50%, #42bfc7);
+        }
+        
+        .skltbs-tab-group::after {
+            content: "";
+            clear: both;
+            display: table
+        }
+        
+        .skltbs-tab-item {
+            float: left;
+            margin: 0;
+        }
+        
+        .skltbs-tab {
+            display: block;
+            padding: 1em 1.25em;
+            color: #fff;
+            border: 0;
+            font-family: inherit;
+            font-size: 1rem;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            text-decoration: none;
+        }
+        
+        .skltbs-panel,
+        .skltbs-panel>h3 {
+            padding: 15px 25px;
+            color: #e4dfdf
+        }
+        
+        .skltbs-panel-heading {
+            margin-top: 3px;
+        }
+        
+        .skltbs-panel-heading:first-child {
+            margin-top: 0
+        }
+        
+        .skltbs-tab:focus,
+        .skltbs-panel {
+            outline: 0;
+        }
+        
+        .skltbs-tab.skltbs-active {
+            color: inherit;
+            font-family: regular, montserrat, sans-serif;
+            text-decoration: none;
+            background: #e4dfdf;
+            /* background-image: linear-gradient(45deg, #0047f5, #0047f5 50%, #42bfc7); */
+        }
+        
+        .skltbs-mode-accordion,
+        .skltbs-active {
+            background-image: linear-gradient(45deg, #0047f5, #0047f5 50%, #42bfc7);
+        }
     </style>
 
-    <div class="jumbotron text-center rounded-0" style="opacity:0.9; margin-bottom:0; background-image: linear-gradient(to bottom right, #1f1c30,yellow, blue, #1f1c30);">
+    <div class="jumbotron text-center rounded-0" style="opacity:0.9; margin-bottom:0; background-image: linear-gradient(to top right,rgb(4, 4, 102) 50%, #6953e4);">
         <h1 class="display-3">
             БАНКИ УКРАЇНИ
         </h1>
@@ -53,17 +124,49 @@
             <div class="col-md-12">
                 <h1><i style='font-size:23px' class="fas bg-success mb-2 p-3">&#xf0a0;</i></h1>
                 <h3>Кількість даних</h3>
-                <ul class="">
-                    <li class="">
-                        <h5><span class="badge badge-success badge-pill align-items-center">74 </span> банківські установи</h5>
-                    </li>
-                    <li class="">
-                        <h5> <span class="badge badge-success badge-pill">85 </span> статистичних показників </h5>
-                    </li>
-                    <li class="">
-                        <h5> <span class="badge badge-success badge-pill">11 </span> календарних періодів</h5>
-                    </li>
-                </ul>
+                <div id="skltbsResponsive" class="skltbs">
+                    <ul role="tablist" class="skltbs-tab-group">
+                        <li role="presentation" class="skltbs-tab-item">
+                            <a role="tab" class="skltbs-tab" href="#skltbsResponsive1">Державні ЦП</a>
+                        </li>
+                        <li role="presentation" class="skltbs-tab-item">
+                            <a role="tab" class="skltbs-tab" href="#skltbsResponsive2">Оренда</a>
+                        </li>
+                        <li role="presentation" class="skltbs-tab-item">
+                            <a role="tab" class="skltbs-tab" href="#skltbsResponsive3">Грошовий ринок</a>
+                        </li>
+                        <li role="presentation" class="skltbs-tab-item">
+                            <a role="tab" class="skltbs-tab" href="#skltbsResponsive4">Фонди</a>
+                        </li>
+                        <li role="presentation" class="skltbs-tab-item">
+                            <a role="tab" class="skltbs-tab" href="#skltbsResponsive4">Ануітет</a>
+                        </li>
+                    </ul>
+                    <div class="skltbs-panel-group">
+                        <div role="tabpanel" id="skltbsResponsive1" class="skltbs-panel">
+                            <h3>Державні цінні папери</h3>
+                            <p>Державні облігації дають вам поєднання безпечності та високої дохідності. Казначейські цінні папери, захищені від інфляції, є державними цінними паперами, які автоматично коригуються з підвищенням інфляції.</p>
+                        </div>
+                        <div role="tabpanel" id="skltbsResponsive2" class="skltbs-panel">
+                            <h3>Оренда нерухомості</h3>
+                            <p>Оренда нерухомості забезпечуює джерело стабільного доходу, але вона також може викликати головні болі, що пов'язані з веденням бухгалтерського обліку та податкової звітності. Ви повинні обережно оцінювати переваги доходів,
+                                а також витрат та особистих зобов'язань.</p>
+                        </div>
+                        <div role="tabpanel" id="skltbsResponsive3" class="skltbs-panel">
+                            <h3>Грошовий ринок</h3>
+                            <p>Грошові кошти та короткострокові форми заощаджень (наприклад, депозити) допомагають вам зберігати кошти резервного фонду на руках, тому вам не потрібно продавати інші інвестиції, які ефективно працюють або втрачають позитивний
+                                вплив на ринку.</p>
+                        </div>
+                        <div role="tabpanel" id="skltbsResponsive4" class="skltbs-panel">
+                            <h3>Інвестиційні фонди</h3>
+                            <p>Взаємні фонди або біржові фонди дозволять вам скористатися навичками професійного менеджера грошових коштів та надати вам більше можливостей для диверсифікації у вашому портфоліо.</p>
+                        </div>
+                        <div role="tabpanel" id="skltbsResponsive4" class="skltbs-panel">
+                            <h3>Ануітет</h3>
+                            <p>Ануітети забезпечують стійкий потік доходу. Ануїтети можуть запропонувати або фіксовану, або змінну опцію виплати протягом усього життя, захищаючи вас від ризику довголіття.</p>
+                        </div>
+                    </div>
+                </div><br>
             </div>
         </div>
         <div class="row mt-5">
@@ -3248,7 +3351,20 @@
             <a type="button" href="/register" class="btn btn-outline-info mt-4" role="button">Реєстрація</a>
         </div>
     </div><br>
-
+    <script>
+        $("#skltbsResponsive").skeletabs({
+            equalHeights: true,
+            animation: "fade-scale",
+            // autoplay: true,
+            autoplayInterval: 4500,
+            responsive: {
+                breakpoint: 800,
+                headingTagName: "h4"
+            }
+        });
+    </script>
     <script src="/javascripts/table.js" charset="utf-8"></script>
     <script src="/javascripts/tabcontent.js" charset="utf-8"></script>
     <script src="/javascripts/chartCreate.js" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="/javascripts/skeletabs.js" charset="utf-8"></script>
