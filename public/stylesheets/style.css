@@ -87,9 +87,9 @@ canvas {
 /* Create an active/current tablink class */
 
 .tab button.active {
-    background-color: #191727;
+    background-image: linear-gradient(to bottom, #191727 90%, #00B7FF);
     opacity: 0.6;
-    border-bottom: solid 3px #00B7FF;
+    /* border-bottom: solid 3px #00B7FF; */
 }
 
 
@@ -103,7 +103,6 @@ canvas {
     display: none;
     padding: 26px 12px;
     border-bottom: 1px solid #292640;
-    ;
     border-top: none;
 }
 

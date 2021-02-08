@@ -30,13 +30,25 @@
         margin-top: 6px;
     }
     
+    .navbar-brand>h3 {
+        font-family: Lucida Sans Unicode;
+        opacity: 0.9
+    }
+    
+    .navbar-brand>h3 span {
+        font-family: Lucida Sans Unicode;
+        opacity: 0.9;
+        color: #dbccf7;
+        position: relative
+    }
+    
     .navbar-brand:hover {
         opacity: 0.7
     }
 </style>
 
 <nav class="navbar navbar-expand border-0" style="background:#292640;">
-    <a class="nav-link" href="/banks "><i class="fas ">&#xf66f;</i> Банки</a>
+    <a class="nav-link" href="/banks "><i class="fas">&#xf66f;</i> Банки</a>
     <!-- <button class=" navbar-toggler " type="button " data-toggle="collapse " data-target="#collapsibleNavbar ">
               <i style="font-size:20px; color:#00B7FF " class="fa ">&#xf0c9;</i>
       </button> -->
@@ -46,7 +58,7 @@
             <li class="nav-link">
                 <a class="d-flex navbar-brand mt-1" href="/">
                     <img src="/images/method-draw-image.svg" alt="Logo">
-                    <h3 class="pl-2 mt-1" style="font-family:Lucida Sans Unicode;opacity:0.9"><strong>banks<span style="color:#dd2aa2;position:relative">tour</span></strong></h3>
+                    <h3 class="pl-2 mt-1"><strong>banks<span>tour</span></strong></h3>
                 </a>
             </li>
             <!-- <li class="nav-item ">
@@ -73,3 +85,31 @@
     <button type="button" class="btn btn-link " data-toggle="collapse" data-target="#demo"><i class="fa fa-search"></i>
 </button>
 </nav>
+<!-- <nav class="navbar navbar-expand-md border-0" style="background:#292640;">
+    <a class="d-flex navbar-brand ml-1 mt-1" href="/">
+        <img src="/images/logo-image.svg" alt="Logo" style="width:28px;height:25px;margin-top: 6px;">
+        <h3 class="pl-2 mt-1" style="font-family:Lucida Sans Unicode;opacity:0.9"><strong>banks<span style="color:#dd2aa2;position:relative">tour</span></strong></h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+              <i style="font-size:20px; color:#996AF8;" class="fa">&#xf0c9;</i>
+      </button>
+    <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+        <ul class="navbar-nav justify-content-center">
+            <li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="/banks"><i class="fas">&#xf66f;</i> Банки</a></li>
+            <% if(!currentUser){ %>
+                <li class="nav-item"><a class="nav-link" href="/register"> Реєстрація</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login"><i class="fas">&#xf2f6;</i> Вхід</a></li>
+                <% } else { %>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Вихід <i class="fas">&#xf2f5;</i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/profile"><i class="fa fa-user-circle-o"></i> Вітаю, <%= currentUser.username %>!</a></li>
+                    <% } %>
+                        <li class="nav-item donate">
+                            <a class="nav-link text-warning" href="/donate">Донати</a>
+                        </li>
+        </ul>
+    </div>
+    <li class="nav-item donat justify-content-center">
+        <a class="nav-link btn btn-outline-warning" href="/donate">Донати</a>
+    </li>
+</nav> -->

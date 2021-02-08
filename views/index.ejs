@@ -22,9 +22,23 @@
             display: none
         }
         
+        .container-fluid {
+            border-bottom: solid 1px #292640;
+        }
+        
+        .jumbotron {
+            opacity: 0.9;
+            margin-bottom: 0;
+            background-image: linear-gradient(to top right, rgb(4, 4, 102) 50%, #6953e4);
+        }
+        
+        .jumbotron .container {
+            background-image: linear-gradient(45deg, #6953e4 50%, rgb(4, 4, 102));
+        }
+        
         @media only screen and (max-width: 992px) {
             /* For mobile phones: */
-            .col-lg-1 {
+            .col-lg-2 {
                 display: none;
             }
         }
@@ -37,138 +51,329 @@
                 padding-right: 0px
             }
         }
-        /* skeletabs */
-        /*! Skeletabs v2.1.1: bundled themes and effects | MIT License */
-        
-        .skltbs-tab-group {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            background-image: linear-gradient(45deg, #0047f5, #0047f5 50%, #42bfc7);
-        }
-        
-        .skltbs-tab-group::after {
-            content: "";
-            clear: both;
-            display: table
-        }
-        
-        .skltbs-tab-item {
-            float: left;
-            margin: 0;
-        }
-        
-        .skltbs-tab {
-            display: block;
-            padding: 1em 1.25em;
-            color: #fff;
-            border: 0;
-            font-family: inherit;
-            font-size: 1rem;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -ms-touch-action: manipulation;
-            touch-action: manipulation;
-            text-decoration: none;
-        }
-        
-        .skltbs-panel,
-        .skltbs-panel>h3 {
-            padding: 15px 25px;
-            color: #e4dfdf
-        }
-        
-        .skltbs-panel-heading {
-            margin-top: 3px;
-        }
-        
-        .skltbs-panel-heading:first-child {
-            margin-top: 0
-        }
-        
-        .skltbs-tab:focus,
-        .skltbs-panel {
-            outline: 0;
-        }
-        
-        .skltbs-tab.skltbs-active {
-            color: inherit;
-            font-family: regular, montserrat, sans-serif;
-            text-decoration: none;
-            background: #e4dfdf;
-            /* background-image: linear-gradient(45deg, #0047f5, #0047f5 50%, #42bfc7); */
-        }
-        
-        .skltbs-mode-accordion,
-        .skltbs-active {
-            background-image: linear-gradient(45deg, #0047f5, #0047f5 50%, #42bfc7);
-        }
     </style>
 
-    <div class="jumbotron text-center rounded-0" style="opacity:0.9; margin-bottom:0; background-image: linear-gradient(to top right,rgb(4, 4, 102) 50%, #6953e4);">
-        <h1 class="display-3">
-            БАНКИ УКРАЇНИ
-        </h1>
-        <h2>Показники фінансової діяльності</h2>
-        <a type="button" href="/banks" class="btn btn-outline-success mt-4" role="button">До перегляду</a>
-        <a type="button" href="/register" class="btn btn-outline-info mt-4" role="button">Реєстрація</a>
-    </div>
-    <div class="container-fluid mt-5 p-4" style="border-bottom:solid 1px #292640;">
-        <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa">&#xf077;</i></button>
-        <div class="row">
-            <div class="col-md-12">
-                <h1><i style='font-size:23px' class="fas bg-success mb-2 p-3">&#xf0a0;</i></h1>
-                <h3>Кількість даних</h3>
+    <div class="jumbotron d-lg-flex rounded-0">
+        <div class="col-lg-5 text-center">
+            <h1 class="display-3">
+                БАНКИ УКРАЇНИ
+            </h1>
+            <h2>Показники фінансової діяльності</h2>
+            <a type="button" href="/banks" class="btn btn-outline-success mt-4" role="button">До перегляду</a>
+        </div><br>
+        <div class="col-lg-7 p-3 container rounded shadow-sm bg-light">
+            <div>
                 <div id="skltbsResponsive" class="skltbs">
                     <ul role="tablist" class="skltbs-tab-group">
                         <li role="presentation" class="skltbs-tab-item">
-                            <a role="tab" class="skltbs-tab" href="#skltbsResponsive1">Державні ЦП</a>
+                            <a role="tab" class="skltbs-tab" href="#skltbsResponsive1"></a>
                         </li>
                         <li role="presentation" class="skltbs-tab-item">
-                            <a role="tab" class="skltbs-tab" href="#skltbsResponsive2">Оренда</a>
+                            <a role="tab" class="skltbs-tab" href="#skltbsResponsive2"></a>
                         </li>
                         <li role="presentation" class="skltbs-tab-item">
-                            <a role="tab" class="skltbs-tab" href="#skltbsResponsive3">Грошовий ринок</a>
+                            <a role="tab" class="skltbs-tab" href="#skltbsResponsive3"></a>
                         </li>
                         <li role="presentation" class="skltbs-tab-item">
-                            <a role="tab" class="skltbs-tab" href="#skltbsResponsive4">Фонди</a>
-                        </li>
-                        <li role="presentation" class="skltbs-tab-item">
-                            <a role="tab" class="skltbs-tab" href="#skltbsResponsive4">Ануітет</a>
+                            <a role="tab" class="skltbs-tab" href="#skltbsResponsive4"></a>
                         </li>
                     </ul>
                     <div class="skltbs-panel-group">
                         <div role="tabpanel" id="skltbsResponsive1" class="skltbs-panel">
-                            <h3>Державні цінні папери</h3>
-                            <p>Державні облігації дають вам поєднання безпечності та високої дохідності. Казначейські цінні папери, захищені від інфляції, є державними цінними паперами, які автоматично коригуються з підвищенням інфляції.</p>
+                            <canvas id="net_assets0_0"></canvas>
+                            <script>
+                                var chartLabels = ["2018_04_01", "2018_07_01", "2018_10_01", "2019_01_01", "2019_04_01", "2019_07_01", "2019_10_01", "2020_01_01", "2020_04_01", "2020_07_01", "2020_09_01"]
+                                var ctx = document.getElementById("net_assets0_0").getContext('2d');
+                                Chart.defaults.global.animation.duration = 1500
+                                var chart1_1 = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: chartLabels,
+                                        datasets: [{
+                                            label: '<%= assets1_1.indicators[3].items %>',
+                                            backgroundColor: '#ffa31a',
+                                            data: ['<%= assets1_1.indicators[3].D2018_04_01.toFixed() %>', '<%= assets1_1.indicators[3].D2018_07_01.toFixed() %>', '<%= assets1_1.indicators[3].D2018_10_01.toFixed() %>', '<%= assets1_1.indicators[3].D2019_01_01.toFixed() %>', '<%= assets1_1.indicators[3].D2019_04_01.toFixed() %>', '<%= assets1_1.indicators[3].D2019_07_01.toFixed() %>', '<%= assets1_1.indicators[3].D2019_10_01.toFixed() %>', '<%= assets1_1.indicators[3].D2020_01_01.toFixed() %>', '<%= assets1_1.indicators[3].D2020_04_01.toFixed() %>', '<%= assets1_1.indicators[3].D2020_07_01.toFixed() %>',
+                                                '<%= assets1_1.indicators[3].D2020_09_01.toFixed() %>'
+                                            ],
+                                        }, {
+                                            label: '<%= assets1_1.indicators[0].items %>',
+                                            backgroundColor: "#47d147",
+                                            data: ['<%= assets1_1.indicators[0].D2018_04_01.toFixed() %>', '<%= assets1_1.indicators[0].D2018_07_01.toFixed() %>', '<%= assets1_1.indicators[0].D2018_10_01.toFixed() %>', '<%= assets1_1.indicators[0].D2019_01_01.toFixed() %>', '<%= assets1_1.indicators[0].D2019_04_01.toFixed() %>', '<%= assets1_1.indicators[0].D2019_07_01.toFixed() %>', '<%= assets1_1.indicators[0].D2019_10_01.toFixed() %>', '<%= assets1_1.indicators[0].D2020_01_01.toFixed() %>', '<%= assets1_1.indicators[0].D2020_04_01.toFixed() %>', '<%= assets1_1.indicators[0].D2020_07_01.toFixed() %>', '<%= assets1_1.indicators[0].D2020_09_01.toFixed() %>'],
+                                        }, {
+                                            label: '<%= assets1_1.indicators[1].items %>',
+                                            backgroundColor: "#ff4d4d",
+                                            data: ['<%= assets1_1.indicators[1].D2018_04_01.toFixed() %>', '<%= assets1_1.indicators[1].D2018_07_01.toFixed() %>', '<%= assets1_1.indicators[1].D2018_10_01.toFixed() %>', '<%= assets1_1.indicators[1].D2019_01_01.toFixed() %>', '<%= assets1_1.indicators[1].D2019_04_01.toFixed() %>', '<%= assets1_1.indicators[1].D2019_07_01.toFixed() %>', '<%= assets1_1.indicators[1].D2019_10_01.toFixed() %>', '<%= assets1_1.indicators[1].D2020_01_01.toFixed() %>', '<%= assets1_1.indicators[1].D2020_04_01.toFixed() %>', '<%= assets1_1.indicators[1].D2020_07_01.toFixed() %>', '<%= assets1_1.indicators[1].D2020_09_01.toFixed() %>'],
+                                        }, {
+                                            label: '<%= assets1_1.indicators[2].items %>',
+                                            backgroundColor: "#4d4dff",
+                                            data: ['<%= assets1_1.indicators[2].D2018_04_01.toFixed() %>', '<%= assets1_1.indicators[2].D2018_07_01.toFixed() %>', '<%= assets1_1.indicators[2].D2018_10_01.toFixed() %>', '<%= assets1_1.indicators[2].D2019_01_01.toFixed() %>', '<%= assets1_1.indicators[2].D2019_04_01.toFixed() %>', '<%= assets1_1.indicators[2].D2019_07_01.toFixed() %>', '<%= assets1_1.indicators[2].D2019_10_01.toFixed() %>', '<%= assets1_1.indicators[2].D2020_01_01.toFixed() %>', '<%= assets1_1.indicators[2].D2020_04_01.toFixed() %>', '<%= assets1_1.indicators[2].D2020_07_01.toFixed() %>', '<%= assets1_1.indicators[2].D2020_09_01.toFixed() %>'],
+                                        }, {
+                                            label: '<%= assets1_1.indicators[4].items %>',
+                                            backgroundColor: '#e63900',
+                                            data: ['<%= assets1_1.indicators[4].D2018_04_01.toFixed() %>', '<%= assets1_1.indicators[4].D2018_07_01.toFixed() %>', '<%= assets1_1.indicators[4].D2018_10_01.toFixed() %>', '<%= assets1_1.indicators[4].D2019_01_01.toFixed() %>', '<%= assets1_1.indicators[4].D2019_04_01.toFixed() %>', '<%= assets1_1.indicators[4].D2019_07_01.toFixed() %>', '<%= assets1_1.indicators[4].D2019_10_01.toFixed() %>', '<%= assets1_1.indicators[4].D2020_01_01.toFixed() %>', '<%= assets1_1.indicators[4].D2020_04_01.toFixed() %>', '<%= assets1_1.indicators[4].D2020_07_01.toFixed() %>', '<%= assets1_1.indicators[4].D2020_09_01.toFixed() %>'],
+                                        }],
+                                    },
+                                    options: {
+                                        legend: {
+                                            display: false
+                                        },
+                                        scales: {
+                                            xAxes: [{
+                                                display: false,
+                                                stacked: false,
+                                                gridLines: {
+                                                    display: true,
+                                                }
+                                            }],
+                                            yAxes: [{
+                                                stacked: false,
+                                                ticks: {
+                                                    display: false,
+                                                    beginAtZero: true,
+                                                    callback: function(value, index, values) {
+                                                        return value / 1000000;
+                                                    }
+                                                },
+                                                type: 'linear',
+                                            }]
+                                        },
+                                        title: {
+                                            display: true,
+                                            text: 'АКТИВИ',
+                                            fontSize: 15
+                                        },
+                                        responsive: true,
+                                        maintainAspectRatio: true
+                                    }
+                                });
+                            </script>
                         </div>
                         <div role="tabpanel" id="skltbsResponsive2" class="skltbs-panel">
-                            <h3>Оренда нерухомості</h3>
-                            <p>Оренда нерухомості забезпечуює джерело стабільного доходу, але вона також може викликати головні болі, що пов'язані з веденням бухгалтерського обліку та податкової звітності. Ви повинні обережно оцінювати переваги доходів,
-                                а також витрат та особистих зобов'язань.</p>
+                            <canvas id="total_liability"></canvas>
+                            <script>
+                                var ctxliabil2_2 = document.getElementById("total_liability").getContext('2d');
+                                Chart.defaults.global.animation.duration = 1500
+                                var chartliabil2_2 = new Chart(ctxliabil2_2, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: chartLabels,
+                                        datasets: [{
+                                            label: '<%= liabilities2_2.indicators[0].items %>',
+                                            backgroundColor: "#47d147",
+                                            borderColor: '#47d147',
+                                            data: ['<%= liabilities2_2.indicators[0].D2018_04_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2018_07_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2018_10_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2019_01_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2019_04_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2019_07_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2019_10_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2020_01_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2020_04_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2020_07_01.toFixed() %>', '<%= liabilities2_2.indicators[0].D2020_09_01.toFixed() %>'],
+                                        }, {
+                                            label: '<%= liabilities2_2.indicators[1].items %>',
+                                            fill: false,
+                                            backgroundColor: "#ff4d4d",
+                                            borderColor: '#ff4d4d',
+                                            data: ['<%= liabilities2_2.indicators[1].D2018_04_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2018_07_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2018_10_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2019_01_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2019_04_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2019_07_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2019_10_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2020_01_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2020_04_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2020_07_01.toFixed() %>', '<%= liabilities2_2.indicators[1].D2020_09_01.toFixed() %>'],
+                                        }, {
+                                            label: '<%= liabilities2_2.indicators[2].items %>',
+                                            fill: false,
+                                            backgroundColor: "#4d4dff",
+                                            borderColor: "#4d4dff",
+                                            data: ['<%= liabilities2_2.indicators[2].D2018_04_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2018_07_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2018_10_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2019_01_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2019_04_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2019_07_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2019_10_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2020_01_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2020_04_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2020_07_01.toFixed() %>', '<%= liabilities2_2.indicators[2].D2020_09_01.toFixed() %>'],
+                                        }, {
+                                            label: '<%= liabilities2_2.indicators[3].items %>',
+                                            fill: false,
+                                            backgroundColor: "#ffa31a",
+                                            borderColor: "#ffa31a",
+                                            data: ['<%= liabilities2_2.indicators[3].D2018_04_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2018_07_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2018_10_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2019_01_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2019_04_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2019_07_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2019_10_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2020_01_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2020_04_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2020_07_01.toFixed() %>', '<%= liabilities2_2.indicators[3].D2020_09_01.toFixed() %>'],
+                                        }],
+                                    },
+                                    options: {
+                                        legend: {
+                                            display: false
+                                        },
+                                        scales: {
+                                            xAxes: [{
+                                                stacked: false,
+                                                ticks: {
+                                                    display: false,
+                                                    beginAtZero: false,
+                                                },
+                                                gridLines: {
+                                                    offset: false,
+                                                    offsetGridLines: true
+                                                }
+                                            }],
+                                            yAxes: [{
+                                                display: false,
+                                                stacked: false,
+                                                ticks: {
+                                                    beginAtZero: false,
+                                                    callback: function(value, index, values) {
+                                                        return value / 1000000;
+                                                    }
+                                                },
+                                                gridLines: {
+                                                    display: true,
+                                                },
+                                                type: 'linear',
+                                            }]
+                                        },
+                                        title: {
+                                            display: true,
+                                            text: 'КОШТИ КЛІЄНТІВ',
+                                            fontSize: 15
+                                        },
+                                        responsive: true,
+                                        maintainAspectRatio: true
+                                    }
+                                });
+                            </script>
                         </div>
                         <div role="tabpanel" id="skltbsResponsive3" class="skltbs-panel">
-                            <h3>Грошовий ринок</h3>
-                            <p>Грошові кошти та короткострокові форми заощаджень (наприклад, депозити) допомагають вам зберігати кошти резервного фонду на руках, тому вам не потрібно продавати інші інвестиції, які ефективно працюють або втрачають позитивний
-                                вплив на ринку.</p>
+                            <canvas id="total_capital"></canvas>
+                            <script>
+                                var ctxcapital0_0 = document.getElementById("total_capital").getContext('2d');
+                                Chart.defaults.global.animation.duration = 1500
+                                var chartcapital0_0 = new Chart(ctxcapital0_0, {
+                                    type: 'line',
+                                    data: {
+                                        labels: chartLabels,
+                                        datasets: [{
+                                            label: '<%= capital0_0.indicators[0].items %>',
+                                            fill: false,
+                                            backgroundColor: "#47d147",
+                                            borderColor: '#47d147',
+                                            data: ['<%= capital0_0.indicators[0].D2018_04_01.toFixed() %>', '<%= capital0_0.indicators[0].D2018_07_01.toFixed() %>', '<%= capital0_0.indicators[0].D2018_10_01.toFixed() %>', '<%= capital0_0.indicators[0].D2019_01_01.toFixed() %>', '<%= capital0_0.indicators[0].D2019_04_01.toFixed() %>', '<%= capital0_0.indicators[0].D2019_07_01.toFixed() %>', '<%= capital0_0.indicators[0].D2019_10_01.toFixed() %>', '<%= capital0_0.indicators[0].D2020_01_01.toFixed() %>', '<%= capital0_0.indicators[0].D2020_04_01.toFixed() %>', '<%= capital0_0.indicators[0].D2020_07_01.toFixed() %>', '<%= capital0_0.indicators[0].D2020_09_01.toFixed() %>'],
+                                        }, {
+                                            label: '<%= capital0_0.indicators[1].items %>',
+                                            // fill: false,
+                                            backgroundColor: "#ff4d4d",
+                                            borderColor: '#ff4d4d',
+                                            data: ['<%= capital0_0.indicators[1].D2018_04_01.toFixed() %>', '<%= capital0_0.indicators[1].D2018_07_01.toFixed() %>', '<%= capital0_0.indicators[1].D2018_10_01.toFixed() %>', '<%= capital0_0.indicators[1].D2019_01_01.toFixed() %>', '<%= capital0_0.indicators[1].D2019_04_01.toFixed() %>', '<%= capital0_0.indicators[1].D2019_07_01.toFixed() %>', '<%= capital0_0.indicators[1].D2019_10_01.toFixed() %>', '<%= capital0_0.indicators[1].D2020_01_01.toFixed() %>', '<%= capital0_0.indicators[1].D2020_04_01.toFixed() %>', '<%= capital0_0.indicators[1].D2020_07_01.toFixed() %>', '<%= capital0_0.indicators[1].D2020_09_01.toFixed() %>'],
+                                        }, {
+                                            label: '<%= capital0_0.indicators[2].items %>',
+                                            // fill: false,
+                                            backgroundColor: "#4d4dff",
+                                            borderColor: "#4d4dff",
+                                            data: ['<%= capital0_0.indicators[2].D2018_04_01.toFixed() %>', '<%= capital0_0.indicators[2].D2018_07_01.toFixed() %>', '<%= capital0_0.indicators[2].D2018_10_01.toFixed() %>', '<%= capital0_0.indicators[2].D2019_01_01.toFixed() %>', '<%= capital0_0.indicators[2].D2019_04_01.toFixed() %>', '<%= capital0_0.indicators[2].D2019_07_01.toFixed() %>', '<%= capital0_0.indicators[2].D2019_10_01.toFixed() %>', '<%= capital0_0.indicators[2].D2020_01_01.toFixed() %>', '<%= capital0_0.indicators[2].D2020_04_01.toFixed() %>', '<%= capital0_0.indicators[2].D2020_07_01.toFixed() %>', '<%= capital0_0.indicators[2].D2020_09_01.toFixed() %>'],
+                                        }],
+                                    },
+                                    options: {
+                                        legend: {
+                                            display: false
+                                        },
+                                        scales: {
+                                            xAxes: [{
+                                                stacked: false,
+                                                ticks: {
+                                                    display: false,
+                                                    beginAtZero: false,
+                                                },
+                                                gridLines: {
+                                                    offset: false,
+                                                    offsetGridLines: true
+                                                }
+                                            }],
+                                            yAxes: [{
+                                                stacked: false,
+                                                ticks: {
+                                                    display: false,
+                                                    beginAtZero: false,
+                                                    callback: function(value, index, values) {
+                                                        return value / 1000000;
+                                                    }
+                                                },
+                                                gridLines: {
+                                                    display: true,
+                                                },
+                                                type: 'linear',
+                                            }]
+                                        },
+                                        title: {
+                                            display: true,
+                                            text: 'КАПІТАЛ',
+                                            fontSize: 15
+                                        },
+                                        responsive: true,
+                                        maintainAspectRatio: true
+                                    }
+                                });
+                                // console.log(chart6_6.config.data.labels)
+                            </script>
                         </div>
                         <div role="tabpanel" id="skltbsResponsive4" class="skltbs-panel">
-                            <h3>Інвестиційні фонди</h3>
-                            <p>Взаємні фонди або біржові фонди дозволять вам скористатися навичками професійного менеджера грошових коштів та надати вам більше можливостей для диверсифікації у вашому портфоліо.</p>
-                        </div>
-                        <div role="tabpanel" id="skltbsResponsive4" class="skltbs-panel">
-                            <h3>Ануітет</h3>
-                            <p>Ануітети забезпечують стійкий потік доходу. Ануїтети можуть запропонувати або фіксовану, або змінну опцію виплати протягом усього життя, захищаючи вас від ризику довголіття.</p>
+                            <canvas id="total_profit"></canvas>
+                            <script>
+                                var ctxprofit5_5 = document.getElementById("total_profit").getContext('2d');
+                                Chart.defaults.global.animation.duration = 1500
+                                var chartprofit5_5 = new Chart(ctxprofit5_5, {
+                                    type: 'line',
+                                    data: {
+                                        labels: chartLabels,
+                                        datasets: [{
+                                            label: '<%= profits5_5.indicators[0].items %>',
+                                            // fill: false,
+                                            backgroundColor: "#47d147",
+                                            borderColor: '#47d147',
+                                            data: ['<%= profits5_5.indicators[0].D2018_04_01.toFixed() %>', '<%= profits5_5.indicators[0].D2018_07_01.toFixed() %>', '<%= profits5_5.indicators[0].D2018_10_01.toFixed() %>', '<%= profits5_5.indicators[0].D2019_01_01.toFixed() %>', '<%= profits5_5.indicators[0].D2019_04_01.toFixed() %>', '<%= profits5_5.indicators[0].D2019_07_01.toFixed() %>', '<%= profits5_5.indicators[0].D2019_10_01.toFixed() %>', '<%= profits5_5.indicators[0].D2020_01_01.toFixed() %>', '<%= profits5_5.indicators[0].D2020_04_01.toFixed() %>', '<%= profits5_5.indicators[0].D2020_07_01.toFixed() %>', '<%= profits5_5.indicators[0].D2020_09_01.toFixed() %>'],
+                                        }, {
+                                            label: '<%= profits5_5.indicators[1].items %>',
+                                            // fill: false,
+                                            backgroundColor: "#ff4d4d",
+                                            borderColor: '#ff4d4d',
+                                            data: ['<%= profits5_5.indicators[1].D2018_04_01.toFixed() %>', '<%= profits5_5.indicators[1].D2018_07_01.toFixed() %>', '<%= profits5_5.indicators[1].D2018_10_01.toFixed() %>', '<%= profits5_5.indicators[1].D2019_01_01.toFixed() %>', '<%= profits5_5.indicators[1].D2019_04_01.toFixed() %>', '<%= profits5_5.indicators[1].D2019_07_01.toFixed() %>', '<%= profits5_5.indicators[1].D2019_10_01.toFixed() %>', '<%= profits5_5.indicators[1].D2020_01_01.toFixed() %>', '<%= profits5_5.indicators[1].D2020_04_01.toFixed() %>', '<%= profits5_5.indicators[1].D2020_07_01.toFixed() %>', '<%= profits5_5.indicators[1].D2020_09_01.toFixed() %>'],
+                                        }, {
+                                            label: '<%= profits5_5.indicators[2].items %>',
+                                            fill: false,
+                                            backgroundColor: "#4d4dff",
+                                            borderColor: "#4d4dff",
+                                            data: ['<%= profits5_5.indicators[2].D2018_04_01.toFixed() %>', '<%= profits5_5.indicators[2].D2018_07_01.toFixed() %>', '<%= profits5_5.indicators[2].D2018_10_01.toFixed() %>', '<%= profits5_5.indicators[2].D2019_01_01.toFixed() %>', '<%= profits5_5.indicators[2].D2019_04_01.toFixed() %>', '<%= profits5_5.indicators[2].D2019_07_01.toFixed() %>', '<%= profits5_5.indicators[2].D2019_10_01.toFixed() %>', '<%= profits5_5.indicators[2].D2020_01_01.toFixed() %>', '<%= profits5_5.indicators[2].D2020_04_01.toFixed() %>', '<%= profits5_5.indicators[2].D2020_07_01.toFixed() %>', '<%= profits5_5.indicators[2].D2020_09_01.toFixed() %>'],
+                                        }],
+                                    },
+                                    options: {
+                                        legend: {
+                                            display: false
+                                        },
+                                        scales: {
+                                            xAxes: [{
+                                                stacked: false,
+                                                ticks: {
+                                                    display: false,
+                                                    beginAtZero: false,
+                                                },
+                                                gridLines: {
+                                                    offset: false,
+                                                    offsetGridLines: true
+                                                }
+                                            }],
+                                            yAxes: [{
+                                                display: false,
+                                                stacked: false,
+                                                ticks: {
+                                                    beginAtZero: false,
+                                                    callback: function(value, index, values) {
+                                                        return value / 1000000;
+                                                    }
+                                                },
+                                                gridLines: {
+                                                    display: true,
+                                                },
+                                                type: 'linear',
+                                            }]
+                                        },
+                                        title: {
+                                            display: true,
+                                            text: 'ПРИБУТОК',
+                                            fontSize: 15
+                                        },
+                                        responsive: true,
+                                        maintainAspectRatio: true
+                                    }
+                                });
+                            </script>
                         </div>
                     </div>
-                </div><br>
+                </div>
             </div>
         </div>
+    </div>
+    <div class="container-fluid mt-5 p-4">
+        <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa">&#xf077;</i></button>
         <div class="row mt-5">
             <div class="col mr-3">
                 <h1><i style='font-size:23px;' class="fas bg-success mb-2 p-3">&#xf0a0;</i></h1>
@@ -216,6 +421,8 @@
             </div>
         </div>
     </div>
+    </div>
+    </div>
     <div class="card" style="border-radius:0px">
         <div class="card-img-top">
             <img src="/images/jumbotron1.jpg" alt="jumbo" style="width:100%;opacity:0.5">
@@ -226,20 +433,25 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid mt-4">
-        <h1 class="text-center mb-4">
-            <%= title %>
-        </h1>
-        <div class="pr-5 font-italic text-center" style="padding:0px 50px 0px 0px; opacity:0.5">
-            <blockquote class="blockquote">
-                <div class="mt-1"><small>Створений на підставі фінансових показників <%= banks.SHORTNAME %>, який віднесений до категорії неплатоспроможних.</small></div>
-                <footer class="blockquote-footer"><a href="https://bank.gov.ua/ua/news/all/at-akb-arkada-vidneseno-do-kategoriyi-neplatospromojnih">рішення Правління Національного банку України від 25 серпня 2020 року №541-рш/БТ.</a></footer>
-            </blockquote>
+    <div class="container-fluid p-3 mt-4">
+        <div class="d-flex justify-content-center mb-4">
+            <h1>
+                <%= title %>
+            </h1>
+            <button type="button" class="btn btn-link" style="font-size:30px" data-toggle="collapse" data-target="#demo"><i class="material-icons">&#xe88f;</i></button>
+        </div>
+        <div class="pr-5 font-italic d-flex justify-content-center" style="padding:0px 50px 0px 0px; opacity:0.5">
+            <div class="col-lg-6 collapse" id="demo">
+                <blockquote class="blockquote">
+                    <div class="mt-1"><small>Створений на підставі фінансових показників <%= banks.SHORTNAME %>, який віднесений до категорії неплатоспроможних.</small></div>
+                    <footer class="blockquote-footer"><a href="https://bank.gov.ua/ua/news/all/at-akb-arkada-vidneseno-do-kategoriyi-neplatospromojnih">рішення Правління Національного банку України від 25 серпня 2020 року №541-рш/БТ.</a></footer>
+                </blockquote>
+            </div>
         </div>
         <div class="row">
-            <div class="col-md-10 pl-4">
+            <div class="col-lg-10">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <h3>
                             <%= banks.SHORTNAME %>
                         </h3><br>
@@ -272,7 +484,7 @@
                             <%= banks.SPEC_OSCHAD %>
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                     </div>
                 </div><br><br>
                 <h4 id="normatives">НОРМАТИВИ</h4>
@@ -302,25 +514,25 @@
                                             <%= normative.normative %>
                                         </td>
                                         <td>
-                                            <%= normative.D2019_04_01.toFixed(2) %>
+                                            <%= normative.D2019_04_01.toLocaleString() %>
                                         </td>
                                         <td>
-                                            <%= normative.D2019_07_01.toFixed(2) %>
+                                            <%= normative.D2019_07_01.toLocaleString() %>
                                         </td>
                                         <td>
-                                            <%= normative.D2019_10_01.toFixed(2) %>
+                                            <%= normative.D2019_10_01.toLocaleString() %>
                                         </td>
                                         <td>
-                                            <%= normative.D2020_01_01.toFixed(2) %>
+                                            <%= normative.D2020_01_01.toLocaleString() %>
                                         </td>
                                         <td>
-                                            <%= normative.D2020_04_01.toFixed(2) %>
+                                            <%= normative.D2020_04_01.toLocaleString() %>
                                         </td>
                                         <td>
-                                            <%= normative.D2020_07_01.toFixed(2) %>
+                                            <%= normative.D2020_07_01.toLocaleString() %>
                                         </td>
                                         <td>
-                                            <%= normative.D2020_09_01.toFixed(2) %>
+                                            <%= normative.D2020_09_01.toLocaleString() %>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -435,23 +647,23 @@
                         <tbody>
                             <tr>
                                 <td>Якість кредитного портфелю(Резерви/кредитний портфель),%</td>
-                                <td>48,19</td>
+                                <td>48.19</td>
                                 <td>
                                     <%= ((assets3_3.indicators[1].D2019_10_01 + assets3_3.indicators[3].D2019_10_01)/(assets3_3.indicators[0].D2019_10_01 + assets3_3.indicators[2].D2019_10_01)*(-100)).toFixed(2) %>
                                 </td>
-                                <td>47,63</td>
+                                <td>47.63</td>
                                 <td>
                                     <%= ((assets3_3.indicators[1].D2020_01_01 + assets3_3.indicators[3].D2020_01_01)/(assets3_3.indicators[0].D2020_01_01 + assets3_3.indicators[2].D2020_01_01)*(-100)).toFixed(2) %>
                                 </td>
-                                <td>48,34</td>
+                                <td>48.34</td>
                                 <td>
                                     <%= ((assets3_3.indicators[1].D2020_04_01 + assets3_3.indicators[3].D2020_04_01)/(assets3_3.indicators[0].D2020_04_01 + assets3_3.indicators[2].D2020_04_01)*(-100)).toFixed(2) %>
                                 </td>
-                                <td>48,67</td>
+                                <td>48.67</td>
                                 <td>
                                     <%= ((assets3_3.indicators[1].D2020_07_01 + assets3_3.indicators[3].D2020_07_01)/(assets3_3.indicators[0].D2020_07_01 + assets3_3.indicators[2].D2020_07_01)*(-100)).toFixed(2) %>
                                 </td>
-                                <td>47,89</td>
+                                <td>49.55</td>
                                 <td>
                                     <%= ((assets3_3.indicators[1].D2020_09_01 + assets3_3.indicators[3].D2020_09_01)/(assets3_3.indicators[0].D2020_09_01 + assets3_3.indicators[2].D2020_09_01)*(-100)).toFixed(2) %>
                                 </td>
@@ -460,23 +672,23 @@
                                 <td>Якість кредитного портфелю юр. осіб,%</td>
                                 <td></td>
                                 <td>
-                                    <%= ((assets3_3.indicators[1].D2019_10_01 / assets3_3.indicators[0].D2019_10_01)*(-100)).toFixed(2) %>
+                                    <%= ((assets3_3.indicators[1].D2019_10_01 / assets3_3.indicators[0].D2019_10_01)*(-100)).toLocaleString() %>
                                 </td>
                                 <td></td>
                                 <td>
-                                    <%= ((assets3_3.indicators[1].D2020_01_01 / assets3_3.indicators[0].D2020_01_01)*(-100)).toFixed(2) %>
+                                    <%= ((assets3_3.indicators[1].D2020_01_01 / assets3_3.indicators[0].D2020_01_01)*(-100)).toLocaleString() %>
                                 </td>
                                 <td></td>
                                 <td>
-                                    <%= ((assets3_3.indicators[1].D2020_04_01 / assets3_3.indicators[0].D2020_04_01)*(-100)).toFixed(2) %>
+                                    <%= ((assets3_3.indicators[1].D2020_04_01 / assets3_3.indicators[0].D2020_04_01)*(-100)).toLocaleString() %>
                                 </td>
                                 <td></td>
                                 <td>
-                                    <%= ((assets3_3.indicators[1].D2020_07_01 / assets3_3.indicators[0].D2020_07_01)*(-100)).toFixed(2) %>
+                                    <%= ((assets3_3.indicators[1].D2020_07_01 / assets3_3.indicators[0].D2020_07_01)*(-100)).toLocaleString() %>
                                 </td>
                                 <td></td>
                                 <td>
-                                    <%= ((assets3_3.indicators[1].D2020_09_01 / assets3_3.indicators[0].D2020_09_01)*(-100)).toFixed(2) %>
+                                    <%= ((assets3_3.indicators[1].D2020_09_01 / assets3_3.indicators[0].D2020_09_01)*(-100)).toLocaleString() %>
                                 </td>
                             </tr>
                             <tr>
@@ -528,7 +740,7 @@
                         var ctx = document.getElementById("assets0_0").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chart0_0 = new Chart(ctx, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -565,7 +777,7 @@
                                             beginAtZero: false,
                                         },
                                         gridLines: {
-                                            display: true
+                                            display: true,
                                         }
                                     }],
                                     yAxes: [{
@@ -576,12 +788,12 @@
                                                 return value / 1000000;
                                             }
                                         },
-                                        type: 'linear'
+                                        type: 'linear',
                                     }]
                                 },
                                 title: {
                                     display: true,
-                                    text: 'Чисті активи, тис.грн',
+                                    text: 'ЧИСТІ АКТИВИ, тис.грн',
                                     fontSize: 18
                                 },
                                 responsive: true,
@@ -599,7 +811,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -671,7 +883,7 @@
                         var ctx = document.getElementById("assets1_0").getContext('2d');
                         Chart.defaults.global.animation.duration = 1000
                         var chart1_0 = new Chart(ctx, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -731,7 +943,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -803,7 +1015,7 @@
                         var ctx = document.getElementById("assets1_1").getContext('2d');
                         Chart.defaults.global.animation.duration = 1000
                         var chart1_1 = new Chart(ctx, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -819,7 +1031,7 @@
                                 }, {
                                     label: '<%= assets1_1.indicators[1].items %>',
                                     backgroundColor: "#ff4d4d",
-                                    data: ['<%= assets1_1.indicators[1].D2018_04_01.toFixed() %>', '<%= assets1_1.indicators[1].D2018_07_01.toFixed() %>', '<%= assets1_1.indicators[1].D2018_10_01.toFixed() %>', '<%= assets1_1.indicators[1].D2019_01_01.toFixed() %>', ' <%= assets1_1.indicators[1].D2019_04_01.toFixed() %>', '<%= assets1_1.indicators[1].D2019_07_01.toFixed() %>', '<%= assets1_1.indicators[1].D2019_10_01.toFixed() %>', '<%= assets1_1.indicators[1].D2020_01_01.toFixed() %>', '<%= assets1_1.indicators[1].D2020_04_01.toFixed() %>', '<%= assets1_1.indicators[1].D2020_07_01.toFixed() %>', '<%= assets1_1.indicators[1].D2020_09_01.toFixed() %>'],
+                                    data: ['<%= assets1_1.indicators[1].D2018_04_01.toFixed() %>', '<%= assets1_1.indicators[1].D2018_07_01.toFixed() %>', '<%= assets1_1.indicators[1].D2018_10_01.toFixed() %>', '<%= assets1_1.indicators[1].D2019_01_01.toFixed() %>', '<%= assets1_1.indicators[1].D2019_04_01.toFixed() %>', '<%= assets1_1.indicators[1].D2019_07_01.toFixed() %>', '<%= assets1_1.indicators[1].D2019_10_01.toFixed() %>', '<%= assets1_1.indicators[1].D2020_01_01.toFixed() %>', '<%= assets1_1.indicators[1].D2020_04_01.toFixed() %>', '<%= assets1_1.indicators[1].D2020_07_01.toFixed() %>', '<%= assets1_1.indicators[1].D2020_09_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets1_1.indicators[2].items %>',
                                     backgroundColor: "#4d4dff",
@@ -868,7 +1080,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -940,7 +1152,7 @@
                         var ctx3_3 = document.getElementById("assets3_3").getContext('2d');
                         Chart.defaults.global.animation.duration = 1000
                         var chart3_3 = new Chart(ctx3_3, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -999,7 +1211,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -1071,7 +1283,7 @@
                         var ctx4_4 = document.getElementById("assets4_4").getContext('2d');
                         Chart.defaults.global.animation.duration = 1000
                         var chart4_4 = new Chart(ctx4_4, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -1138,7 +1350,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -1210,7 +1422,7 @@
                         var ctx5_5 = document.getElementById("assets5_5").getContext('2d');
                         Chart.defaults.global.animation.duration = 1000
                         var chart5_5 = new Chart(ctx5_5, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -1228,7 +1440,7 @@
                                 }, {
                                     label: '<%= assets5_5.indicators[2].items %>',
                                     backgroundColor: "#4d4dff",
-                                    data: ['<%= assets5_5.indicators[2].D2018_04_01.toFixed() %>', '<%= assets5_5.indicators[2].D2018_07_01.toFixed() %>', '<%= assets5_5.indicators[2].D2018_10_01.toFixed() %>', '<%= assets5_5.indicators[2].D2019_01_01.toFixed() %>', '<%= assets5_5.indicators[2].D2019_04_01.toFixed() %>', '<%= assets5_5.indicators[2].D2019_07_01.toFixed() %>', ' <%= assets5_5.indicators[2].D2019_10_01.toFixed() %>', '<%= assets5_5.indicators[2].D2020_01_01.toFixed() %>', '<%= assets5_5.indicators[2].D2020_04_01.toFixed() %>', '<%= assets5_5.indicators[2].D2020_07_01.toFixed() %>', '<%= assets5_5.indicators[2].D2020_09_01.toFixed() %>'],
+                                    data: ['<%= assets5_5.indicators[2].D2018_04_01.toFixed() %>', '<%= assets5_5.indicators[2].D2018_07_01.toFixed() %>', '<%= assets5_5.indicators[2].D2018_10_01.toFixed() %>', '<%= assets5_5.indicators[2].D2019_01_01.toFixed() %>', '<%= assets5_5.indicators[2].D2019_04_01.toFixed() %>', '<%= assets5_5.indicators[2].D2019_07_01.toFixed() %>', '<%= assets5_5.indicators[2].D2019_10_01.toFixed() %>', '<%= assets5_5.indicators[2].D2020_01_01.toFixed() %>', '<%= assets5_5.indicators[2].D2020_04_01.toFixed() %>', '<%= assets5_5.indicators[2].D2020_07_01.toFixed() %>', '<%= assets5_5.indicators[2].D2020_09_01.toFixed() %>'],
                                 }, {
                                     label: '<%= assets5_5.indicators[4].items %>',
                                     backgroundColor: "#e6e600",
@@ -1277,7 +1489,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -1351,7 +1563,7 @@
                         var ctx6_6 = document.getElementById("assets6_6").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chart6_6 = new Chart(ctx6_6, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -1425,7 +1637,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -1513,23 +1725,23 @@
                         <tbody>
                             <tr>
                                 <td>Кошти Юр.осіб/Пасиви,%</td>
-                                <td>29,74</td>
+                                <td>29.74</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[0].D2019_10_01 / liabilities0_0.indicators[2].D2019_10_01)*100).toFixed(2) %>
                                 </td>
-                                <td>31,32</td>
+                                <td>31.32</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[0].D2020_01_01 / liabilities0_0.indicators[2].D2020_01_01)*100).toFixed(2) %>
                                 </td>
-                                <td>33,36</td>
+                                <td>33.36</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[0].D2020_04_01 / liabilities0_0.indicators[2].D2020_04_01)*100).toFixed(2) %>
                                 </td>
-                                <td>33,52</td>
+                                <td>33.52</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[0].D2020_07_01 / liabilities0_0.indicators[2].D2020_07_01)*100).toFixed(2) %>
                                 </td>
-                                <td>32,38</td>
+                                <td>32.38</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[2].D2020_09_01 / liabilities0_0.indicators[2].D2020_09_01)*100).toFixed(2) %>
                                 </td>
@@ -1537,23 +1749,23 @@
                             <tr>
                                 <td>Кошти Фіз.осіб/Пасиви,%</td>
 
-                                <td>38,88</td>
+                                <td>38.88</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[2].D2019_10_01 / liabilities0_0.indicators[2].D2019_10_01)*100).toFixed(2) %>
                                 </td>
-                                <td>37,67</td>
+                                <td>37.67</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[2].D2020_01_01 / liabilities0_0.indicators[2].D2020_01_01)*100).toFixed(2) %>
                                 </td>
-                                <td>36,97</td>
+                                <td>36.97</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[2].D2020_04_01 / liabilities0_0.indicators[2].D2020_04_01)*100).toFixed(2) %>
                                 </td>
-                                <td>39,38</td>
+                                <td>39.38</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[2].D2020_07_01 / liabilities0_0.indicators[2].D2020_07_01)*100).toFixed(2) %>
                                 </td>
-                                <td>38,47</td>
+                                <td>38.47</td>
                                 <td>
                                     <%= ((liabilities2_2.indicators[2].D2020_09_01 / liabilities0_0.indicators[2].D2020_09_01)*100).toFixed(2) %>
                                 </td>
@@ -1582,7 +1794,7 @@
                         var ctxliabil0_0 = document.getElementById("liabilit0_0").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartliabil0_0 = new Chart(ctxliabil0_0, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -1651,7 +1863,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -1672,37 +1884,37 @@
                                                 <%= liabilit.items %>
                                             </td>
                                             <td>
-                                                <%= liabilit.D2018_04_01.toFixed() %>
+                                                <%= liabilit.D2018_04_01.toLocaleString() %>
                                             </td>
                                             <td>
-                                                <%= liabilit.D2018_07_01.toFixed() %>
+                                                <%= liabilit.D2018_07_01.toLocaleString() %>
                                             </td>
                                             <td>
-                                                <%= liabilit.D2018_10_01.toFixed() %>
+                                                <%= liabilit.D2018_10_01.toLocaleString() %>
                                             </td>
                                             <td>
-                                                <%= liabilit.D2019_01_01.toFixed() %>
+                                                <%= liabilit.D2019_01_01.toLocaleString() %>
                                             </td>
                                             <td>
-                                                <%= liabilit.D2019_04_01.toFixed() %>
+                                                <%= liabilit.D2019_04_01.toLocaleString() %>
                                             </td>
                                             <td>
-                                                <%= liabilit.D2019_07_01.toFixed() %>
+                                                <%= liabilit.D2019_07_01.toLocaleString() %>
                                             </td>
                                             <td>
-                                                <%= liabilit.D2019_10_01.toFixed() %>
+                                                <%= liabilit.D2019_10_01.toLocaleString() %>
                                             </td>
                                             <td>
-                                                <%= liabilit.D2020_01_01.toFixed() %>
+                                                <%= liabilit.D2020_01_01.toLocaleString() %>
                                             </td>
                                             <td>
-                                                <%= liabilit.D2020_04_01.toFixed() %>
+                                                <%= liabilit.D2020_04_01.toLocaleString() %>
                                             </td>
                                             <td>
-                                                <%= liabilit.D2020_07_01.toFixed() %>
+                                                <%= liabilit.D2020_07_01.toLocaleString() %>
                                             </td>
                                             <td>
-                                                <%= liabilit.D2020_09_01.toFixed() %>
+                                                <%= liabilit.D2020_09_01.toLocaleString() %>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -1727,7 +1939,7 @@
                         var ctxliabil1_1 = document.getElementById("liabilit1_1").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartliabil1_1 = new Chart(ctxliabil1_1, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -1808,7 +2020,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -1884,7 +2096,7 @@
                         var ctxliabil2_2 = document.getElementById("liabilit2_2").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartliabil2_2 = new Chart(ctxliabil2_2, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -1959,7 +2171,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -2047,23 +2259,23 @@
                         <tbody>
                             <tr>
                                 <td>Капітал/Статутний фонд,%</td>
-                                <td>35,46</td>
+                                <td>35.46</td>
                                 <td>
                                     <%= ((capital0_0.indicators[2].D2019_10_01 / capital0_0.indicators[0].D2019_10_01)*100).toFixed(2) %>
                                 </td>
-                                <td>39,55</td>
+                                <td>39.55</td>
                                 <td>
                                     <%= ((capital0_0.indicators[2].D2020_01_01 / capital0_0.indicators[0].D2020_01_01)*100).toFixed(2) %>
                                 </td>
-                                <td>42,47</td>
+                                <td>42.47</td>
                                 <td>
                                     <%= ((capital0_0.indicators[2].D2020_04_01 / capital0_0.indicators[0].D2020_04_01)*100).toFixed(2) %>
                                 </td>
-                                <td>41,58</td>
+                                <td>41.58</td>
                                 <td>
                                     <%= ((capital0_0.indicators[2].D2020_07_01 / capital0_0.indicators[0].D2020_07_01)*100).toFixed(2) %>
                                 </td>
-                                <td>41,2</td>
+                                <td>41.2</td>
                                 <td>
                                     <%= ((capital0_0.indicators[2].D2020_09_01 / capital0_0.indicators[0].D2020_09_01)*100).toFixed(2) %>
                                 </td>
@@ -2089,7 +2301,7 @@
                         var ctxcapital0_0 = document.getElementById("capital0_0").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartcapital0_0 = new Chart(ctxcapital0_0, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -2157,7 +2369,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -2231,7 +2443,7 @@
                         var ctxcapital1_1 = document.getElementById("capital1_1").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartcapital1_1 = new Chart(ctxcapital1_1, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -2302,7 +2514,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -2390,48 +2602,48 @@
                         <tbody>
                             <tr>
                                 <td>Рентабельність активів,%</td>
-                                <td>4,6</td>
+                                <td>4.6</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2019_10_01 / assets0_0.indicators[2].D2019_10_01)*100).toFixed(2) %>
                                 </td>
-                                <td>4,75</td>
+                                <td>4.75</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2020_01_01 / assets0_0.indicators[2].D2020_01_01)*100).toFixed(2) %>
                                 </td>
-                                <td>1,03</td>
+                                <td>4.26</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2020_04_01 / assets0_0.indicators[2].D2020_04_01)*100).toFixed(2) %>
                                 </td>
-                                <td>1,5</td>
+                                <td>3.06</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2020_07_01 / assets0_0.indicators[2].D2020_07_01)*100).toFixed(2) %>
                                 </td>
-                                <td>1,98</td>
+                                <td>3.81</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2020_09_01 / assets0_0.indicators[2].D2020_09_01)*100).toFixed(2) %>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Рентабельність капіталу, %</td>
-                                <td>37,86</td>
+                                <td>31.29</td>
+                                <td>
+                                    <%= ((profits0_0.indicators[2].D2019_07_01 / capital0_0.indicators[2].D2019_07_01)*100).toFixed(2) %>
+                                </td>
+                                <td>37.86</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2019_10_01 / capital0_0.indicators[2].D2019_10_01)*100).toFixed(2) %>
                                 </td>
-                                <td>38,32</td>
+                                <td>38.32</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2020_01_01 / capital0_0.indicators[2].D2020_01_01)*100).toFixed(2) %>
                                 </td>
-                                <td>33,45</td>
+                                <td>33.45</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2020_04_01 / capital0_0.indicators[2].D2020_04_01)*100).toFixed(2) %>
                                 </td>
-                                <td>12,08</td>
+                                <td>22.91</td>
                                 <td>
                                     <%= ((profits0_0.indicators[2].D2020_07_01 / capital0_0.indicators[2].D2020_07_01)*100).toFixed(2) %>
-                                </td>
-                                <td>16,17</td>
-                                <td>
-                                    <%= ((profits0_0.indicators[2].D2020_09_01 / capital0_0.indicators[2].D2020_09_01)*100).toFixed(2) %>
                                 </td>
                             </tr>
                         </tbody>
@@ -2459,14 +2671,14 @@
                         var ctxprofit0_0 = document.getElementById("profit0_0").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartprofit0_0 = new Chart(ctxprofit0_0, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
                                     label: '<%= profits0_0.indicators[0].items %>',
                                     backgroundColor: "#47d147",
                                     borderColor: '#47d147',
-                                    data: ['<%= profits0_0.indicators[0].D2018_04_01.toFixed() %>', '<%= profits0_0.indicators[0].D2018_07_01.toFixed() %>', '<%= profits0_0.indicators[0].D2018_10_01.toFixed() %>', '<%= profits0_0.indicators[0].D2019_01_01.toFixed() %>', '<%= profits0_0.indicators[0].D2019_04_01.toFixed() %>', '<%= profits0_0.indicators[0].D2019_07_01.toFixed() %>', '<%= profits0_0.indicators[0].D2019_10_01.toFixed() %>', '<%= profits0_0.indicators[0].D2020_01_01.toFixed() %>', '<%= profits0_0.indicators[0].D2020_04_01.toFixed() %>', '<%= profits0_0.indicators[0].D2020_07_01.toFixed() %>', '<%= profits0_0.indicators[0].D2020_09_01.toFixed() %>'],
+                                    data: ['<%= profits0_0.indicators[0].D2018_04_01.toFixed() %>', '<%= profits0_0.indicators[0].D2018_07_01.toFixed() %>', '<%= profits0_0.indicators[0].D2018_10_01.toFixed() %>', '<%= profits0_0.indicators[0].D2019_01_01.toFixed() %>', '<%= profits0_0.indicators[0].D2019_04_01.toFixed() %>', '<%= profits0_0.indicators[0].D2019_07_01.toFixed() %>', '<%= profits0_0.indicators[0].D2019_10_01.toFixed() %>', '<%= profits0_0.indicators[0].D2020_01_01.toFixed() %>', '<%= profits0_0.indicators[0].D2020_04_01.toFixed() %>', ' <%= profits0_0.indicators[0].D2020_07_01.toFixed() %>', '<%= profits0_0.indicators[0].D2020_09_01.toFixed() %>'],
                                 }, {
                                     label: '<%= profits0_0.indicators[1].items %>',
                                     fill: false,
@@ -2478,7 +2690,7 @@
                                     fill: false,
                                     backgroundColor: "#4d4dff",
                                     borderColor: "#4d4dff",
-                                    data: ['<%= profits0_0.indicators[2].D2018_04_01.toFixed() %>', '<%= profits0_0.indicators[2].D2018_07_01.toFixed() %>', '<%= profits0_0.indicators[2].D2018_10_01.toFixed() %>', '<%= profits0_0.indicators[2].D2019_01_01.toFixed() %>', '<%= profits0_0.indicators[2].D2019_04_01.toFixed() %>', '<%= profits0_0.indicators[2].D2019_07_01.toFixed() %>', '<%= profits0_0.indicators[2].D2019_10_01.toFixed() %>', '<%= profits0_0.indicators[2].D2020_01_01.toFixed() %>', '<%= profits0_0.indicators[2].D2020_04_01.toFixed() %>', '<%= profits0_0.indicators[2].D2020_07_01.toFixed() %>', '<%= profits0_0.indicators[2].D2020_09_01.toFixed() %>'],
+                                    data: ['<%= profits0_0.indicators[2].D2018_04_01.toFixed() %>', '<%= profits0_0.indicators[2].D2018_07_01.toFixed() %>', '<%= profits0_0.indicators[2].D2018_10_01.toFixed() %>', ' <%= profits0_0.indicators[2].D2019_01_01.toFixed() %>', '<%= profits0_0.indicators[2].D2019_04_01.toFixed() %>', '<%= profits0_0.indicators[2].D2019_07_01.toFixed() %>', '<%= profits0_0.indicators[2].D2019_10_01.toFixed() %>', '<%= profits0_0.indicators[2].D2020_01_01.toFixed() %>', '<%= profits0_0.indicators[2].D2020_04_01.toFixed() %>', '<%= profits0_0.indicators[2].D2020_07_01.toFixed() %>', '<%= profits0_0.indicators[2].D2020_09_01.toFixed() %>'],
                                 }],
                             },
                             options: {
@@ -2528,7 +2740,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -2601,7 +2813,7 @@
                         var ctxprofit1_1 = document.getElementById("profit1_1").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartprofit1_1 = new Chart(ctxprofit1_1, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -2638,9 +2850,7 @@
                                     fill: false,
                                     backgroundColor: "#e600e6",
                                     borderColor: "#e600e6",
-                                    data: ['<%= profits1_1.indicators[5].D2018_04_01.toFixed() %>', '<%= profits1_1.indicators[5].D2018_07_01.toFixed() %>', '<%= profits1_1.indicators[5].D2018_10_01.toFixed() %>', '<%= profits1_1.indicators[5].D2019_01_01.toFixed() %>', '<%= profits1_1.indicators[5].D2019_04_01.toFixed() %>', '<%= profits1_1.indicators[5].D2019_07_01.toFixed() %>', '<%= profits1_1.indicators[5].D2019_10_01.toFixed() %>', '<%= profits1_1.indicators[5].D2020_01_01.toFixed() %>', '<%= profits1_1.indicators[5].D2020_04_01.toFixed() %>', '<%= profits1_1.indicators[5].D2020_07_01.toFixed() %>',
-                                        '<%= profits1_1.indicators[5].D2020_09_01.toFixed() %>'
-                                    ],
+                                    data: ['<%= profits1_1.indicators[5].D2018_04_01.toFixed() %>', '<%= profits1_1.indicators[5].D2018_07_01.toFixed() %>', '<%= profits1_1.indicators[5].D2018_10_01.toFixed() %>', '<%= profits1_1.indicators[5].D2019_01_01.toFixed() %>', '<%= profits1_1.indicators[5].D2019_04_01.toFixed() %>', '<%= profits1_1.indicators[5].D2019_07_01.toFixed() %>', '<%= profits1_1.indicators[5].D2019_10_01.toFixed() %>', '<%= profits1_1.indicators[5].D2020_01_01.toFixed() %>', '<%= profits1_1.indicators[5].D2020_04_01.toFixed() %>', '<%= profits1_1.indicators[5].D2020_07_01.toFixed() %>', '<%= profits1_1.indicators[5].D2020_09_01.toFixed() %>'],
                                 }, ],
                             },
                             options: {
@@ -2689,7 +2899,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -2762,7 +2972,7 @@
                         var ctxprofit2_2 = document.getElementById("profit2_2").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartprofit2_2 = new Chart(ctxprofit2_2, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -2842,7 +3052,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -2915,7 +3125,7 @@
                         var ctxprofit3_3 = document.getElementById("profit3_3").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartprofit3_3 = new Chart(ctxprofit3_3, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -2982,7 +3192,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -3055,7 +3265,7 @@
                         var ctxprofit4_4 = document.getElementById("profit4_4").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartprofit4_4 = new Chart(ctxprofit4_4, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -3086,7 +3296,7 @@
                                     fill: false,
                                     backgroundColor: "#ffa31a",
                                     borderColor: "#ffa31a",
-                                    data: ['<%= profits4_4.indicators[4].D2018_04_01.toFixed() %>', '<%= profits4_4.indicators[4].D2018_07_01.toFixed() %>', '<%= profits4_4.indicators[4].D2018_10_01.toFixed() %>', '<%= profits4_4.indicators[4].D2019_01_01.toFixed() %>', '<%= profits4_4.indicators[4].D2019_04_01.toFixed() %>', '<%= profits4_4.indicators[4].D2019_07_01.toFixed() %>', '<%= profits4_4.indicators[4].D2019_10_01.toFixed() %>', '<%= profits4_4.indicators[4].D2020_01_01.toFixed() %>', '<%= profits4_4.indicators[4].D2020_04_01.toFixed() %>', '<%= profits4_4.indicators[4].D2020_07_01.toFixed() %>', '<%= profits4_4.indicators[4].D2020_09_01.toFixed() %>'],
+                                    data: ['<%= profits4_4.indicators[4].D2018_04_01.toFixed() %>', '<%= profits4_4.indicators[4].D2018_07_01.toFixed() %>', '<%= profits4_4.indicators[4].D2018_10_01.toFixed() %>', '<%= profits4_4.indicators[4].D2019_01_01.toFixed() %>', ' <%= profits4_4.indicators[4].D2019_04_01.toFixed() %>', '<%= profits4_4.indicators[4].D2019_07_01.toFixed() %>', '<%= profits4_4.indicators[4].D2019_10_01.toFixed() %>', '<%= profits4_4.indicators[4].D2020_01_01.toFixed() %>', '<%= profits4_4.indicators[4].D2020_04_01.toFixed() %>', '<%= profits4_4.indicators[4].D2020_07_01.toFixed() %>', '<%= profits4_4.indicators[4].D2020_09_01.toFixed() %>'],
                                 }],
                             },
                             options: {
@@ -3134,7 +3344,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -3208,7 +3418,7 @@
                         var ctxprofit5_5 = document.getElementById("profits5_5").getContext('2d');
                         Chart.defaults.global.animation.duration = 1500
                         var chartprofit5_5 = new Chart(ctxprofit5_5, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
@@ -3276,7 +3486,7 @@
                             <table class="table table-striped table-primary">
                                 <thead>
                                     <tr>
-                                        <th>Items</th>
+                                        <th>Показники</th>
                                         <th>2018_04_01</th>
                                         <th>2018_07_01</th>
                                         <th>2018_10_01</th>
@@ -3336,8 +3546,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2">
-                <ul id="navbar" class="nav flex-column pl-3 sticky-top">
+            <div class="col-lg-2 ">
+                <ul id="navbar" class="nav flex-column sticky-top">
                     <li class="nav-item"><a class="nav-link" href="#normatives">Нормативи</a></li>
                     <li class="nav-item"><a class="nav-link" href="#activ">Активи</a></li>
                     <li class="nav-item"><a class="nav-link" href="#passiv">Зобов'язання</a></li>
@@ -3348,17 +3558,17 @@
         </div>
         <div class="jumbotron text-center rounded-0" style="background: #191727;">
             <a type="button" href="/banks" class="btn btn-outline-success mt-4" role="button">До перегляду</a>
-            <a type="button" href="/register" class="btn btn-outline-info mt-4" role="button">Реєстрація</a>
+            <!-- <a type="button" href="/register" class="btn btn-outline-info mt-4" role="button">Реєстрація</a> -->
         </div>
     </div><br>
     <script>
         $("#skltbsResponsive").skeletabs({
             equalHeights: true,
             animation: "fade-scale",
-            // autoplay: true,
+            autoplay: true,
             autoplayInterval: 4500,
             responsive: {
-                breakpoint: 800,
+                breakpoint: 780,
                 headingTagName: "h4"
             }
         });
@@ -3366,5 +3576,5 @@
     <script src="/javascripts/table.js" charset="utf-8"></script>
     <script src="/javascripts/tabcontent.js" charset="utf-8"></script>
     <script src="/javascripts/chartCreate.js" charset="utf-8"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="/javascripts/skeletabs.js" charset="utf-8"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="/javascripts/skeletabs.js" charset="utf-8"></script> -->
