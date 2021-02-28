@@ -36,7 +36,6 @@ const middleware = {
         } = req.body;
 
         if (newPassword && !passwordConfirmation) {
-            // middleware.deleteProfileImage(req);
             req.session.error = 'Відсутнє підтвердження пароля!';
             return res.redirect('/profile');
         } else if (newPassword && passwordConfirmation) {
@@ -45,7 +44,6 @@ const middleware = {
                 await user.setPassword(newPassword);
                 next();
             } else {
-                // middleware.deleteProfileImage(req);
                 req.session.error = 'Нові паролі повинні збігатися!';
                 return res.redirect('/profile');
             }
@@ -70,8 +68,9 @@ const middleware = {
                     $or: [
                         { SHORTNAME: search },
                         { NKB: search },
-                        { group: search }
-                        // { SVB: search }
+                        { group: search },
+                        { STATUS: search },
+                        { MFO: search }
                     ]
                 })
             }
