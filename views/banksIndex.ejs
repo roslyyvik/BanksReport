@@ -12,15 +12,28 @@
             padding: 10px;
             font-size: 17px;
         }
+        
+        @media only screen and (max-width: 400px) {
+            .navbar-brand>h3 {
+                display: none;
+            }
+            .navbar-brand>img {
+                margin-top: 0px;
+            }
+        }
     </style>
 
     <div class="container-fluid p-4 mt-4" style="min-height:100%">
-        <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa">&#xf077;</i></button>
+        <button onclick="topFunction()" id="myBtn" title="Go to top"><svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" />
+        </svg></button>
         <div class="row">
-            <div class="col-md-3 mt-1">
-                <% include ./partials/searchFilter %>
+            <div class="col-md-1">
             </div>
-            <div class="col-md-9">
+            <div class="col-md-10">
+                <div class="collapse" id="demo">
+                    <% include ./partials/searchFilter %>
+                </div>
                 <h1>
                     <%= title %>
                 </h1>
@@ -30,6 +43,9 @@
                             <h3>
                                 <%= bank.SHORTNAME %>
                             </h3><br>
+                            <div>Статус:&nbsp;
+                                <strong><%= bank.STATUS %></strong>
+                            </div><br>
                             <div>Група:
                                 <%= bank.group %>
                             </div>
@@ -59,22 +75,22 @@
                             <div style="overflow-x:auto;">
                                 <table>
                                     <tr>
-                                        <th style="text-align: center;"><i style='font-size:20px;color:gold' class='fas'>&#xf6f2;</i></th>
-                                        <th>2020_04_01</th>
+                                        <th>Показники</th>
                                         <th>2020_07_01</th>
                                         <th>2020_10_01</th>
+                                        <th>2021_01_01</th>
                                         <th>Зміни,%</th>
                                     </tr>
                                     <tr>
                                         <th>Чисті активи</th>
                                         <td>
-                                            <%= bank.assetstotal[0] %>
+                                            <%= bank.assetstotal[0].toLocaleString() %>
                                         </td>
                                         <td>
-                                            <%= bank.assetstotal[1] %>
+                                            <%= bank.assetstotal[1].toLocaleString() %>
                                         </td>
                                         <td>
-                                            <%= bank.assetstotal[2] %>
+                                            <%= bank.assetstotal[2].toLocaleString() %>
                                         </td>
                                         <td colspan="">
                                             <%= ((bank.assetstotal[2] - bank.assetstotal[1])/bank.assetstotal[1]*100).toFixed(2) %>
@@ -83,13 +99,13 @@
                                     <tr>
                                         <th>Прибуток/(збиток) до оподаткування</th>
                                         <td>
-                                            <%= bank.profittotal[0] %>
+                                            <%= bank.profittotal[0].toLocaleString() %>
                                         </td>
                                         <td>
-                                            <%= bank.profittotal[1] %>
+                                            <%= bank.profittotal[1].toLocaleString() %>
                                         </td>
                                         <td>
-                                            <%= bank.profittotal[2] %>
+                                            <%= bank.profittotal[2].toLocaleString() %>
                                         </td>
                                         <td colspan="">
                                             <%= ((bank.profittotal[2] - bank.profittotal[1])/bank.profittotal[1]*100).toFixed(2) %>
@@ -97,7 +113,9 @@
                                     </tr>
                                 </table>
                             </div><br>
-                            <div><a href="/banks/<%= bank.id %>">Детальніше <i class='fas fa-arrow-right'></i></a>
+                            <div><a href="/banks/<%= bank.id %>">Детальніше&nbsp; <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M4,2H2V22H4V13H18.17L12.67,18.5L14.08,19.92L22,12L14.08,4.08L12.67,5.5L18.17,11H4V2Z" />
+                            </svg></a>
                                 <hr>
                             </div>
                         </div>
@@ -106,10 +124,11 @@
                                 <% include ./partials/paginateBanks %>
                             </div>
             </div>
-            <div class="col">
+            <div class="col-md-1">
 
             </div>
         </div>
     </div>
 
     <script src="javascripts/table.js" charset="utf-8"></script>
+    <script src="javascripts/chartCreate.js" charset="utf-8"></script>
