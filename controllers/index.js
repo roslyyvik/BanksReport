@@ -11,7 +11,6 @@ const async = require('async');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 
-
 module.exports = {
     // GET Home
     async landingPage(req, res, next) {
@@ -110,7 +109,7 @@ module.exports = {
             const user = await User.register(new User(req.body), req.body.password);
             req.login(user, function(err) {
                 if (err) return next(err);
-                req.session.success = `Ласкаво просимо, ${user.username}!`;
+                req.session.Вітаю = `Ласкаво просимо, ${user.username}!`;
                 res.redirect('/');
             });
         } catch (err) {
@@ -198,7 +197,7 @@ module.exports = {
                     }
 
                     user.resetPasswordToken = token;
-                    user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+                    user.resetPasswordExpires = Date.now() + 3600000; //hour
 
                     user.save(function(err) {
                         done(err, token, user);
@@ -206,17 +205,19 @@ module.exports = {
                 });
             },
             function(token, user, done) {
-                let smtpTransport = nodemailer.createTransport({
-                    service: 'gmail',
+                var smtpTransport = nodemailer.createTransport({
+                    host: 'smtp.gmail.com',
+                    port: 587,
+                    // secure: true,
+                    username: '',
                     auth: {
-                        user: process.env.EMAIL || '', 
-                        pass: process.env.PASSWORD || '' 
+                        user: '@gmail.com',
+                        pass: process.env.GMAILPW || ''
                     }
                 });
-
                 var mailOptions = {
                     to: user.email,
-                    from: '@gmail.com',
+                    from: 'mail@vlasnifinansy.info',
                     subject: 'Зміна паролю',
                     text: 'Ви отримали це повідомлення, тому що ви (або хтось інший) здійснив запит на заміну паролю для свого облікового запису..\n\n' +
                         'Натисніть на наступне посилання або вставте це у свій браузер, щоб завершити процес:\n\n' +
@@ -225,7 +226,7 @@ module.exports = {
                 };
                 smtpTransport.sendMail(mailOptions, function(err) {
                     console.log('mail sent');
-                    req.session.success = 'An e-mail has been sent to ' + user.email + ' with further instructions.';
+                    req.session.success = 'Електронне повідомлення надіслано на ' + user.email + ' з подальшими інструкціями.';
                     done(err, 'done');
                 });
             }
@@ -248,7 +249,7 @@ module.exports = {
             function(done) {
                 User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
                     if (!user) {
-                        req.session.error = 'Password reset token is invalid or has expired.';
+                        req.session.error = 'Токен зміни паролю недійсний або термін його дії минув.';
                         return res.redirect('back');
                     }
                     if (req.body.password === req.body.confirm) {
@@ -263,30 +264,34 @@ module.exports = {
                             });
                         })
                     } else {
-                        req.flash("error", "Passwords do not match.");
+                        req.flash("error", "Паролі не співпадають.");
                         return res.redirect('back');
                     }
                 });
             },
             function(user, done) {
-                let smtpTransport = nodemailer.createTransport({
-                    service: 'gmail',
+                var smtpTransport = nodemailer.createTransport({
+                    host: 'smtp.gmail.com',
+                    port: 587,
+                    // secure: true,
+                    username: 'Власні фінанси',
                     auth: {
-                        user: process.env.EMAIL || '@gmail.com', // TODO: your gmail account
-                        pass: process.env.PASSWORD || '' // TODO: your gmail password
+                        user: '@gmail.com',
+                        pass: process.env.GMAILPW || ''
                     }
                 });
                 var mailOptions = {
                     to: user.email,
-                    from: '@mail.com',
+                    from: 'mail@',
                     subject: 'Ваш пароль входу було змінено.',
-                    text: 'Hello,\n\n' +
+                    text: 'Вітаю,\n\n' +
                         'Це підтвердження того, що пароль для вашого облікового запису ' + user.email + ' щойно було змінено.\n'
                 };
                 smtpTransport.sendMail(mailOptions, function(err) {
                     req.session.success = 'Вітаю! Ваш пароль входу було змінено.';
                     done(err);
                 });
+                res.redirect('/')
             }
         ], function(err) {
             res.redirect('users/reset');
