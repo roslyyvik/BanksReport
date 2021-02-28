@@ -18,7 +18,6 @@ module.exports = {
       if(!banks.docs.length && res.locals.query){
         res.locals.error = 'Жодного результату не знайдено!'
       }
-      // const indicates = await Bank.find({"assetstotal.0":{$gt:0}})
         console.log()
         res.render('banksIndex', { title: "Перелік банків України", banks })
     },
@@ -27,13 +26,9 @@ module.exports = {
     //github.com/Automattic/mongoose/issues/1399#issue-12382268
 
     async bankShow1(req, res, next){
-      // let banks = await Bank.findById(req.params.id)
-
       let banks = await Bank.findById(req.params.id)
       let ratios = await Bank.findById(req.params.id).populate({
         path:'normatives'
-        // match: { normative:'H1'}
-        // select:'D2020_07_01'
       })
       let assets0_0= await Bank.findById(req.params.id).populate({
         path:'indicators',
@@ -107,8 +102,51 @@ module.exports = {
         path:'indicators',
         match: { indicator:'profit', level:"5_5" },
       })
+              let portfolio_quality_individual = await Bank.findById(req.params.id).populate({
+            path: 'indicators',
+            match: { items: "у тому числі кредити та заборгованість фізичних осіб" }
+        })
+        let reserves_portfolio_individual = await Bank.findById(req.params.id).populate({
+            path: 'indicators',
+            match: { items: "у тому числі резерви під знецінення кредитів та заборгованості фізичних осіб" }
+        })
+        let portfolio_quality_legal = await Bank.findById(req.params.id).populate({
+            path: 'indicators',
+            match: { items: "у тому числі кредити та заборгованість юридичних осіб" }
+        })
+        let reserves_portfolio_legal = await Bank.findById(req.params.id).populate({
+            path: 'indicators',
+            match: { items: "у тому числі резерви під знецінення кредитів та заборгованості юридичних осіб" }
+        })
+        let liabilities_portfolio_legal = await Bank.findById(req.params.id).populate({
+            path: "indicators",
+            match: { items: "Кошти суб'єктів господарювання та небанківських фінансових установ" }
+        })
+        let liabilities_portfolio_individual = await Bank.findById(req.params.id).populate({
+            path: "indicators",
+            match: { items: "Кошти фізичних осіб" }
+        })
+        let liabilities_portfolio_total = await Bank.findById(req.params.id).populate({
+            path: "indicators",
+            match: { items: "Усього зобов’язань" }
+        })
+        let share_capital = await Bank.findById(req.params.id).populate({
+            path: "indicators",
+            match: { items: "Статутний капітал" }
+        })
+        let capital_total = await Bank.findById(req.params.id).populate({
+            path: "indicators",
+            match: { items: "Усього власного капіталу" }
+        })
+        let assets_total = await Bank.findById(req.params.id).populate({
+            path: "indicators",
+            match: { items: "Загальні активи, усього" }
+        })
+        let profit_total = await Bank.findById(req.params.id).populate({
+                path: "indicators",
+                match: { items: "Прибуток/(збиток) до оподаткування" }
+            })
     // console.log(ratios)
-// console.log(standart.indicators[0].D2020_07_01)
-      res.render('banksShow1', { title: "Перелік банків України", banks, assets0_0, assets1_0, assets1_1, assets3_3, assets4_4, assets5_5, assets6_6, liabilities1_1, liabilities0_0, liabilities2_2, capital0_0, capital1_1, profits0_0, profits1_1, profits2_2, profits3_3, profits4_4, profits5_5, ratios })
+      res.render('banksShow1', { title: "Перелік банків України", banks, assets0_0, assets1_0, assets1_1, assets3_3, assets4_4, assets5_5, assets6_6, liabilities1_1, liabilities0_0, liabilities2_2, capital0_0, capital1_1, profits0_0, profits1_1, profits2_2, profits3_3, profits4_4, profits5_5, ratios, portfolio_quality_individual, reserves_portfolio_individual, portfolio_quality_legal, reserves_portfolio_legal, liabilities_portfolio_legal, liabilities_portfolio_individual, liabilities_portfolio_total, share_capital, capital_total, assets_total, profit_total })
     }
 }
