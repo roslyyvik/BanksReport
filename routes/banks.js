@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const {
-  searchAndFilterBanks,
-  isLoggedIn
+    searchAndFilterBanks
+    // isLoggedIn
 } = require('../middleware');
 const {
     getIndex,
@@ -12,6 +12,6 @@ const {
 // GET banks /banks
 router.get('/', searchAndFilterBanks, getIndex)
 
-router.get('/:id', isLoggedIn, bankShow1)
+router.get('/:id', bankShow1)
 
 module.exports = router
