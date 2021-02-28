@@ -10,15 +10,16 @@ const BankSchema = new Schema({
     NP: String,
     ADRESS: String,
     D_OPEN: String,
-    MFO: Number,
-    group:String,
-    SVB:String,
-    SPEC_OSCHAD:String,
+    MFO: String,
+    group: String,
+    SVB: String,
+    SPEC_OSCHAD: String,
+    STATUS: String,
     assetstotal: [Number],
     liabilities: [Number],
     capitaltotal: [Number],
     profittotal: [Number],
-    indicators:[{ type: mongoose.Schema.Types.ObjectId, ref: 'indicators' }],
+    indicators: [{ type: mongoose.Schema.Types.ObjectId, ref: 'indicators' }],
     normatives: [{ type: mongoose.Schema.Types.ObjectId, ref: 'normatives' }]
 })
 
