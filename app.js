@@ -54,7 +54,7 @@ app.locals.moment = require('moment')
 
 // Config passport and session
 app.use(session({
-    secret: 'hang!',
+    secret: 'secret',
     resave: false,
     saveUninitialized: true
 }))
