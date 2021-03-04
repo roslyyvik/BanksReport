@@ -14,7 +14,6 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 
 const indexRouter = require('./routes/index');
-// const usersRouter = require('./routes/users');
 const banksRouter = require('./routes/banks');
 const donateRouter = require('./routes/donate');
 const sitemapRouter = require('./routes/sitemap')
@@ -39,7 +38,7 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.engine('ejs', engine)
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', __dirname + "/views");
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
